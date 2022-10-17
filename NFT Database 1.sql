@@ -5,7 +5,7 @@ CREATE TABLE if not exists User(
     email VARCHAR(50) NOT NULL, 
     firstName VARCHAR(10) NOT NULL, 
     lastName VARCHAR(10) NOT NULL, 
-    password VARCHAR(20) NOT NULL, 
+    password VARCHAR(10) NOT NULL, 
     birthday DATE NOT NULL, 
     adress_street_num VARCHAR(4) , 
     adress_street VARCHAR(30) , 
