@@ -15,9 +15,9 @@ CREATE TABLE if not exists User(
     PRIMARY KEY (userid) ); 
     insert into User(userid, firstName, lastName, password, birthday, adress_street_num, adress_street, adress_city, adress_state, adress_zip_code, init_bal)
     values  ('root', 'default', 'default','pass1234', '0000-00-00', '0000', 'Default', 'Default', '0', '00000','100'),
-            ('jondoe@gmail.com','Jon','Doe','','','','','','','',''),
-            ('jackenoff@gmail.com','Jack','Enoff','','','','','','','',''),
-            ('bendover@gmail.com','Ben','Dover','RandomString123','09-09-1999','2375','Something Dr.','Sterling Heights','MI','48314','100'),
+            ('jondoe@gmail.com','Jon','Doe','tVp7@MR59q','','','','','','',''),
+            ('jackenoff@gmail.com','Jack','Enoff','99C2*iXAn3','','','','','','',''),
+            ('bendover@gmail.com','Ben','Dover','','','','','','','','git '),
             ('erinmoore@gmail.com','Erin','Moore','','','','','','','',''),
             ('mikehunt@gmail.com','Mike','Hunt','','','','','','','',''),
             ('jessicacole@gmail.com','Jessica','Cole','','','','','','','',''),
