@@ -12,14 +12,13 @@ CREATE TABLE if not exists User(
     adress_city VARCHAR(20), 
     adress_state VARCHAR(2),
     adress_zip_code VARCHAR(5),
-    init_bal DECIMAL(13,2) DEFAULT 1000,
-    PPS_bal DECIMAL(13,2) DEFAULT 0,
+    init_bal DECIMAL(13,2) DEFAULT 100,
     PRIMARY KEY (userid) ); 
     insert into User(userid, email, firstName, lastName, password, birthday, adress_street_num, adress_street, adress_city, adress_state, adress_zip_code, init_bal)
     values  ('0000000000','root', 'default', 'default','pass1234', '0000-00-00', '0000', 'Default', 'Default', '0', '00000','100'),
-            ('3331398714','bendover@gmail.com','Ben','Dover','RandomString123','09-09-1999','2375','Something Dr.','Sterling Heights','MI','48314','100'),
+            ('3331398714','','','','','','','','','','',''),
             ('6729620608','','','','','','','','','','',''),
-            ('7349883064','','','','','','','','','','',''),
+            ('7349883064','bendover@gmail.com','Ben','Dover','RandomString123','09-09-1999','2375','Something Dr.','Sterling Heights','MI','48314','100'),
             ('7023314302','','','','','','','','','','',''),
             ('7519164811','','','','','','','','','','',''),
             ('3375550918','','','','','','','','','','',''),
