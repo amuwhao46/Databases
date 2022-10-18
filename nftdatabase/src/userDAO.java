@@ -52,7 +52,7 @@ public class userDAO
     
     public boolean database_login(String email, String password) throws SQLException{
     	try {
-    		connect_func("root","pass1234");
+    		connect_func();
     		String sql = "select * from user where email = ?";
     		preparedStatement = connect.prepareStatement(sql);
     		preparedStatement.setString(1, email);
@@ -116,7 +116,7 @@ public class userDAO
     }
     
     public void insert(user users) throws SQLException {
-    	connect_func("root","pass1234");         
+    	connect_func();         
 		String sql = "insert into User(email, firstName, lastName, password, birthday,adress_street_num, adress_street,adress_city,adress_state,adress_zip_code,cash_bal,PPS_bal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 			preparedStatement.setString(1, users.getEmail());
@@ -268,29 +268,28 @@ public class userDAO
     	connect_func();
         statement =  (Statement) connect.createStatement();
         
-        String[] INITIAL = {"drop database if exists testdb; ",
-					        "create database testdb; ",
-					        "use testdb; ",
+        String[] INITIAL = {"drop database if exists NFTdb; ",
+					        "create database NFTdb; ",
+					        "use NFTdb; ",
 					        "drop table if exists User; ",
 					        ("CREATE TABLE if not exists User( " +
-					            "email VARCHAR(50) NOT NULL, " + 
+					            "userid VARCHAR(50) NOT NULL, " + 
 					            "firstName VARCHAR(10) NOT NULL, " +
 					            "lastName VARCHAR(10) NOT NULL, " +
-					            "password VARCHAR(20) NOT NULL, " +
+					            "password VARCHAR(10) NOT NULL, " +
 					            "birthday DATE NOT NULL, " +
 					            "adress_street_num VARCHAR(4) , "+ 
 					            "adress_street VARCHAR(30) , "+ 
 					            "adress_city VARCHAR(20)," + 
 					            "adress_state VARCHAR(2),"+ 
 					            "adress_zip_code VARCHAR(5),"+ 
-					            "cash_bal DECIMAL(13,2) DEFAULT 1000,"+ 
-					            "PPS_bal DECIMAL(13,2) DEFAULT 0,"+
-					            "PRIMARY KEY (email) "+"); ")
+					            "cash_bal DECIMAL(13,2) DEFAULT 100,"+ 
+					            "PRIMARY KEY (userid) "+"); ")
         					};
-        String[] TUPLES = {("insert into User(email, firstName, lastName, password, birthday, adress_street_num, adress_street, adress_city, adress_state, adress_zip_code, cash_bal, PPS_bal)"+
-        			"values ('susie@gmail.com', 'Susie ', 'Guzman', 'susie1234', '2000-06-27', '1234', 'whatever street', 'detroit', 'MI', '48202','1000', '0'),"+
-			    		 	"('don@gmail.com', 'Don', 'Cummings','don123', '1969-03-20', '1000', 'hi street', 'mama', 'MO', '12345','1000', '0'),"+
-			    	 	 	"('margarita@gmail.com', 'Margarita', 'Lawson','margarita1234', '1980-02-02', '1234', 'ivan street', 'tata','CO','12561','1000', '0'),"+
+        String[] TUPLES = {("insert into User(userid, firstName, lastName, password, birthday, adress_street_num, adress_street, adress_city, adress_state, adress_zip_code, init_bal) "+
+        			"values ('root', 'default', 'default','pass1234', '00-00-0000', '0000', 'Default', 'Default', '0', '00000','100'),"+
+			    		 	" ('jackenoff@gmail.com','Jack','Enoff','99C2*iXAn3','04-12-2001','1485','Tator Patch Road','Chicago','IL','60605','100'),"+
+			    	 	 	" ('bendover@gmail.com','Ben','Dover','77@Z!G54pa','09-12-2000','3780','Green Acres Road','Greenville','NC','27834','100'),"+
 			    		 	"('jo@gmail.com', 'Jo', 'Brady','jo1234', '2002-02-02', '3214','marko street', 'brat', 'DU', '54321','1000', '0'),"+
 			    		 	"('wallace@gmail.com', 'Wallace', 'Moore','wallace1234', '1971-06-15', '4500', 'frey street', 'sestra', 'MI', '48202','1000', '0'),"+
 			    		 	"('amelia@gmail.com', 'Amelia', 'Phillips','amelia1234', '2000-03-14', '1245', 'm8s street', 'baka', 'IL', '48000','1000', '0'),"+

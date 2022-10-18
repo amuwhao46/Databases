@@ -19,11 +19,11 @@
                 <th>Email</th>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>Adress</th>
+                <th>Address</th>
                 <th>Password</th>
                 <th>Birthday</th>
                 <th>cash_bal($)</th>
-                <th>PPS_bal</th>
+   
             </tr>
             <c:forEach var="user" items="${get_user}">
                 <tr style="text-align:center">
@@ -34,7 +34,7 @@
                     <td>"${user.password}"</td>
                     <td>"${user.birthday}"</td>
                     <td>"${user.cash_bal}"</td>
-                    <td>"${user.PPS_bal}"</td>
+            
                  </tr>
             </c:forEach>
           </table>
