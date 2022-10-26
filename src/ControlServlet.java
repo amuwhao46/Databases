@@ -102,7 +102,7 @@ public class ControlServlet extends HttpServlet {
 	    	 if (userid.equals("root") && password.equals("pass1234")) {
 				 System.out.println("Login Successful! Redirecting to root");
 				 session = request.getSession();
-				 session.setAttribute("username", userid);
+				 session.setAttribute("userid", userid);
 				 rootPage(request, response, "");
 	    	 }
 	    	 else if(userDAO.isValid(userid, password)) 

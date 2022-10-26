@@ -90,7 +90,7 @@ public class userDAO
     	connect_func();         
 		String sql = "insert into User(userid, firstName, lastName, password, birthday,address_street_num, address_street,address_city,address_state,address_zip_code,init_bal) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setString(1, users.getuserid());
+			preparedStatement.setString(1, users.getUserid());
 			preparedStatement.setString(2, users.getFirstName());
 			preparedStatement.setString(3, users.getLastName());
 			preparedStatement.setString(4, users.getPassword());
@@ -122,7 +122,7 @@ public class userDAO
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, users.getuserid());
+        preparedStatement.setString(1, users.getUserid());
 		preparedStatement.setString(2, users.getFirstName());
 		preparedStatement.setString(3, users.getLastName());
 		preparedStatement.setString(4, users.getPassword());
@@ -254,7 +254,7 @@ public class userDAO
 		            "PRIMARY KEY (userid) "+"); ")
 				};
 String[] TUPLES = {("insert into User(userid, firstName, lastName, password, birthday, address_street_num, address_street, address_city, address_state, address_zip_code, init_bal)" +
-		"values ('root', 'default', 'default', 'pass1234', '0001-01-01', '0000', 'default', 'default', 'default', '00000', '100')," +
+		"values ('root', 'default', 'default', 'pass1234', '0001-01-01', '0000', 'default', 'default', 'DE', '00000', '100')," +
     		 	"('jondoe@gmail.com', 'Jon', 'Doe', 'tVp7@MR59q', '2001-01-31', '3959', 'Pickens Way', 'Whitewright', 'TX', '75491', '100')," +
     	 	 	"('jackenoff@gmail.com', 'Jack', 'Enoff', '99C2*iXAn3', '2001-04-12', '1485', 'Tator Patch Road', 'Chicago', 'IL', '60605', '100')," +
     		 	"('bendover@gmail.com', 'Ben', 'Dover', '77@Z!G54pa', '2000-09-12', '3780', 'Green Acres Road', 'Greenville', 'NC', '27834', '100')," +

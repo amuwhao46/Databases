@@ -38,10 +38,10 @@ public class user {
 	    }
 	    
 	   //getter and setter methods
-        public String getuserid() {
+        public String getUserid() {
 	        return userid;
 	    }
-	    public void setuserid(String userid) {
+	    public void setUserid(String userid) {
 	        this.userid = userid;
 	    }
 

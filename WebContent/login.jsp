@@ -15,7 +15,7 @@
 				<tr>
 					<th>Username: </th>
 					<td>
-						<input type="text" name="email" size="45" autofocus>
+						<input type="text" name="userid" size="45" autofocus>
 					</td>
 				</tr>
 				<tr>
