@@ -12,7 +12,7 @@
 				<tr>
 					<th>Email: </th>
 					<td align="center" colspan="3">
-						<input type="text" name="email" size="45"  value="example@gmail.com" onfocus="this.value=''">
+						<input type="text" name="userid" size="45"  value="example@gmail.com" onfocus="this.value=''">
 					</td>
 				</tr>
 				<tr>
