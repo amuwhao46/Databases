@@ -17,7 +17,7 @@ public class nft {
 	    	this.nftid = nftid;
 	    }
 	 
-	    public nft(String unique_name, String description, String password, String birthday, String created_date, String nft_image, String address_city, String address_state,String address_zip_code, int init_bal) {
+	    public nft(String unique_name, String description, String created_date, String nft_image) {
 	    	this.unique_name = unique_name;
 	    	this.description = description;
 	        this.created_date = created_date;
