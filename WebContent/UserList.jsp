@@ -28,7 +28,7 @@
                     <td><c:out value= "${users.address_street_num} ${users.address_street} ${users.address_city} ${users.address_state} ${users.address_zip_code}" /></td>
                     <td><c:out value="${users.password}" /></td>
                     <td><c:out value="${users.birthday}" /></td>
-                    <td><c:out value="${users.cash_bal}"/></td>
+                    <td><c:out value="${users.init_bal}"/></td>
                 </tr>
             </c:forEach>
         </table>

@@ -32,7 +32,7 @@
                     <td>"${user.address_street_num} ${users.address_street} ${users.address_city} ${users.address_state} ${users.address_zip_code}"</td>
                     <td>"${user.password}"</td>
                     <td>"${user.birthday}"</td>
-                    <td>"${user.cash_bal}"</td>
+                    <td>"${user.init_bal}"</td>
                  </tr>
             </c:forEach>
           </table>
