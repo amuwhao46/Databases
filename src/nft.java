@@ -25,37 +25,37 @@ public class nft {
 	    }
 	    
 	   //getter and setter methods
-        public String getnftid() {
+        public String getNftid() {
 	        return nftid;
 	    }
-	    public void setnftid(String nftid) {
+	    public void setNftid(String nftid) {
 	        this.nftid = nftid;
 	    }
 
-	    public String getunique_name() {
+	    public String getUnique_name() {
 	        return unique_name;
 	    }
-	    public void setunique_name(String unique_name) {
+	    public void setUnique_name(String unique_name) {
 	        this.unique_name = unique_name;
 	    }
 	    
-	    public String getdescription() {
+	    public String getDescription() {
 	        return description;
 	    }
-	    public void setdescription(String description) {
+	    public void setDescription(String description) {
 	        this.description = description;
 	    }
 	    
-	    public String getcreated_date() {
+	    public String getCreated_date() {
 	        return created_date;
 	    }
-	    public void setcreated_date(String created_date) {
+	    public void setCreated_date(String created_date) {
 	        this.created_date = created_date;
 	    }
-	    public String getnft_image() {
+	    public String getNft_image() {
 	        return nft_image;
 	    }
-	    public void setnft_image(String nft_image) {
+	    public void setNft_image(String nft_image) {
 	        this.nft_image = nft_image;
 	    }
 	}

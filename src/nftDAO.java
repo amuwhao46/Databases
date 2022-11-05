@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * Servlet implementation class Connect
  */
-@WebServlet("/NFTDAO")
+@WebServlet("/nftDAO")
 public class nftDAO 
 {
 	private static final long serialVersionUID = 1L;
@@ -45,14 +45,14 @@ public class nftDAO
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
-            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&NFT=john&created_date=pass1234");
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nftdb?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&nft=john&created_date=pass1234");
             System.out.println(connect);
         }
     }
     
 
-    public List<NFT> listAllNFTs() throws SQLException {
-        List<NFT> listNFT = new ArrayList<NFT>();        
+    public List<nft> listAllNfts() throws SQLException {
+        List<nft> listnft = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT";      
         connect_func();      
         statement = (Statement) connect.createStatement();
@@ -66,12 +66,12 @@ public class nftDAO
             String nft_image = resultSet.getString("nft_image");
 
              
-            NFT NFTs = new NFT(nftid,unique_name, description, created_date, nft_image);
-            listNFT.add(NFTs);
+            nft nfts = new nft(nftid,unique_name, description, created_date, nft_image);
+            listnft.add(nfts);
         }        
         resultSet.close();
         disconnect();        
-        return listNFT;
+        return listnft;
     }
     
     protected void disconnect() throws SQLException {
@@ -80,15 +80,15 @@ public class nftDAO
         }
     }
     
-    public void insert(NFT NFTs) throws SQLException {
+    public void insert(nft nfts) throws SQLException {
     	connect_func();         
-		String sql = "insert into NFT(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
+		String sql = "insert into nft(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setString(1, NFTs.getnftid());
-			preparedStatement.setString(2, NFTs.getunique_name());
-			preparedStatement.setString(3, NFTs.getdescription());
-			preparedStatement.setString(4, NFTs.getcreated_date());
-			preparedStatement.setString(5, NFTs.getnft_image());	
+			preparedStatement.setString(1, nfts.getNftid());
+			preparedStatement.setString(2, nfts.getUnique_name());
+			preparedStatement.setString(3, nfts.getDescription());
+			preparedStatement.setString(4, nfts.getCreated_date());
+			preparedStatement.setString(5, nfts.getNft_image());	
 		preparedStatement.executeUpdate();
         preparedStatement.close();
     }
@@ -105,24 +105,24 @@ public class nftDAO
         return rowDeleted;     
     }
      
-    public boolean update(NFT NFTs) throws SQLException {
-        String sql = "update NFT set unique_name=?, description =?,created_date = ?,nft_image=? where nftid = ?";
+    public boolean update(nft nfts) throws SQLException {
+        String sql = "update nft set unique_name=?, description =?,created_date = ?,nft_image=? where nftid = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, NFTs.getNftid());
-		preparedStatement.setString(2, NFTs.getUnique_name());
-		preparedStatement.setString(3, NFTs.getDescription());
-		preparedStatement.setString(4, NFTs.getCreated_date());
-		preparedStatement.setString(5, NFTs.getNft_image());	
+        preparedStatement.setString(1, nfts.getNftid());
+		preparedStatement.setString(2, nfts.getUnique_name());
+		preparedStatement.setString(3, nfts.getDescription());
+		preparedStatement.setString(4, nfts.getCreated_date());
+		preparedStatement.setString(5, nfts.getNft_image());	
          
         boolean rowUpdated = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
         return rowUpdated;     
     }
     
-    public NFT getNFT(String nftid) throws SQLException {
-    	NFT NFT = null;
+    public nft getnft(String nftid) throws SQLException {
+    	nft nft = null;
         String sql = "SELECT * FROM NFT WHERE nftid = ?";
          
         connect_func();
@@ -137,13 +137,13 @@ public class nftDAO
             String description = resultSet.getString("description");
             String created_date = resultSet.getString("created_date");
             String nft_image = resultSet.getString("nft_image");
-            NFT = new NFT(nftid, unique_name, description, created_date, nft_image);
+            nft = new nft(nftid, unique_name, description, created_date, nft_image);
         }
          
         resultSet.close();
         statement.close();
          
-        return NFT;
+        return nft;
     }
     
     public boolean checknftid(String nftid) throws SQLException {
@@ -211,9 +211,7 @@ public class nftDAO
     	connect_func();
         statement =  (Statement) connect.createStatement();
         
-        String[] INITIAL = {"drop database if exists NFTdb; ",
-		        "create database NFTdb; ",
-		        "use NFTdb; ",
+        String[] INITIAL = {"use NFTdb; ",
 		        "drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
                     "nftid VARCHAR(50) NOT NULL, " +
@@ -224,16 +222,16 @@ public class nftDAO
 		            "PRIMARY KEY (nftid) "+"); ")
 				};
 String[] TUPLES = {("insert into NFT(nftid, unique_name, description, created_date, nft_image)" +
-		"values ('root', 'default', 'default', 'pass1234', '0001-01-01')," +
-    		 	"('jondoe@gmail.com', 'Jon', 'Doe', 'tVp7@MR59q', '2001-01-31')," +
-    	 	 	"('jackenoff@gmail.com', 'Jack', 'Enoff', '99C2*iXAn3', '2001-04-12')," +
-    		 	"('bendover@gmail.com', 'Ben', 'Dover', '77@Z!G54pa', '2000-09-12')," +
-    		 	"('erinmoore@gmail.com', 'Erin', 'Moore', 'f5eO#24Z4@', '2002-04-18')," +
-    		 	"('mikehunt@gmail.com', 'Mike', 'Hunt', 'RxS4k0$u30', '1999-09-15')," +
-    			"('jessicacole@gmail.com', 'Jessica', 'Cole', 'G@078D*k3x', '2001-04-10')," +
-    			"('meganfoxx@gmail.com', 'Megan', 'Foxx', '%nXtVh264c', '2000-08-14')," +
-    			"('harrybules@gmail.com', 'Harry', 'Bules', '*x^Z9%me40', '2000-08-17'),"+
-    			"('marymean@gmail.com', 'Mary', 'Mean', 'd^F3!s39$%', '1998-09-26');"
+		"values ('O6OMWOTYPX', 'Mushroom Hat', 'Lots of homies','00-00-0000', 'photovalhold')," +
+    		 	"('CB0379JEUX','Tinted Frostbite','Cooler than a cat','01-31-2001','3959')," +
+    	 	 	"('T6IC4F9H02','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485')," +
+    		 	"('1XHOZKT9DM','Gleam Steam','Shiny steam cakes air and catches attention','09-12-2000','3780')," +
+    		 	"('8SE9Z9IX70','Corrupt Rose','The baddest of all roses','04-18-2002','3921')," +
+    		 	"('HIU0X084SW','Fancy Unicorn','You know hes fly with his little hat','09-15-1999','426')," +
+    			"('UY9WX9K7QF','Murky Dragonfly','This guys been flying through the desert','04-10-2001','444')," +
+    			"('PD6UEFDP9A','Wealthy Stardust','Personified gold','08-14-2000','3513')," +
+    			"('FRHIKC1D59','Misty Bat','If batman worked at a water park','08-17-2000','859'),"+
+    			"('KTDDWZS4WR','Good Oak','Bad City','09-26-1998','2562');"
     			)};
         
         //for loop to put these in database

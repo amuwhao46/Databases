@@ -23,6 +23,7 @@ import java.sql.PreparedStatement;
 public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
 	    private userDAO userDAO = new userDAO();
+	    private nftDAO nftDAO = new nftDAO();
 	    private String currentUser;
 	    private HttpSession session=null;
 	    
@@ -34,6 +35,7 @@ public class ControlServlet extends HttpServlet {
 	    public void init()
 	    {
 	    	userDAO = new userDAO();
+	    	nftDAO = new nftDAO();
 	    	currentUser= "";
 	    }
 	    
@@ -55,6 +57,7 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/initialize":
         		userDAO.init();
+        		nftDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -68,6 +71,10 @@ public class ControlServlet extends HttpServlet {
                  System.out.println("The action is: list");
                  listUser(request, response);           	
                  break;
+        	 case "/listNft": 
+                 System.out.println("The action is: list");
+                 listNft(request, response);           	
+                 break;
 	    	}
 	    }
 	    catch(Exception ex) {
@@ -80,18 +87,31 @@ public class ControlServlet extends HttpServlet {
 	        System.out.println("listUser started: 00000000000000000000000000000000000");
 
 	     
-	        List<user> listUser = userDAO.listAllUsers();
-	        request.setAttribute("listUser", listUser);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserList.jsp");       
+	        List<nft> listNft = nftDAO.listAllNfts();
+	        request.setAttribute("listNft", listNft);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
+	    }
+	    
+	    private void listNft(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	        System.out.println("listNFT started: 00000000000000000000000000000000000");
+
+	     
+	        List<nft> listNft = nftDAO.listAllNfts();
+	        request.setAttribute("listNft", listNft);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
+	        dispatcher.forward(request, response);
+	     
+	        System.out.println("listNFTs finished: 111111111111111111111111111111111111");
 	    }
 	    	        
 	    private void rootPage(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException, SQLException{
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
-	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
+	    	request.getRequestDispatcher("rootView.jsp").forward(request, response); //Root view to see how c:forEach is connected
 	    }
 	    
 	    
@@ -110,7 +130,8 @@ public class ControlServlet extends HttpServlet {
 			 	 
 			 	 currentUser = userid;
 				 System.out.println("Login Successful! Redirecting");
-				 request.getRequestDispatcher("activitypage.jsp").forward(request, response);
+				 request.setAttribute("listUser", userDAO.listAllUsers());
+				 request.getRequestDispatcher("activitypage.jsp").forward(request, response); // Activity page here!!!!!!!!!
 			 			 			 			 
 	    	 }
 	    	 else {
