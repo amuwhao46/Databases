@@ -20,15 +20,13 @@
 		                <th>Image</th>
 	
 		            </tr>
-		            <c:forEach var="users" items="${listUser}">
+		            <c:forEach var="nft" items="${listNft}">
 		                <tr style="text-align:center">
-		                    <td><c:out value="${users.userid}" /></td>
-		                    <td><c:out value="${users.firstName}" /></td>
-		                    <td><c:out value="${users.lastName}" /></td>
-		                    <td><c:out value= "${users.address_street_num} ${users.address_street} ${users.address_city} ${users.address_state} ${users.address_zip_code}" /></td>
-		                    <td><c:out value="${users.password}" /></td>
-		                    <td><c:out value="${users.birthday}" /></td>
-		                    <td><c:out value="${users.init_bal}"/></td>
+		                    <td><c:out value="${nft.nftid}" /></td>
+		                    <td><c:out value="${nft.unique_name}" /></td>
+		                    <td><c:out value="${nft.description}" /></td>
+		                    <td><c:out value="${nft.created_date}" /></td>
+		                    <td><c:out value="${nft.nft_image}" /></td>
 		            </c:forEach>
 		        </table>
 			</div>
