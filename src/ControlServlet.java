@@ -57,7 +57,7 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/initialize":
         		userDAO.init();
-        		nftDAO.init();
+//        		nftDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -75,6 +75,8 @@ public class ControlServlet extends HttpServlet {
                  System.out.println("The action is: list");
                  listNft(request, response);           	
                  break;
+         	case "/mint":
+        		mint(request,response);
 	    	}
 	    }
 	    catch(Exception ex) {
@@ -111,6 +113,7 @@ public class ControlServlet extends HttpServlet {
 	    private void rootPage(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException, SQLException{
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
+//			request.setAttribute("listNft", nftDAO.listAllNfts());
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response); //Root view to see how c:forEach is connected
 	    }
 	    
@@ -127,8 +130,11 @@ public class ControlServlet extends HttpServlet {
 	    	 }
 	    	 else if(userDAO.isValid(userid, password)) 
 	    	 {
+//			 	 user user = userDAO.getUser(userid);
 			 	 
 			 	 currentUser = userid;
+//			 	 session = request.getSession();
+//			 	 session.setAttribute("currentUser", user.getFirstName());
 				 System.out.println("Login Successful! Redirecting");
 				 request.setAttribute("listUser", userDAO.listAllUsers());
 				 request.getRequestDispatcher("activitypage.jsp").forward(request, response); // Activity page here!!!!!!!!!
@@ -172,7 +178,19 @@ public class ControlServlet extends HttpServlet {
 	   		 request.setAttribute("errorTwo","Registration failed: Password and Password Confirmation do not match.");
 	   		 request.getRequestDispatcher("register.jsp").forward(request, response);
 	   	 	}
-	    }    
+	    }  
+	    
+	    private void mint(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	String nftid = request.getParameter("nftid");
+	   	 	String firstName = request.getParameter("unique_name");
+	   	 	String lastName = request.getParameter("description");
+	   	 	String password = request.getParameter("created_date");
+	   	 	String birthday = request.getParameter("nft_image");
+	   	 	
+	   	 System.out.println("Saved to NFT database");
+	   	request.getRequestDispatcher("activitypage.jsp").forward(request, response);
+	    } 
+	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	currentUser = "";
         		response.sendRedirect("login.jsp");

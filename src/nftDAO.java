@@ -66,7 +66,7 @@ public class nftDAO
             String nft_image = resultSet.getString("nft_image");
 
              
-            nft nfts = new nft(nftid,unique_name, description, created_date, nft_image);
+            nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
             listnft.add(nfts);
         }        
         resultSet.close();
@@ -84,11 +84,11 @@ public class nftDAO
     	connect_func();         
 		String sql = "insert into nft(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setString(1, nfts.getNftid());
-			preparedStatement.setString(2, nfts.getUnique_name());
-			preparedStatement.setString(3, nfts.getDescription());
-			preparedStatement.setString(4, nfts.getCreated_date());
-			preparedStatement.setString(5, nfts.getNft_image());	
+		preparedStatement.setString(1, nfts.getNftid());
+		preparedStatement.setString(2, nfts.getUnique_name());
+		preparedStatement.setString(3, nfts.getDescription());
+		preparedStatement.setString(4, nfts.getCreated_date());
+		preparedStatement.setString(5, nfts.getNft_image());	
 		preparedStatement.executeUpdate();
         preparedStatement.close();
     }
@@ -211,14 +211,13 @@ public class nftDAO
     	connect_func();
         statement =  (Statement) connect.createStatement();
         
-        String[] INITIAL = {"use NFTdb; ",
-		        "drop table if exists NFT; ",
+        String[] INITIAL = {"drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
                     "nftid VARCHAR(50) NOT NULL, " +
-		            "unique_name VARCHAR(10) NOT NULL, " +
-		            "description VARCHAR(10) NOT NULL, " +
-		            "created_date VARCHAR(10) NOT NULL, " +
-		            "nft_image DATE NOT NULL, " +
+		            "unique_name VARCHAR(50) NOT NULL, " +
+		            "description VARCHAR(100) NOT NULL, " +
+		            "created_date VARCHAR(11) NOT NULL, " +
+		            "nft_image VARCHAR(15) NOT NULL, " +
 		            "PRIMARY KEY (nftid) "+"); ")
 				};
 String[] TUPLES = {("insert into NFT(nftid, unique_name, description, created_date, nft_image)" +
