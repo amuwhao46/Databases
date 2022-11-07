@@ -56,29 +56,33 @@ public class userDAO
     public List<user> listAllUsers() throws SQLException {
         List<user> listUser = new ArrayList<user>();        
         String sql = "SELECT * FROM User";      
-        connect_func();      
-        statement = (Statement) connect.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-         
-        while (resultSet.next()) {
-            String userid = resultSet.getString("userid");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
-            String password = resultSet.getString("password");
-            String birthday = resultSet.getString("birthday");
-            String address_street_num = resultSet.getString("address_street_num"); 
-            String address_street = resultSet.getString("address_street"); 
-            String address_city = resultSet.getString("address_city"); 
-            String address_state = resultSet.getString("address_state"); 
-            String address_zip_code = resultSet.getString("address_zip_code"); 
-            int init_bal = resultSet.getInt("init_bal");
+        try {
+        	connect_func(); // Call this function in try block in case NFTdb was dropped in MySQL Workbench      
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+        	while (resultSet.next()) {
+                String userid = resultSet.getString("userid");
+                String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("lastName");
+                String password = resultSet.getString("password");
+                String birthday = resultSet.getString("birthday");
+                String address_street_num = resultSet.getString("address_street_num"); 
+                String address_street = resultSet.getString("address_street"); 
+                String address_city = resultSet.getString("address_city"); 
+                String address_state = resultSet.getString("address_state"); 
+                String address_zip_code = resultSet.getString("address_zip_code"); 
+                int init_bal = resultSet.getInt("init_bal");
 
-             
-            user users = new user(userid,firstName, lastName, password, birthday, address_street_num,  address_street,  address_city,  address_state,  address_zip_code, init_bal);
-            listUser.add(users);
-        }        
-        resultSet.close();
-        disconnect();        
+                 
+                user users = new user(userid,firstName, lastName, password, birthday, address_street_num,  address_street,  address_city,  address_state,  address_zip_code, init_bal);
+                listUser.add(users);
+            }        
+            resultSet.close();
+        } catch (SQLException e) {
+        	System.out.println(e.toString()+ ", that is the error");
+        }
+        disconnect(); 
+        
         return listUser;
     }
     

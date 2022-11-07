@@ -45,9 +45,13 @@ public class nftDAO
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
+<<<<<<< HEAD
             connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false"
             		+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
             		+ "&user=john&password=pass1234");
+=======
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&nft=john&created_date=pass1234");
+>>>>>>> 4d16939378ce93c1c53487da70092b470bbed61f
             System.out.println(connect);
         }
     }
