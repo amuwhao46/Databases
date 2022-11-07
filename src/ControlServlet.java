@@ -185,13 +185,16 @@ public class ControlServlet extends HttpServlet {
 	    
 	    private void mint(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	String nftid = request.getParameter("nftid");
-	   	 	String firstName = request.getParameter("unique_name");
-	   	 	String lastName = request.getParameter("description");
-	   	 	String password = request.getParameter("created_date");
-	   	 	String birthday = request.getParameter("nft_image");
+	   	 	String unique_name = request.getParameter("unique_name");
+	   	 	String description = request.getParameter("description");
+	   	 	String created_date = request.getParameter("created_date");
+	   	 	String nft_image = request.getParameter("nft_image");
 	   	 	
-//	   	 System.out.println("Saved to NFT database");
-//	   	request.getRequestDispatcher("activitypage.jsp").forward(request, response);
+	   	 	nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
+	   	 	nftDAO.insert(nfts);
+	   	 	
+		    System.out.println("Saved to NFT database");
+		   	response.sendRedirect("activitypage.jsp");
 	    } 
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {

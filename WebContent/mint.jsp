@@ -41,8 +41,12 @@
 						<input type="text" name="nft_image" size="45"  value="bigchungus.com" onfocus="this.value=''">
 					</td>
 				</tr>
+				<tr>
+					<td align="center" colspan="5">
+						<input type="submit" value="mint"/>
+					</td>
+				</tr>
 			</table>
-			<a href="activitypage.jsp" target="_self">Mint that NFT</a>
 		</form>
 		<a href="activitypage.jsp" target="_self">Back to Activity Page</a>
 	</div>
