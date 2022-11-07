@@ -57,7 +57,7 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/initialize":
         		userDAO.init();
-//        		nftDAO.init();
+        		nftDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -113,7 +113,7 @@ public class ControlServlet extends HttpServlet {
 	    private void rootPage(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException, SQLException{
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
-//			request.setAttribute("listNft", nftDAO.listAllNfts());
+			request.setAttribute("listNft", nftDAO.listAllNfts());
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response); //Root view to see how c:forEach is connected
 	    }
 	    

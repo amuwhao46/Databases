@@ -45,7 +45,9 @@ public class nftDAO
             } catch (ClassNotFoundException e) {
                 throw new SQLException(e);
             }
-            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nftdb?allowPublicKeyRetrieval=true&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&nft=john&created_date=pass1234");
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false"
+            		+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+            		+ "&user=john&password=pass1234");
             System.out.println(connect);
         }
     }
@@ -166,35 +168,12 @@ public class nftDAO
     
     // Removed the check for password function. Not applicable in this DAO -Oke
     
-    
-    public boolean isValid(String nftid, String created_date) throws SQLException
-    {
-    	String sql = "SELECT * FROM NFT";
-    	connect_func();
-    	statement = (Statement) connect.createStatement();
-    	ResultSet resultSet = statement.executeQuery(sql);
-    	
-    	resultSet.last();
-    	
-    	int setSize = resultSet.getRow();
-    	resultSet.beforeFirst();
-    	
-    	for(int i = 0; i < setSize; i++)
-    	{
-    		resultSet.next();
-    		if(resultSet.getString("nftid").equals(nftid) && resultSet.getString("created_date").equals(created_date)) {
-    			return true;
-    		}		
-    	}
-    	return false;
-    }
-    
-    
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
         statement =  (Statement) connect.createStatement();
         
-        String[] INITIAL = {"drop table if exists NFT; ",
+        String[] INITIAL = {"use NFTdb; ",
+        		"drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
                     "nftid VARCHAR(50) NOT NULL, " +
 		            "unique_name VARCHAR(50) NOT NULL, " +
