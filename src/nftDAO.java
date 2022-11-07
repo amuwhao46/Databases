@@ -59,18 +59,23 @@ public class nftDAO
         connect_func();      
         statement = (Statement) connect.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-         
-        while (resultSet.next()) {
-            String nftid = resultSet.getString("nftid");
-            String unique_name = resultSet.getString("unique_name");
-            String description = resultSet.getString("description");
-            String created_date = resultSet.getString("created_date");
-            String nft_image = resultSet.getString("nft_image");
+        
+        try {
+        	while (resultSet.next()) {
+        		String nftid = resultSet.getString("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String created_date = resultSet.getString("created_date");
+        		String nft_image = resultSet.getString("nft_image");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
+        		listNft.add(nfts);
+        	}        
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
 
-             
-            nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
-            listNft.add(nfts);
-        }        
         resultSet.close();
         disconnect();        
         return listNft;
