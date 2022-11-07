@@ -133,11 +133,11 @@ public class ControlServlet extends HttpServlet {
 	    		 /*
 	    		  * To show the name of the currently logged in user in activitypage.jsp
 	    		  * */
-//			 	 user user = userDAO.getUser(userid);
+			 	 user user = userDAO.getUser(userid);
 			 	 
 			 	 currentUser = userid;
-//			 	 session = request.getSession();
-//			 	 session.setAttribute("currentUser", user.getFirstName());
+			 	 session = request.getSession();
+			 	 session.setAttribute("currentUser", user.getFirstName());
 				 System.out.println("Login Successful! Redirecting");
 				 request.setAttribute("listUser", userDAO.listAllUsers());
 				 request.getRequestDispatcher("activitypage.jsp").forward(request, response); // Activity page here!!!!!!!!!

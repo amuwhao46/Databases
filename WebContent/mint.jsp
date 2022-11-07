@@ -43,7 +43,7 @@
 				</tr>
 				<tr>
 					<td align="center" colspan="5">
-						<input type="submit" value="mint"/>
+						<input type="submit" value="Mint"/>
 					</td>
 				</tr>
 			</table>

@@ -9,7 +9,10 @@
 <title>Activity page</title>
 </head>
 	<body>
-			<center><h1>Welcome! You have been successfully logged in</h1> </center>
+	<c:
+		<c:forEach var="users" items="${listUser}">
+			<center><h1>Welcome <c:out value="${users.firstName}"/>! You have been successfully logged in</h1> </center>
+		</c:forEach>
 
 	 	<center>
 		 <a href="login.jsp"target ="_self" > logout</a><br><br> 
@@ -27,13 +30,13 @@
 		                <th>Image</th>
 	
 		            </tr>
-		            <c:forEach var="nft" items="${listNft}">
+		            <c:forEach var="nfts" items="${listNft}">
 		                <tr style="text-align:center">
-		                    <td><c:out value="${nft.nftid}" /></td>
-		                    <td><c:out value="${nft.unique_name}" /></td>
-		                    <td><c:out value="${nft.description}" /></td>
-		                    <td><c:out value="${nft.created_date}" /></td>
-		                    <td><c:out value="${nft.nft_image}" /></td>
+		                    <td><c:out value="${nfts.nftid}" /></td>
+		                    <td><c:out value="${nfts.unique_name}" /></td>
+		                    <td><c:out value="${nfts.description}" /></td>
+		                    <td><c:out value="${nfts.created_date}" /></td>
+		                    <td><c:out value="${nfts.nft_image}" /></td>
 		            </c:forEach>
 		        </table>
 		 </center>
