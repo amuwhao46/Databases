@@ -262,7 +262,7 @@ String[] TUPLES = {("insert into User(userid, firstName, lastName, password, bir
     		 	"('mikehunt@gmail.com', 'Mike', 'Hunt', 'RxS4k0$u30', '1999-09-15', '426', 'Farnum Road', 'New York City', 'NY', '10004', '100')," +
     			"('jessicacole@gmail.com', 'Jessica', 'Cole', 'G@078D*k3x', '2001-04-10', '444', 'Five Points', 'Easton', 'MD', '21601', '100')," +
     			"('meganfoxx@gmail.com', 'Megan', 'Foxx', '%nXtVh264c', '2000-08-14', '3513', 'Palmer Road', 'Worthington', 'OH', '43085', '100')," +
-    			"('harrybules@gmail.com', 'Harry', 'Bules', '*x^Z9%me40', '2000-08-17', '859', 'Bassel Street', 'Metairie', 'LA', '70001', '100'),"+
+    			"('harryballs@gmail.com', 'Harry', 'Balls', '*x^Z9%me40', '2000-08-17', '859', 'Bassel Street', 'Metairie', 'LA', '70001', '100'),"+
     			"('marymean@gmail.com', 'Mary', 'Mean', 'd^F3!s39$%', '1998-09-26', '2562', 'Gateway Avenue', 'Bakersfield', 'CA', '93301', '100');"
     			)};
         

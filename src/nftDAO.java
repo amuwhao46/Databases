@@ -52,7 +52,7 @@ public class nftDAO
     
 
     public List<nft> listAllNfts() throws SQLException {
-        List<nft> listnft = new ArrayList<nft>();        
+        List<nft> listNft = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT";      
         connect_func();      
         statement = (Statement) connect.createStatement();
@@ -67,11 +67,11 @@ public class nftDAO
 
              
             nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
-            listnft.add(nfts);
+            listNft.add(nfts);
         }        
         resultSet.close();
         disconnect();        
-        return listnft;
+        return listNft;
     }
     
     protected void disconnect() throws SQLException {
@@ -82,7 +82,7 @@ public class nftDAO
     
     public void insert(nft nfts) throws SQLException {
     	connect_func();         
-		String sql = "insert into nft(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
+		String sql = "insert into NFT(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, nfts.getNftid());
 		preparedStatement.setString(2, nfts.getUnique_name());
@@ -106,7 +106,7 @@ public class nftDAO
     }
      
     public boolean update(nft nfts) throws SQLException {
-        String sql = "update nft set unique_name = ?, description = ?, created_date = ?, nft_image= ? where nftid = ?";
+        String sql = "update NFT set unique_name = ?, description = ?, created_date = ?, nft_image= ? where nftid = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);

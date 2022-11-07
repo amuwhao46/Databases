@@ -57,7 +57,7 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/initialize":
         		userDAO.init();
-        		nftDAO.init();
+//        		nftDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -89,9 +89,9 @@ public class ControlServlet extends HttpServlet {
 	        System.out.println("listUser started: 00000000000000000000000000000000000");
 
 	     
-	        List<nft> listNft = nftDAO.listAllNfts();
-	        request.setAttribute("listNft", listNft);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
+	        List<user> listUser = userDAO.listAllUsers();
+	        request.setAttribute("listUser", listUser);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
@@ -130,6 +130,9 @@ public class ControlServlet extends HttpServlet {
 	    	 }
 	    	 else if(userDAO.isValid(userid, password)) 
 	    	 {
+	    		 /*
+	    		  * To show the name of the currently logged in user in activitypage.jsp
+	    		  * */
 //			 	 user user = userDAO.getUser(userid);
 			 	 
 			 	 currentUser = userid;
