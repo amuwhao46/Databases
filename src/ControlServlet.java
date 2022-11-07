@@ -57,7 +57,7 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/initialize":
         		userDAO.init();
-//        		nftDAO.init();
+        		nftDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -187,8 +187,8 @@ public class ControlServlet extends HttpServlet {
 	   	 	String password = request.getParameter("created_date");
 	   	 	String birthday = request.getParameter("nft_image");
 	   	 	
-	   	 System.out.println("Saved to NFT database");
-	   	request.getRequestDispatcher("activitypage.jsp").forward(request, response);
+//	   	 System.out.println("Saved to NFT database");
+//	   	request.getRequestDispatcher("activitypage.jsp").forward(request, response);
 	    } 
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {

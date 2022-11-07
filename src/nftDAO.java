@@ -106,7 +106,7 @@ public class nftDAO
     }
      
     public boolean update(nft nfts) throws SQLException {
-        String sql = "update nft set unique_name=?, description =?,created_date = ?,nft_image=? where nftid = ?";
+        String sql = "update nft set unique_name = ?, description = ?, created_date = ?, nft_image= ? where nftid = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
@@ -121,7 +121,7 @@ public class nftDAO
         return rowUpdated;     
     }
     
-    public nft getnft(String nftid) throws SQLException {
+    public nft getNft(String nftid) throws SQLException {
     	nft nft = null;
         String sql = "SELECT * FROM NFT WHERE nftid = ?";
          
@@ -164,24 +164,7 @@ public class nftDAO
     	return checks;
     }
     
-    public boolean checkcreated_date(String created_date) throws SQLException {
-    	boolean checks = false;
-    	String sql = "SELECT * FROM NFT WHERE created_date = ?";
-    	connect_func();
-    	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, created_date);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        
-        System.out.println(checks);	
-        
-        if (resultSet.next()) {
-        	checks = true;
-        }
-        
-        System.out.println(checks);
-       	return checks;
-    }
-    
+    // Removed the check for password function. Not applicable in this DAO -Oke
     
     
     public boolean isValid(String nftid, String created_date) throws SQLException

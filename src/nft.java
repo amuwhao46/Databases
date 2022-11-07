@@ -4,6 +4,7 @@ public class nft {
 	    protected String description;
 	    protected String created_date;
 	    protected String nft_image; 
+	    
 	    //constructors
 	    public nft() {
 	    }
