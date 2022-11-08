@@ -77,6 +77,7 @@ public class ControlServlet extends HttpServlet {
                  break;
          	case "/mint":
         		mint(request,response);
+        		break;
 	    	}
 	    }
 	    catch(Exception ex) {

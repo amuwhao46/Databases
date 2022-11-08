@@ -2,7 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head><title>Registration</title></head>
+<head>
+	<title>Registration</title>
+</head>
 <body>
 	<div align="center">
 		<p> ${errorOne } </p>

@@ -17,5 +17,6 @@
 	 	<input type="text" id="searching" name="searching"><br><br>
 	 	<input type="submit" value="Submit">
 	 </form>
+	 <a href="activitypage.jsp" target="_self">Back</a>
 	 </body>
  </html>
