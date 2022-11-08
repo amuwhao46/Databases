@@ -63,7 +63,7 @@ public class ListingDAO
         try {
         	while (resultSet.next()) {
         		String owner = resultSet.getString("owner");
-        		String unique_name = resultSet.getString("unique_name");
+        		String nftid = resultSet.getString("nftid");
         		String description = resultSet.getString("description");
         		String created_date = resultSet.getString("created_date");
         		String nft_image = resultSet.getString("nft_image");
@@ -71,7 +71,7 @@ public class ListingDAO
         		String creator = resultSet.getString("creator");
         		
         		
-        		Listing newListing = new Listing(owner, unique_name, description, created_date, nft_image, owner, creator);
+        		Listing newListing = new Listing(owner, nftid, description, created_date, nft_image, owner, creator);
         		listNft.add(newListing);
         	}        
         } catch(Exception e) {
@@ -91,7 +91,7 @@ public class ListingDAO
     
     public void insert(Listing newListing) throws SQLException {
     	connect_func();         
-		String sql = "insert into Listing(owner, unique_name, description, created_date, nft_image, owner, creator) values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into Listing(owner, nftid, description, created_date, nft_image, owner, creator) values (?, ?, ?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, newListing.getOwner());
 		preparedStatement.setString(2, newListing.getNFTid());
@@ -117,7 +117,7 @@ public class ListingDAO
     }
      
     public boolean update(Listing newListing) throws SQLException {
-        String sql = "update NFT set unique_name = ?, description = ?, created_date = ?, nft_image= ?, owner = ?, creator = ? where owner = ?";
+        String sql = "update NFT set nftid = ?, description = ?, created_date = ?, nft_image= ?, owner = ?, creator = ? where owner = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
@@ -146,13 +146,13 @@ public class ListingDAO
         ResultSet resultSet = preparedStatement.executeQuery();
          
         if (resultSet.next()) {
-            String unique_name = resultSet.getString("unique_name");
+            String nftid = resultSet.getString("nftid");
             String description = resultSet.getString("description");
             String created_date = resultSet.getString("created_date");
             String nft_image = resultSet.getString("nft_image");
             String owner = resultSet.getString("owner");
             String creator = resultSet.getString("creator");
-            Listing = new Listing(owner, unique_name, description, created_date, nft_image, owner, creator);
+            Listing = new Listing(owner, nftid, description, created_date, nft_image, owner, creator);
         }
          
         resultSet.close();
@@ -189,7 +189,7 @@ public class ListingDAO
         		"drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
                     "owner VARCHAR(50) NOT NULL, " +
-		            "unique_name VARCHAR(50) NOT NULL, " +
+		            "nftid VARCHAR(50) NOT NULL, " +
 		            "description VARCHAR(100) NOT NULL, " +
 		            "created_date VARCHAR(11) NOT NULL, " +
 		            "nft_image VARCHAR(15) NOT NULL, " +
@@ -197,7 +197,7 @@ public class ListingDAO
 		            "creator VARCHAR(50) NOT NULL, " +
 		            "PRIMARY KEY (owner) "+"); ")
 				};
-String[] TUPLES = {("insert into NFT(owner, unique_name, description, created_date, nft_image, owner, creator)" +
+String[] TUPLES = {("insert into NFT(owner, nftid, description, created_date, nft_image, owner, creator)" +
 		"values ('O6OMWOTYPX', 'Mushroom Hat', 'Lots of homies','00-00-0000', 'photovalhold', 'To Can', 'Lolli')," +
     		 	"('CB0379JEUX','Tinted Frostbite','Cooler than a cat','01-31-2001','3959', 'Xharles', 'Eric')," +
     	 	 	"('T6IC4F9H02','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485', 'Pam', 'Beasley')," +

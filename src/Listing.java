@@ -19,7 +19,6 @@ public class Listing {
 	    
 	    public Listing(String owner, String nftid, Timestamp start,Timestamp end, double price) {
 	    	this.owner=owner;
-	    	this.start=start;
 	    	this.nftid=nftid;
 	    	this.start=start;
 	    	this.end=end;
