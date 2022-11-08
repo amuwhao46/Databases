@@ -202,28 +202,28 @@ public class nftDAO
         String[] INITIAL = {"use NFTdb; ",
         		"drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
-                    "nftid INTEGER AUTOINCREMENT, " +
+                    "nftid INTEGER AUTO_INCREMENT," +
 		            "unique_name VARCHAR(100) NOT NULL, " +
 		            "description VARCHAR(100) NOT NULL, " +
 		            "nft_image VARCHAR(200) NOT NULL, " +
-		            "owner VARCHAR(50), " +
-		            "creator VARCHAR(50), " +
+		            "owner VARCHAR(100), " +
+		            "creator VARCHAR(100), " +
 		            "mint_time DATETIME, " +
 		            "FOREIGN KEY (owner) REFERENCES User(userid), " +
 		            "FOREIGN KEY (creator) REFERENCES User(userid), " +
 		            "PRIMARY KEY (nftid) "+"); ")
 				};
-String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner, creator, '" + mint_time + "')" +
-		"values ('Mushroom Hat', 'Lots of homies', 'photovalhold', 'To Can', 'Lolli', '" + mint_time + "')," +
-    		 	"('Tinted Frostbite','Cooler than a cat','3959', 'Xharles', 'Eric', '" + mint_time + "')," +
-    	 	 	"('Enraged Master','Entitled man is upset over small deal','1485', 'Pam', 'Beasley', '" + mint_time + "')," +
-    		 	"('Gleam Steam','Shiny steam cakes air and catches attention','3780', 'Jared', 'Sombra', '" + mint_time + "')," +
-    		 	"('Corrupt Rose','The baddest of all roses','3921', 'Mike', 'Ilitch', '" + mint_time + "')," +
-    		 	"('Fancy Unicorn','You know hes fly with his little hat','426', 'Steve', 'Poser', '" + mint_time + "')," +
-    			"('Murky Dragonfly','This guys been flying through the desert','444', 'Carrel', 'Williams', '" + mint_time + "')," +
-    			"('Wealthy Stardust','Personified gold','3513', 'MAster', 'Splinter', '" + mint_time + "')," +
-    			"('Misty Bat','If batman worked at a water park','859', 'Noah', 'Boat', '" + mint_time + "'),"+
-    			"('Good Oak','Bad City','2562', 'No', 'Ideas', '" + mint_time + "');"
+String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner, creator, 'mint_time')" +
+		"values ('Mushroom Hat', 'Lots of homies', 'photovalhold', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "');" 
+//    		 	"('Tinted Frostbite','Cooler than a cat','3959', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    	 	 	"('Enraged Master','Entitled man is upset over small deal','1485', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    		 	"('Gleam Steam','Shiny steam cakes air and catches attention','3780', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    		 	"('Corrupt Rose','The baddest of all roses','3921', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    		 	"('Fancy Unicorn','You know hes fly with his little hat','426', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    			"('Murky Dragonfly','This guys been flying through the desert','444', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    			"('Wealthy Stardust','Personified gold','3513', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+//    			"('Misty Bat','If batman worked at a water park','859', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "'),"+
+//    			"('Good Oak','Bad City','2562', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "');"
     			)};
         
         //for loop to put these in database
