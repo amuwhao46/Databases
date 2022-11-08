@@ -56,7 +56,6 @@
 		            <caption><h2>List of NFTs</h2></caption>
 		            <tr>
 		                <th>NFTid</th>
-		                <th>Creator</th>
 		                <th>Name</th>
 		                <th>Description</th>
 		                <th>Date created</th>
@@ -68,7 +67,6 @@
 		            <c:forEach var="nfts" items="${listNft}">
 		                <tr style="text-align:center">
 		                    <td><c:out value="${nfts.nftid}" /></td>
-		                    <td><c:out value="${users.firstName}" /></td>
 		                    <td><c:out value="${nfts.unique_name}" /></td>
 		                    <td><c:out value="${nfts.description}" /></td>
 		                    <td><c:out value="${nfts.created_date}" /></td>

@@ -79,7 +79,10 @@ public class ControlServlet extends HttpServlet {
          	case "/mint":
         		mint(request,response);
         		break;
-	    	}
+         	case "/search":
+         		search(request,response);
+         		break;
+	    	}   
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
@@ -204,5 +207,11 @@ public class ControlServlet extends HttpServlet {
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	currentUser = "";
         		response.sendRedirect("login.jsp");
-        	}	    
+        	}	
+	    
+	    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	// Logic goes here
+	    	int n = 0;
+	    	n = n + 2;
+	    }
 }
