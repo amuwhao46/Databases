@@ -62,7 +62,7 @@ public class TransactionDAO
         
         try {
         	while (resultSet.next()) {
-        		String nftid = resultSet.getString("nftid");
+        		int nftid = resultSet.getInt("nftid");
         		String unique_name = resultSet.getString("unique_name");
         		String description = resultSet.getString("description");
         		String created_date = resultSet.getString("created_date");
