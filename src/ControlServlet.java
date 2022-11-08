@@ -99,8 +99,14 @@ public class ControlServlet extends HttpServlet {
 	    	double price= Double.parseDouble(request.getParameter("price"));
 	    	
 	    	if (price<=0) {
-	    		request.setAttribute("userNFT", nftDAO.listAllNfts())
-	    		
+	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+	    		request.setAttribute("error!", "Price of lissting myst be greater than 0! ");
+	    		dispatcher.forward(request, response);
+	    	}
+	    	else if(ListingDAO.getListing()) {
+	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+	    		request.setAttribute("error!", "Price of listing myst be greater than 0! ");
+	    		dispatcher.forward(request, response);
 	    	}
 	    	else {
 	    		
