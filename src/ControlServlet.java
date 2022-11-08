@@ -89,7 +89,36 @@ public class ControlServlet extends HttpServlet {
         	System.out.println(ex.getMessage());
 	    	}
 	    }
-        	
+	    
+	    private void createListing(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("Listings.jsp");
+	    	int nftid= Integer.parseInt(request.getParameter("nftid"));
+	    	int lengthoftime= Integer.parseInt(request.getParameter("lengthoftime"));
+	    	double price= Double.parseDouble(request.getParameter("price"));
+	    	
+	    	if (price<=0) {
+	    		request.setAttribute("userNFT", nftDAO.listAllNfts())
+	    		
+	    	}
+	    	else {
+	    		
+	    	}
+	    	
+	    	
+	        System.out.println("listUser started: 00000000000000000000000000000000000");
+
+	     
+	        List<user> listUser = userDAO.listAllUsers();
+	        request.setAttribute("listUser", listUser);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
+	        dispatcher.forward(request, response);
+	     
+	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
+	    }
+	    
+	    
 	    private void listUser(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	        System.out.println("listUser started: 00000000000000000000000000000000000");
