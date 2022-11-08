@@ -58,10 +58,10 @@
 		                <th>NFTid</th>
 		                <th>Name</th>
 		                <th>Description</th>
-		                <th>Date created</th>
 		                <th>Image</th>
 		                <th>Owner</th>
 		                <th>Creator</th>
+		                <th>Date created</th>
 	
 		            </tr>
 		            <c:forEach var="nfts" items="${listNft}">
@@ -69,10 +69,10 @@
 		                    <td><c:out value="${nfts.nftid}" /></td>
 		                    <td><c:out value="${nfts.unique_name}" /></td>
 		                    <td><c:out value="${nfts.description}" /></td>
-		                    <td><c:out value="${nfts.created_date}" /></td>
 		                    <td><c:out value="${nfts.nft_image}" /></td>
 		                    <td><c:out value="${nfts.owner}" /></td>
 		                    <td><c:out value="${nfts.creator}" /></td>
+		                    <td><c:out value="${nfts.mint_time}" /></td>
 		            </c:forEach>
 		        </table>
 			</div>
