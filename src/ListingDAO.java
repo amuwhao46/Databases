@@ -95,14 +95,14 @@ public class ListingDAO
         return allListNft;
     }
     
-    public Listing getListedNft(String nft) throws SQLException {
+    public Listing getListedNft(int nft) throws SQLException {
         Listing getListNft = null;        
         String sql = "SELECT * FROM Listing nftid = ?";      
        
         try {
         	
         	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        	  preparedStatement.setString(1, nft);
+        	  preparedStatement.setInt(1, nft);
         	  ResultSet resultSet = statement.executeQuery(sql);
         
         
@@ -112,7 +112,6 @@ public class ListingDAO
         		java.sql.Timestamp end= resultSet.getTimestamp("end");
         		
         		if (end.compareTo(new Date())<0) {
-        			
         			this.delete(listid);
         		}
         		else{

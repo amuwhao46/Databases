@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
- 
+ import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -103,25 +103,25 @@ public class ControlServlet extends HttpServlet {
 	    		request.setAttribute("error!", "Price of lissting myst be greater than 0! ");
 	    		dispatcher.forward(request, response);
 	    	}
-	    	else if(ListingDAO.getListing()) {
+	    	/*else if(ListingDAO.getListedNft(nftid)!=null) {
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
-	    		request.setAttribute("error!", "Price of listing myst be greater than 0! ");
+	    		request.setAttribute("error!", "A listing for this NFT already exists! ");
 	    		dispatcher.forward(request, response);
-	    	}
+	    	}*/
 	    	else {
+	    		Calendar cvar= Calendar.getInstance();
+	    		cvar.add(Calendar.MONTH, lengthoftime);
+	    		Date start= new Date();
+	    		Date end=cvar.getTime();
+	    		
+	    		// error here
+	    		// ListingDAO.insert(new Listing(currentUser,nftid,startTime,endTime,price));
+	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+	    		request.setAttribute("success!", "Listing has been Created!");
+	    		dispatcher = request.getRequestDispatcher("Listings.jsp"); 
+	    		dispatcher.forward(request, response);
 	    		
 	    	}
-	    	
-	    	
-	        System.out.println("listUser started: 00000000000000000000000000000000000");
-
-	     
-	        List<user> listUser = userDAO.listAllUsers();
-	        request.setAttribute("listUser", listUser);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
-	        dispatcher.forward(request, response);
-	     
-	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
 	    }
 	    
 	    
