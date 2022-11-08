@@ -15,6 +15,7 @@
 		 <a href="login.jsp"target ="_self" > logout</a><br><br> 
 		 <a href="mint.jsp"target ="_self" > Mint NFT</a>
 		 <a href="#"target ="_self" > Buy/Sell NFT</a>
+		 <a href="search.jsp"target ="_self" > Search Users</a>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>Current NFTs</h1>
 		 		        <table border="1" cellpadding="6">
