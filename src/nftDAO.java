@@ -84,6 +84,39 @@ public class nftDAO
         return listNft;
     }
     
+    public List<nft> listOwnedNfts(String userName) throws SQLException {
+        List<nft> listOwnedNfts = new ArrayList<nft>();        
+        String sql = "SELECT * FROM NFT where owner = ?";      
+        connect_func();      
+        
+           try {
+        	
+        	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        	preparedStatement.setString(1, userName);
+        	ResultSet resultSet = statement.executeQuery(sql);
+        	
+        	while (resultSet.next()) {
+        		int nftid = resultSet.getInt("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
+        		listOwnedNfts.add(nfts);
+        	}        
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+
+        resultSet.close();
+        disconnect();        
+        return listOwnedNfts;
+    }
+    
     protected void disconnect() throws SQLException {
         if (connect != null && !connect.isClosed()) {
         	connect.close();
