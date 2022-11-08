@@ -1,37 +1,39 @@
+import java.sql.Timestamp;
+
 public class Transaction {
-		protected String transid;
+		protected int transid;
 	    protected String sender;
 	    protected String reciever;
-	    protected String timestamp;
 	    protected double price; 
-	    protected char transtype;
+	    protected String transType;
+	    protected java.sql.Timestamp timeStamp;
 	    
 	    //constructors
 	    public Transaction() {
 	    }
 	 
-	    public Transaction(String transid) {
+	    public Transaction(int transid) {
 	        this.transid = transid;
 	    }
 	    
-	    public Transaction(String transid, String sender, String reciever, String timestamp, double price, char transtype) {
-	    	this(sender, reciever, timestamp, price, transtype);
+	    public Transaction(int transid, String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
+	    	this(sender, reciever, timeStamp, price, transType);
 	    	this.transid = transid;
 	    }
 	 
-	    public Transaction(String sender, String reciever, String timestamp, double price, char transtype) {
+	    public Transaction(String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
 	    	this.sender = sender;
 	    	this.reciever = reciever;
-	        this.timestamp = timestamp;
+	        this.timeStamp = timeStamp;
 	        this.price = price;
-	        this.transtype=transtype;
+	        this.transType = transType;
 	    }
 	    
 	   //getter and setter methods
-        public String getTransid() {
+        public int getTransid() {
 	        return transid;
 	    }
-	    public void setTransid(String transid) {
+	    public void setTransid(int transid) {
 	        this.transid = transid;
 	    }
 
@@ -49,11 +51,11 @@ public class Transaction {
 	        this.reciever = reciever;
 	    }
 	    
-	    public String getTimestamp() {
-	        return timestamp;
+	    public java.sql.Timestamp getTimeStamp() {
+	        return timeStamp;
 	    }
-	    public void setTimestamp(String timestamp) {
-	        this.timestamp = timestamp;
+	    public void setTimeStamp(java.sql.Timestamp timeStamp) {
+	        this.timeStamp = timeStamp;
 	    }
 	    public double getPrice() {
 	        return price;
@@ -62,12 +64,12 @@ public class Transaction {
 	        this.price = price;
 	    }
 	    
-	    public char getTranstype() {
-	        return transtype;
+	    public String getTransType() {
+	        return transType;
 	    }
 	    // possibility for issue in future
-	    public void setTranstype(char transtype) {
-	        this.transtype = transtype;
+	    public void setTransType(String transType) {
+	        this.transType = transType;
 	    }
 	    
 	}

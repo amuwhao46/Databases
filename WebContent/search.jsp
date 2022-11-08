@@ -9,14 +9,12 @@
 	 </head>
 	 
 	 <body>
-	 <h1>Your moms a hoe!</h1>
-	 <a href="https://www.youtube.com/watch?v=zPB8KgQ5yoQ">Click ME!</a>
-	 <br>
-	 <form action="search">
-	 	<label for="searching"><h2>SEARCH</h2></label>
-	 	<input type="text" id="searching" name="searching"><br><br>
-	 	<input type="submit" value="Submit">
-	 </form>
-	 <a href="activitypage.jsp" target="_self">Back</a>
+		 <br>
+		 <form action="search">
+		 	<label for="searching"><h2>SEARCH</h2></label>
+		 	<input type="text" id="searching" name="searching"><br><br>
+		 	<input type="submit" value="Submit">
+		 </form>
+		 <a href="activitypage.jsp" target="_self">Back</a>
 	 </body>
  </html>
