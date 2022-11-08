@@ -115,7 +115,7 @@ public class ControlServlet extends HttpServlet {
 	    		Date end=cvar.getTime();
 	    		
 	    		// error here
-	    		// ListingDAO.insert(new Listing(currentUser,nftid,startTime,endTime,price));
+	    	//	 ListingDAO.insert(new Listing(currentUser,nftid,startTime,endTime, price));
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("success!", "Listing has been Created!");
 	    		dispatcher = request.getRequestDispatcher("Listings.jsp"); 

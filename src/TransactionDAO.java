@@ -97,15 +97,5 @@ public class TransactionDAO
         for (int i = 0; i < INITIAL.length; i++)
         	statement.execute(INITIAL[i]);
     }
-    
-    
-   
-    
-    
-    
-    
-    
-	
-	
 
 }

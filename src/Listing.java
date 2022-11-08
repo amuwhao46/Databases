@@ -7,7 +7,6 @@ public class Listing {
 	    protected java.sql.Timestamp start;
 	    protected java.sql.Timestamp end;
 	    protected double price; 
-	    protected char transtype;
 	    
 	    //constructors
 	    public Listing() {

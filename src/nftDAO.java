@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-/**
+/**S
  * Servlet implementation class Connect
  */
 @WebServlet("/nftDAO")
@@ -235,18 +235,20 @@ public class nftDAO
         String[] INITIAL = {"use NFTdb; ",
         		"drop table if exists NFT; ",
 		        ("CREATE TABLE if not exists NFT( " +
-                    "nftid INTEGER AUTO_INCREMENT," +
+                    "nftid INTEGER NOT NULL AUTO_INCREMENT, " +
 		            "unique_name VARCHAR(100) NOT NULL, " +
 		            "description VARCHAR(100) NOT NULL, " +
 		            "nft_image VARCHAR(200) NOT NULL, " +
 		            "owner VARCHAR(100), " +
 		            "creator VARCHAR(100), " +
 		            "mint_time DATETIME, " +
+		            "PRIMARY KEY (nftid), "+
+		            
 		            "FOREIGN KEY (owner) REFERENCES User(userid), " +
-		            "FOREIGN KEY (creator) REFERENCES User(userid), " +
-		            "PRIMARY KEY (nftid) "+"); ")
+		            "FOREIGN KEY (creator) REFERENCES User(userid) " +
+		           "); ")
 				};
-String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner, creator, 'mint_time')" +
+String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner, creator, mint_time)" +
 		"values ('Mushroom Hat', 'Lots of homies', 'photovalhold', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
     		 	"('Tinted Frostbite','Cooler than a cat','3959', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
     	 	 	"('Enraged Master','Entitled man is upset over small deal','1485', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +

@@ -27,7 +27,7 @@
 		                <th>Description</th>
 		                <th>Date created</th>
 		                <th>Image</th>
-	
+		                
 		            </tr>
 		            <c:forEach var="nfts" items="${listNft}">
 		                <tr style="text-align:center">
