@@ -66,6 +66,7 @@
 		            <c:forEach var="nfts" items="${listNft}">
 		                <tr style="text-align:center">
 		                    <td><c:out value="${nfts.nftid}" /></td>
+		                    <td><c:out value="${users.firstName}" /></td>
 		                    <td><c:out value="${nfts.unique_name}" /></td>
 		                    <td><c:out value="${nfts.description}" /></td>
 		                    <td><c:out value="${nfts.created_date}" /></td>
