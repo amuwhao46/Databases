@@ -9,10 +9,7 @@
 <title>Activity page</title>
 </head>
 	<body>
-	<c:
-		<c:forEach var="users" items="${listUser}">
-			<center><h1>Welcome <c:out value="${users.firstName}"/>! You have been successfully logged in</h1> </center>
-		</c:forEach>
+			<center><h1>Welcome! You have been successfully logged in</h1> </center>
 
 	 	<center>
 		 <a href="login.jsp"target ="_self" > logout</a><br><br> 
