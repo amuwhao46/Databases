@@ -56,6 +56,7 @@
 		            <caption><h2>List of NFTs</h2></caption>
 		            <tr>
 		                <th>NFTid</th>
+		                <th>Creator</th>
 		                <th>Name</th>
 		                <th>Description</th>
 		                <th>Date created</th>

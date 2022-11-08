@@ -48,6 +48,7 @@ public class ControlServlet extends HttpServlet {
 	        System.out.println(action);
 	    
 	    try {
+	    	// Routes
         	switch(action) {  
         	case "/login":
         		login(request,response);
