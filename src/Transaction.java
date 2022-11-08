@@ -26,7 +26,7 @@ public class Transaction {
 	    }
 	    
 	   //getter and setter methods
-        public String getNftid() {
+        public String getTransid() {
 	        return transid;
 	    }
 	    public void setTransid(String transid) {
