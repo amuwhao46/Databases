@@ -1,9 +1,9 @@
 public class Transaction {
 		protected String transid;
-	    protected String unique_name;
-	    protected String description;
-	    protected String created_date;
-	    protected String nft_image; 
+	    protected String sender;
+	    protected String reciever;
+	    protected String timestamp;
+	    protected String price; 
 	    
 	    //constructors
 	    public Transaction() {
@@ -13,16 +13,16 @@ public class Transaction {
 	        this.transid = transid;
 	    }
 	    
-	    public Transaction(String transid, String unique_name, String description, String created_date, String nft_image) {
-	    	this(unique_name, description, created_date, nft_image);
+	    public Transaction(String transid, String sender, String reciever, String timestamp, String price) {
+	    	this(sender, reciever, timestamp, price);
 	    	this.transid = transid;
 	    }
 	 
-	    public Transaction(String unique_name, String description, String created_date, String nft_image) {
-	    	this.unique_name = unique_name;
-	    	this.description = description;
-	        this.created_date = created_date;
-	        this.nft_image = nft_image;
+	    public Transaction(String sender, String reciever, String timestamp, String price) {
+	    	this.sender = sender;
+	    	this.reciever = reciever;
+	        this.timestamp = timestamp;
+	        this.price = price;
 	    }
 	    
 	   //getter and setter methods
@@ -33,30 +33,30 @@ public class Transaction {
 	        this.transid = transid;
 	    }
 
-	    public String getUnique_name() {
-	        return unique_name;
+	    public String getSender() {
+	        return sender;
 	    }
-	    public void setUnique_name(String unique_name) {
-	        this.unique_name = unique_name;
-	    }
-	    
-	    public String getDescription() {
-	        return description;
-	    }
-	    public void setDescription(String description) {
-	        this.description = description;
+	    public void setSender(String sender) {
+	        this.sender = sender;
 	    }
 	    
-	    public String getCreated_date() {
-	        return created_date;
+	    public String getReciever() {
+	        return reciever;
 	    }
-	    public void setCreated_date(String created_date) {
-	        this.created_date = created_date;
+	    public void setReciever(String reciever) {
+	        this.reciever = reciever;
 	    }
-	    public String getNft_image() {
-	        return nft_image;
+	    
+	    public String getTimestamp() {
+	        return timestamp;
 	    }
-	    public void setNft_image(String nft_image) {
-	        this.nft_image = nft_image;
+	    public void setTimestamp(String timestamp) {
+	        this.timestamp = timestamp;
+	    }
+	    public String getPrice() {
+	        return price;
+	    }
+	    public void setPrice(String price) {
+	        this.price = price;
 	    }
 	}
