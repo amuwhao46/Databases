@@ -196,82 +196,36 @@ public class ListingDAO
         preparedStatement.close();
         return rowDeleted;     
     }
-     
-  
-    public Listing getUsersNft(String owner) throws SQLException {
-    	Listing Listing = null;
-        String sql = "SELECT * FROM NFT WHERE owner = ?";
-         
-        connect_func();
-         
-        preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, owner);
-         
-        ResultSet resultSet = preparedStatement.executeQuery();
-         
-        if (resultSet.next()) {
-            String description = resultSet.getString("description");
-            String nftid = resultSet.getString("nftid");
-            Timestamp start = resultSet.getTimestamp("start");
-            Timestamp end = resultSet.getTimestamp("end");
-            double price = resultSet.getDouble("price");
-         
-            Listing = new Listing(owner, nftid, start, end, nft_image, owner, creator);
-        }
-         
-        resultSet.close();
-        statement.close();
-         
-        return Listing;
-    }
-    
-    public boolean checkowner(String owner) throws SQLException {
-    	boolean checks = false;
-    	String sql = "SELECT * FROM NFT WHERE owner = ?";
-    	connect_func();
-    	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, owner);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        
-        System.out.println(checks);	
-        
-        if (resultSet.next()) {
-        	checks = true;
-        }
-        
-        System.out.println(checks);
-    	return checks;
-    }
-    
-    // Removed the check for password function. Not applicable in this DAO -Oke
+      
     
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
         statement =  (Statement) connect.createStatement();
         
         String[] INITIAL = {"use NFTdb; ",
-        		"drop table if exists NFT; ",
-		        ("CREATE TABLE if not exists NFT( " +
-                    "owner VARCHAR(50) NOT NULL, " +
-		            "nftid VARCHAR(50) NOT NULL, " +
-		            "description VARCHAR(100) NOT NULL, " +
-		            "created_date VARCHAR(11) NOT NULL, " +
-		            "nft_image VARCHAR(15) NOT NULL, " +
-		            "owner VARCHAR(50) NOT NULL, " +
-		            "creator VARCHAR(50) NOT NULL, " +
-		            "PRIMARY KEY (owner) "+"); ")
+        		"drop table if exists Listing; ",
+		        ("CREATE TABLE if not exists Listing( " +
+		        	"listid VARCHAR NOT NOT NULL AUTO_INCREMENT, " +
+                    "owner VARCHAR(50), " +
+		            "nftid VARCHAR(50), " +
+		            "start TIMESTAMP, " +
+		            "end TIMESTAMP, " +
+		            "price DOUBLE, " +
+		            "PRIMARY KEY(listid), " +
+		            "FOREIGN KEY(owner) REFERENCES User(userid), " +
+		            "FOREIGN KEY(nftid) REFERENCES User(nftid),"+"); ")
 				};
-String[] TUPLES = {("insert into NFT(owner, nftid, description, created_date, nft_image, owner, creator)" +
-		"values ('O6OMWOTYPX', 'Mushroom Hat', 'Lots of homies','00-00-0000', 'photovalhold', 'To Can', 'Lolli')," +
-    		 	"('CB0379JEUX','Tinted Frostbite','Cooler than a cat','01-31-2001','3959', 'Xharles', 'Eric')," +
-    	 	 	"('T6IC4F9H02','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485', 'Pam', 'Beasley')," +
-    		 	"('1XHOZKT9DM','Gleam Steam','Shiny steam cakes air and catches attention','09-12-2000','3780', 'Jared', 'Sombra')," +
-    		 	"('8SE9Z9IX70','Corrupt Rose','The baddest of all roses','04-18-2002','3921', 'Mike', 'Ilitch')," +
-    		 	"('HIU0X084SW','Fancy Unicorn','You know hes fly with his little hat','09-15-1999','426', 'Steve', 'Poser')," +
-    			"('UY9WX9K7QF','Murky Dragonfly','This guys been flying through the desert','04-10-2001','444', 'Carrel', 'Williams')," +
-    			"('PD6UEFDP9A','Wealthy Stardust','Personified gold','08-14-2000','3513', 'MAster', 'Splinter')," +
-    			"('FRHIKC1D59','Misty Bat','If batman worked at a water park','08-17-2000','859', 'Noah', 'Boat'),"+
-    			"('KTDDWZS4WR','Good Oak','Bad City','09-26-1998','2562', 'No', 'Ideas');"
+String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price," +
+		"values ('jondoe@gmail.com', '100', 'Lots of homies','00-00-0000', 'photovalhold')," +
+    		 	"('jondoe@gmail.com','Tinted Frostbite','Cooler than a cat','01-31-2001','3959')," +
+    	 	 	"('jackenoff@gmail.com','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485')," +
+    		 	"('bendover@gmail.com','Gleam Steam','Shiny steam cakes air and catches attention','09-12-2000','3780',)," +
+    		 	"('erinmoore@gmail.com','Corrupt Rose','The baddest of all roses','04-18-2002','3921')," +
+    		 	"('mikehunt@gmail.com','Fancy Unicorn','You know hes fly with his little hat','09-15-1999','426')," +
+    			"('jessicacole@gmail.com','Murky Dragonfly','This guys been flying through the desert','04-10-2001','444')," +
+    			"('meganfoxx@gmail.com','Wealthy Stardust','Personified gold','08-14-2000','3513')," +
+    			"('harryballs@gmail.com','Misty Bat','If batman worked at a water park','08-17-2000','859'),"+
+    			"('marymean@gmail.com','Good Oak','Bad City','09-26-1998','2562');"
     			)};
         
         //for loop to put these in database
