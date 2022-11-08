@@ -63,16 +63,16 @@ public class nftDAO
         
         try {
         	while (resultSet.next()) {
-        		String nftid = resultSet.getString("nftid");
+        		int nftid = resultSet.getInt("nftid");
         		String unique_name = resultSet.getString("unique_name");
         		String description = resultSet.getString("description");
-        		String created_date = resultSet.getString("created_date");
         		String nft_image = resultSet.getString("nft_image");
         		String owner = resultSet.getString("owner");
         		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
         		
         		
-        		nft nfts = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
         		listNft.add(nfts);
         	}        
         } catch(Exception e) {
@@ -92,15 +92,14 @@ public class nftDAO
     
     public void insert(nft nfts) throws SQLException {
     	connect_func();         
-		String sql = "insert into NFT(nftid, unique_name, description, created_date, nft_image, owner, creator) values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into NFT(unique_name, description, nft_image, owner, creator, mint_time) values (?, ?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setString(1, nfts.getNftid());
-		preparedStatement.setString(2, nfts.getUnique_name());
-		preparedStatement.setString(3, nfts.getDescription());
-		preparedStatement.setString(4, nfts.getCreated_date());
-		preparedStatement.setString(5, nfts.getNft_image());	
-		preparedStatement.setString(6, nfts.getOwner());	
-		preparedStatement.setString(7, nfts.getCreator());	
+		preparedStatement.setString(1, nfts.getUnique_name());
+		preparedStatement.setString(2, nfts.getDescription());
+		preparedStatement.setString(3, nfts.getNft_image());	
+		preparedStatement.setString(4, nfts.getOwner());	
+		preparedStatement.setString(5, nfts.getCreator());	
+		preparedStatement.setObject(6, nfts.getMint_time());	
 		preparedStatement.executeUpdate();
         preparedStatement.close();
     }
@@ -118,17 +117,28 @@ public class nftDAO
     }
      
     public boolean update(nft nfts) throws SQLException {
-        String sql = "update NFT set unique_name = ?, description = ?, created_date = ?, nft_image= ?, owner = ?, creator = ? where nftid = ?";
+        String sql = "update NFT set unique_name = ?, description = ?, nft_image= ?, owner = ?, creator = ?, mint_time = ? where nftid = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, nfts.getNftid());
-		preparedStatement.setString(2, nfts.getUnique_name());
-		preparedStatement.setString(3, nfts.getDescription());
-		preparedStatement.setString(4, nfts.getCreated_date());
-		preparedStatement.setString(5, nfts.getNft_image());	
-		preparedStatement.setString(6, nfts.getOwner());	
-		preparedStatement.setString(7, nfts.getCreator());	
+		preparedStatement.setString(1, nfts.getUnique_name());
+		preparedStatement.setString(2, nfts.getDescription());
+		preparedStatement.setString(3, nfts.getNft_image());	
+		preparedStatement.setString(4, nfts.getOwner());	
+		preparedStatement.setString(5, nfts.getCreator());	
+		preparedStatement.setObject(6, nfts.getMint_time());	
+         
+        boolean rowUpdated = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        return rowUpdated;     
+    }
+    
+    public boolean updateOwner(int nftid, String newOwner) throws SQLException {
+        String sql = "update NFT set owner = ? where nftID = ?";
+        
+        preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        preparedStatement.setString(1, newOwner);
+        preparedStatement.setInt(2, nftid);
          
         boolean rowUpdated = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
@@ -149,11 +159,11 @@ public class nftDAO
         if (resultSet.next()) {
             String unique_name = resultSet.getString("unique_name");
             String description = resultSet.getString("description");
-            String created_date = resultSet.getString("created_date");
             String nft_image = resultSet.getString("nft_image");
             String owner = resultSet.getString("owner");
             String creator = resultSet.getString("creator");
-            nft = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
+            java.sql.Timestamp mint_time = resultSet.getTimestamp(nftid);
+            nft = new nft(unique_name, description, nft_image, owner, creator, mint_time);
         }
          
         resultSet.close();
@@ -180,12 +190,14 @@ public class nftDAO
     	return checks;
     }
     
-    // Removed the check for password function. Not applicable in this DAO -Oke
     
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
         statement =  (Statement) connect.createStatement();
+        // Explicit cast object to string
         Date currentTime = new Date();
+        java.sql.Timestamp obj = new java.sql.Timestamp(currentTime.getTime());
+        String mint_time = obj.toString();
         
         String[] INITIAL = {"use NFTdb; ",
         		"drop table if exists NFT; ",

@@ -1,8 +1,7 @@
 public class nft {
-		protected String nftid;
+		protected int nftid;
 	    protected String unique_name;
 	    protected String description;
-	    protected String created_date;
 	    protected String nft_image; 
 	    protected String owner;
 	    protected String creator;
@@ -12,21 +11,20 @@ public class nft {
 	    public nft() {
 	    }
 	 
-	    public nft(String nftid) {
+	    public nft(int nftid) {
 	        this.nftid = nftid;
 	    }
 	    
-	    public nft(String nftid, String unique_name, String description, String created_date, String nft_image, 
+	    public nft(int nftid, String unique_name, String description, String nft_image, 
 	    		String owner, String creator, java.sql.Timestamp mint_time) {
-	    	this(unique_name, description, created_date, nft_image, owner, creator, mint_time);
+	    	this(unique_name, description, nft_image, owner, creator, mint_time);
 	    	this.nftid = nftid;
 	    }
 	 
-	    public nft(String unique_name, String description, String created_date, String nft_image, 
+	    public nft(String unique_name, String description, String nft_image, 
 	    		String owner, String creator, java.sql.Timestamp mint_time) {
 	    	this.unique_name = unique_name;
 	    	this.description = description;
-	        this.created_date = created_date;
 	        this.nft_image = nft_image;
 	        this.owner = owner;
 	        this.creator = creator;
@@ -34,10 +32,10 @@ public class nft {
 	    }
 	    
 	   //getter and setter methods
-        public String getNftid() {
+        public int getNftid() {
 	        return nftid;
 	    }
-	    public void setNftid(String nftid) {
+	    public void setNftid(int nftid) {
 	        this.nftid = nftid;
 	    }
 
@@ -53,13 +51,6 @@ public class nft {
 	    }
 	    public void setDescription(String description) {
 	        this.description = description;
-	    }
-	    
-	    public String getCreated_date() {
-	        return created_date;
-	    }
-	    public void setCreated_date(String created_date) {
-	        this.created_date = created_date;
 	    }
 	    public String getNft_image() {
 	        return nft_image;

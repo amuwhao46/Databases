@@ -188,16 +188,16 @@ public class ControlServlet extends HttpServlet {
 	   	 	}
 	    }  
 	    
-	    private void mint(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	String nftid = request.getParameter("nftid");
-	   	 	String unique_name = request.getParameter("unique_name");
+	    private void mint(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {	   	 	
+	    	String unique_name = request.getParameter("unique_name");
 	   	 	String description = request.getParameter("description");
-	   	 	String created_date = request.getParameter("created_date");
 	   	 	String nft_image = request.getParameter("nft_image");
-	   	 	String owner = request.getParameter("owner");
-	   	 	String creator = request.getParameter("creator");
-	   	 	
-	   	 	nft nfts = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
+	   	 	String owner = (String)session.getAttribute("userid");
+	   	 	String creator = (String)session.getAttribute("userid");
+	    	java.util.Date currentDate = new java.util.Date();
+	    	Timestamp mint_time = new Timestamp(currentDate.getTime());
+	    	
+	   	 	nft nfts = new nft(unique_name, description, nft_image, owner, creator, mint_time);
 	   	 	nftDAO.insert(nfts);
 	   	 	
 		    System.out.println("Saved to NFT database");
