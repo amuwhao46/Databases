@@ -23,17 +23,14 @@ public class Listing {
 	    	this.start=start;
 	    	this.end=end;
 	    	this.price=price;
-	    	
-	    
 	    }
 	 
-	    public Listing(String owner, String nftid, Timestamp start,Timestamp end, double price, String listid) {
+	    public Listing( String listid,String owner, String nftid, Timestamp start,Timestamp end, double price) {
 	    	this.owner = owner;
 	    	this.nftid = nftid;
 	        this.start = start;
 	        this.end = end;
 	        this.price = price;
-	        
 	        this.listid=listid;
 	    }
 	    
