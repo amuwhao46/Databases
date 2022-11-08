@@ -6,6 +6,7 @@ public class nft {
 	    protected String nft_image; 
 	    protected String owner;
 	    protected String creator;
+	    protected java.sql.Timestamp mint_time;
 	    
 	    //constructors
 	    public nft() {
@@ -15,18 +16,21 @@ public class nft {
 	        this.nftid = nftid;
 	    }
 	    
-	    public nft(String nftid, String unique_name, String description, String created_date, String nft_image, String owner, String creator) {
-	    	this(unique_name, description, created_date, nft_image, owner, creator);
+	    public nft(String nftid, String unique_name, String description, String created_date, String nft_image, 
+	    		String owner, String creator, java.sql.Timestamp mint_time) {
+	    	this(unique_name, description, created_date, nft_image, owner, creator, mint_time);
 	    	this.nftid = nftid;
 	    }
 	 
-	    public nft(String unique_name, String description, String created_date, String nft_image, String owner, String creator) {
+	    public nft(String unique_name, String description, String created_date, String nft_image, 
+	    		String owner, String creator, java.sql.Timestamp mint_time) {
 	    	this.unique_name = unique_name;
 	    	this.description = description;
 	        this.created_date = created_date;
 	        this.nft_image = nft_image;
 	        this.owner = owner;
 	        this.creator = creator;
+	        this.mint_time = mint_time;
 	    }
 	    
 	   //getter and setter methods
@@ -74,5 +78,11 @@ public class nft {
 	    }
 	    public void setCreator(String creator) {
 	        this.creator = creator;
+	    }
+	    public java.sql.Timestamp getMint_time() {
+	    	return mint_time;
+	    }
+	    public void setMint_time(java.sql.Timestamp mint_time) {
+	    	this.mint_time = mint_time;
 	    }
 	}

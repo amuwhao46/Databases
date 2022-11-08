@@ -12,12 +12,6 @@
 		<form action="mint">
 			<table border="1" cellpadding="5">
 				<tr>
-					<th>ID:</th>
-					<td align="center" colspan="3">
-						<input type="text" name="nftid" size="45"  value="1" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
 					<th>Name:</th>
 					<td align="center" colspan="3">
 						<input type="text" name="unique_name" size="45"  value="Big Chungus" onfocus="this.value=''">
