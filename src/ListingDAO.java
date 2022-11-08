@@ -59,7 +59,7 @@ public class ListingDAO
 
     public List<Listing> allListedNfts() throws SQLException {
         List<Listing> allListNft = new ArrayList<Listing>();        
-        String sql = "SELECT * FROM NFT";      
+        String sql = "SELECT * FROM Listing";      
         connect_func();      
 
         try {
@@ -94,7 +94,83 @@ public class ListingDAO
         return allListNft;
     }
     
-   
+    public Listing getListedNft(String nft) throws SQLException {
+        Listing getListNft = null;        
+        String sql = "SELECT * FROM Listing nftid = ?";      
+       
+        try {
+        	
+        	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        	  preparedStatement.setString(1, nft);
+        	  ResultSet resultSet = statement.executeQuery(sql);
+        
+        
+        	while (resultSet.next()) {
+        		
+        		String listid= resultSet.getString("listid");
+        		java.sql.Timestamp end= resultSet.getTimestamp("end");
+        		
+        		if (end.compareTo(new Date())<0) {
+        			
+        			this.delete(listid);
+        		}
+        		else{
+        		String owner = resultSet.getString("owner");
+        		String nftid = resultSet.getString("nftid");
+        		java.sql.Timestamp start= resultSet.getTimestamp("start");
+        		double price = resultSet.getDouble("price");
+        		
+        		getListNft = new Listing(listid, owner, nftid, start, end, price);
+        		
+        		}	
+        	}   
+        resultSet.close();
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+     
+        return getListNft;
+    }
+    
+    public List<Listing> userListedNfts(String username) throws SQLException {
+        List<Listing> allListNft = new ArrayList<Listing>();        
+        String sql = "SELECT * FROM Listing WHERE owner= ?";      
+        connect_func();      
+
+        try {
+        	
+
+      	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+      	  preparedStatement.setString(1, username);
+      	  ResultSet resultSet = statement.executeQuery(sql);
+      
+ 
+        	while (resultSet.next()) {
+        		
+        		String listid= resultSet.getString("listid");
+        		java.sql.Timestamp end= resultSet.getTimestamp("end");
+        		
+        		if (end.compareTo(new Date())<0) {
+        			
+        			this.delete(listid);
+        		}
+        		
+        		else{
+        		String owner = resultSet.getString("owner");
+        		String nftid = resultSet.getString("nftid");
+        		java.sql.Timestamp start= resultSet.getTimestamp("start");
+        		double price = resultSet.getDouble("price");
+        		Listing newListing = new Listing(listid, owner, nftid, start, end, price);
+        		allListNft.add(newListing);
+        		}	
+        	}   
+        resultSet.close();
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+     
+        return allListNft;
+    }
     
     public void insert(Listing newListing) throws SQLException {
     	connect_func();         
@@ -109,37 +185,20 @@ public class ListingDAO
         preparedStatement.close();
     }
     
-    public boolean delete(String owner) throws SQLException {
-        String sql = "DELETE FROM NFT WHERE owner = ?";        
+    public boolean delete(String nft) throws SQLException {
+        String sql = "DELETE FROM Listing WHERE nftid = ?";        
         connect_func();
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, owner);
+        preparedStatement.setString(1, nft);
          
         boolean rowDeleted = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
         return rowDeleted;     
     }
      
-    public boolean update(Listing newListing) throws SQLException {
-        String sql = "update NFT set nftid = ?, description = ?, created_date = ?, nft_image= ?, owner = ?, creator = ? where owner = ?";
-        connect_func();
-        
-        preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, newListing.getOwner());
-		preparedStatement.setString(2, newListing.getNFTid());
-		preparedStatement.setTimestamp(3, newListing.getStart());
-		preparedStatement.setTimestamp(4, newListing.getEnd());
-		preparedStatement.setDouble(5, newListing.getPrice());	
-			
-			
-         
-        boolean rowUpdated = preparedStatement.executeUpdate() > 0;
-        preparedStatement.close();
-        return rowUpdated;     
-    }
-    
-    public Listing getNft(String owner) throws SQLException {
+  
+    public Listing getUsersNft(String owner) throws SQLException {
     	Listing Listing = null;
         String sql = "SELECT * FROM NFT WHERE owner = ?";
          
