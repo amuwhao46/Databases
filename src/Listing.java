@@ -34,29 +34,29 @@ public class Listing {
 	        this.start = start;
 	        this.end = end;
 	        this.price = price;
-	        this.transtype=transtype;
+	        
 	        this.listid=listid;
 	    }
 	    
 	   //getter and setter methods
-        public String getTransid() {
+        public String getListid() {
 	        return listid;
 	    }
-	    public void setTransid(String listid) {
+	    public void setListid(String listid) {
 	        this.listid = listid;
 	    }
 
-	    public String getSender() {
+	    public String getOwner() {
 	        return owner;
 	    }
-	    public void setSender(String owner) {
+	    public void setOwner(String owner) {
 	        this.owner = owner;
 	    }
 	    
-	    public String getReciever() {
+	    public String getNFTid() {
 	        return nftid;
 	    }
-	    public void setReciever(String nftid) {
+	    public void setNFTid(String nftid) {
 	        this.nftid = nftid;
 	    }
 	    
