@@ -67,9 +67,11 @@ public class nftDAO
         		String description = resultSet.getString("description");
         		String created_date = resultSet.getString("created_date");
         		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
         		
         		
-        		nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
+        		nft nfts = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
         		listNft.add(nfts);
         	}        
         } catch(Exception e) {
@@ -89,13 +91,15 @@ public class nftDAO
     
     public void insert(nft nfts) throws SQLException {
     	connect_func();         
-		String sql = "insert into NFT(nftid, unique_name, description, created_date, nft_image) values (?, ?, ?, ?, ?)";
+		String sql = "insert into NFT(nftid, unique_name, description, created_date, nft_image, owner, creator) values (?, ?, ?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, nfts.getNftid());
 		preparedStatement.setString(2, nfts.getUnique_name());
 		preparedStatement.setString(3, nfts.getDescription());
 		preparedStatement.setString(4, nfts.getCreated_date());
 		preparedStatement.setString(5, nfts.getNft_image());	
+		preparedStatement.setString(6, nfts.getOwner());	
+		preparedStatement.setString(7, nfts.getCreator());	
 		preparedStatement.executeUpdate();
         preparedStatement.close();
     }
@@ -113,7 +117,7 @@ public class nftDAO
     }
      
     public boolean update(nft nfts) throws SQLException {
-        String sql = "update NFT set unique_name = ?, description = ?, created_date = ?, nft_image= ? where nftid = ?";
+        String sql = "update NFT set unique_name = ?, description = ?, created_date = ?, nft_image= ?, owner = ?, creator = ? where nftid = ?";
         connect_func();
         
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
@@ -122,6 +126,8 @@ public class nftDAO
 		preparedStatement.setString(3, nfts.getDescription());
 		preparedStatement.setString(4, nfts.getCreated_date());
 		preparedStatement.setString(5, nfts.getNft_image());	
+		preparedStatement.setString(6, nfts.getOwner());	
+		preparedStatement.setString(7, nfts.getCreator());	
          
         boolean rowUpdated = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
@@ -144,7 +150,9 @@ public class nftDAO
             String description = resultSet.getString("description");
             String created_date = resultSet.getString("created_date");
             String nft_image = resultSet.getString("nft_image");
-            nft = new nft(nftid, unique_name, description, created_date, nft_image);
+            String owner = resultSet.getString("owner");
+            String creator = resultSet.getString("creator");
+            nft = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
         }
          
         resultSet.close();
@@ -185,19 +193,21 @@ public class nftDAO
 		            "description VARCHAR(100) NOT NULL, " +
 		            "created_date VARCHAR(11) NOT NULL, " +
 		            "nft_image VARCHAR(15) NOT NULL, " +
+		            "owner VARCHAR(50) NOT NULL, " +
+		            "creator VARCHAR(50) NOT NULL, " +
 		            "PRIMARY KEY (nftid) "+"); ")
 				};
-String[] TUPLES = {("insert into NFT(nftid, unique_name, description, created_date, nft_image)" +
-		"values ('O6OMWOTYPX', 'Mushroom Hat', 'Lots of homies','00-00-0000', 'photovalhold')," +
-    		 	"('CB0379JEUX','Tinted Frostbite','Cooler than a cat','01-31-2001','3959')," +
-    	 	 	"('T6IC4F9H02','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485')," +
-    		 	"('1XHOZKT9DM','Gleam Steam','Shiny steam cakes air and catches attention','09-12-2000','3780')," +
-    		 	"('8SE9Z9IX70','Corrupt Rose','The baddest of all roses','04-18-2002','3921')," +
-    		 	"('HIU0X084SW','Fancy Unicorn','You know hes fly with his little hat','09-15-1999','426')," +
-    			"('UY9WX9K7QF','Murky Dragonfly','This guys been flying through the desert','04-10-2001','444')," +
-    			"('PD6UEFDP9A','Wealthy Stardust','Personified gold','08-14-2000','3513')," +
-    			"('FRHIKC1D59','Misty Bat','If batman worked at a water park','08-17-2000','859'),"+
-    			"('KTDDWZS4WR','Good Oak','Bad City','09-26-1998','2562');"
+String[] TUPLES = {("insert into NFT(nftid, unique_name, description, created_date, nft_image, owner, creator)" +
+		"values ('O6OMWOTYPX', 'Mushroom Hat', 'Lots of homies','00-00-0000', 'photovalhold', 'To Can', 'Lolli')," +
+    		 	"('CB0379JEUX','Tinted Frostbite','Cooler than a cat','01-31-2001','3959', 'Xharles', 'Eric')," +
+    	 	 	"('T6IC4F9H02','Enraged Master','Entitled man is upset over small deal', '04-12-2001','1485', 'Pam', 'Beasley')," +
+    		 	"('1XHOZKT9DM','Gleam Steam','Shiny steam cakes air and catches attention','09-12-2000','3780', 'Jared', 'Sombra')," +
+    		 	"('8SE9Z9IX70','Corrupt Rose','The baddest of all roses','04-18-2002','3921', 'Mike', 'Ilitch')," +
+    		 	"('HIU0X084SW','Fancy Unicorn','You know hes fly with his little hat','09-15-1999','426', 'Steve', 'Poser')," +
+    			"('UY9WX9K7QF','Murky Dragonfly','This guys been flying through the desert','04-10-2001','444', 'Carrel', 'Williams')," +
+    			"('PD6UEFDP9A','Wealthy Stardust','Personified gold','08-14-2000','3513', 'MAster', 'Splinter')," +
+    			"('FRHIKC1D59','Misty Bat','If batman worked at a water park','08-17-2000','859', 'Noah', 'Boat'),"+
+    			"('KTDDWZS4WR','Good Oak','Bad City','09-26-1998','2562', 'No', 'Ideas');"
     			)};
         
         //for loop to put these in database

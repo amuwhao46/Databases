@@ -191,8 +191,10 @@ public class ControlServlet extends HttpServlet {
 	   	 	String description = request.getParameter("description");
 	   	 	String created_date = request.getParameter("created_date");
 	   	 	String nft_image = request.getParameter("nft_image");
+	   	 	String owner = request.getParameter("owner");
+	   	 	String creator = request.getParameter("creator");
 	   	 	
-	   	 	nft nfts = new nft(nftid, unique_name, description, created_date, nft_image);
+	   	 	nft nfts = new nft(nftid, unique_name, description, created_date, nft_image, owner, creator);
 	   	 	nftDAO.insert(nfts);
 	   	 	
 		    System.out.println("Saved to NFT database");

@@ -4,6 +4,8 @@ public class nft {
 	    protected String description;
 	    protected String created_date;
 	    protected String nft_image; 
+	    protected String owner;
+	    protected String creator;
 	    
 	    //constructors
 	    public nft() {
@@ -13,16 +15,18 @@ public class nft {
 	        this.nftid = nftid;
 	    }
 	    
-	    public nft(String nftid, String unique_name, String description, String created_date, String nft_image) {
-	    	this(unique_name, description, created_date, nft_image);
+	    public nft(String nftid, String unique_name, String description, String created_date, String nft_image, String owner, String creator) {
+	    	this(unique_name, description, created_date, nft_image, owner, creator);
 	    	this.nftid = nftid;
 	    }
 	 
-	    public nft(String unique_name, String description, String created_date, String nft_image) {
+	    public nft(String unique_name, String description, String created_date, String nft_image, String owner, String creator) {
 	    	this.unique_name = unique_name;
 	    	this.description = description;
 	        this.created_date = created_date;
 	        this.nft_image = nft_image;
+	        this.owner = owner;
+	        this.creator = creator;
 	    }
 	    
 	   //getter and setter methods
@@ -58,5 +62,17 @@ public class nft {
 	    }
 	    public void setNft_image(String nft_image) {
 	        this.nft_image = nft_image;
+	    }
+	    public String getOwner() {
+	        return owner;
+	    }
+	    public void setOwner(String owner) {
+	        this.owner = owner;
+	    }
+	    public String getCreator() {
+	        return creator;
+	    }
+	    public void setCreator(String creator) {
+	        this.creator = creator;
 	    }
 	}
