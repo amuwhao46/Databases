@@ -27,8 +27,8 @@ align-items: center;
 			<label>Select the NFT that you wish to make a listing for</label>
 			<select name="nftid">
 		  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
-					<option value="${nft.nftid}">
-				        <c:out value="${nft.unique_name}" />
+					<option value="${nfts.nftid}">
+				        <c:out value="${nfts.unique_name}" />
 				  	</option>
 				</c:forEach>
 			</select>
