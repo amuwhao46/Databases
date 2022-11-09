@@ -87,7 +87,10 @@ public class ControlServlet extends HttpServlet {
          		System.out.println("The action is: Create Listing");
          		createListing(request,response);
          		break;
-         		
+         	case "/transfer":
+         		System.out.println("The action is: transfer");
+         		createListing(request,response);
+         		break;
          		
 	    	}   
 	    }
