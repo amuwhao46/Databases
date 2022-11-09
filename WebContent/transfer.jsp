@@ -27,8 +27,8 @@ align-items: center;
 					<label>Select the NFT that you wish to make a listing for</label>
 					<select name="nftid">
 				  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
-							<option value="${currentUser.nftid}">
-						        <c:out value="${currentUser.unique_name}" />
+							<option value="${nfts.nftid}">
+						        <c:out value="${nfts.unique_name}" />
 						  	</option>
 						</c:forEach>
 					</select>
@@ -37,8 +37,8 @@ align-items: center;
 					<label>Select the user that you would like to transfer the NFT to</label>
 					<select name="nftid">
 				  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
-							<option value="${currentUser.nftid}">
-						        <c:out value="${currentUser.unique_name}" />
+							<option value="${nfts.nftid}">
+						        <c:out value="${nfts.unique_name}" />
 						  	</option>
 						</c:forEach>
 					</select>
