@@ -9,24 +9,52 @@
 <title>Activity page</title>
 <style>
 	body {
+		font-family: 'Roboto', sans-serif;
+		background-color: rgb(255, 153, 153);
+		text-align: center;
 		margin: auto;
   		width: 50%;
 		padding: 10px;
 	}
+	.Button {
+		padding: .5rem;
+		background-color: red;
+		border-radius: 0.25rem;
+		margin: 1rem;
+		color: white;
+	}
+	.Button2 {
+		padding: .5rem;
+		background-color: blue;
+		border-radius: 0.25rem;
+		margin: 1rem;
+		color: white;
+	}
+	.container {
+		display: flex;
+		
+	}
+	.table-container {
+		margin-left:auto;
+		margin-right:auto;
+	}
+
 </style>
 </head>
 	<body>
-			<h1>Welcome! You have been successfully logged in</h1>
+			<h1>Welcome!</h1>
 
-		 <a href="login.jsp"target ="_self" > logout</a><br><br> 
-		 <a href="mint.jsp"target ="_self" > Mint NFT</a>
-		 <a href="#"target ="_self" > Buy/Sell NFT</a>
-		 <a href="search.jsp"target ="_self" > Search for a NFT</a>
-		  <a href="Listings.jsp"target ="_self" > View Listed NFT's</a>
-		  <a href="transfer.jsp"target ="_self" > Transfer a NFT!</a>
+		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
+		 <div class=container>
+			 <a class="Button2" href="mint.jsp"target ="_self" > Mint NFT</a>
+			 <a class="Button2" href="#"target ="_self" > Buy/Sell NFT</a>
+			 <a class="Button2" href="search.jsp"target ="_self" > Search for a NFT</a>
+			 <a class="Button2" href="Listings.jsp"target ="_self" > View Listed NFT's</a>
+			 <a class="Button2" href="transfer.jsp"target ="_self" > Transfer a NFT!</a>
+		 </div>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>Current NFTs</h1>
-		 		        <table border="1" cellpadding="6">
+		 		        <table class=table-container border="1" cellpadding="6">
 		            <caption><h2>List of NFTs</h2></caption>
 		            <tr>
 		                <th>NFTid</th>

@@ -22,7 +22,7 @@
 				align-items: center;
 				padding-bottom:1rem;
 			}
-	</style>
+		</style>
 	</head>
 	<body>
 		<div class="box">

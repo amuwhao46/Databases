@@ -4,12 +4,30 @@
 <html>
 <head>
 	<title>Registration</title>
+		<style>
+			body {
+				font-family: 'Roboto', sans-serif;
+				background-color: rgb(255, 153, 153);
+				padding: 5rem;
+			}
+			
+			.box {
+				background-color:white;
+				filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+				border-radius: 0.25rem;
+				display:flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding-bottom:1rem;
+			}
+		</style>
 </head>
 <body>
 	<div align="center">
 		<p> ${errorOne } </p>
 		<p> ${errorTwo } </p>
-		<form action="register">
+		<form class="box" action="register">
 			<table border="1" cellpadding="5">
 				<tr>
 					<th>Email: </th>
