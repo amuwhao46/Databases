@@ -17,6 +17,7 @@
 		 <a href="#"target ="_self" > Buy/Sell NFT</a>
 		 <a href="search.jsp"target ="_self" > Search for a NFT</a>
 		  <a href="Listings.jsp"target ="_self" > View Listed NFT's</a>
+		  <a href="transfer.jsp"target ="_self" > Transfer a NFT!</a>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>Current NFTs</h1>
 		 		        <table border="1" cellpadding="6">
