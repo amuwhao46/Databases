@@ -81,7 +81,7 @@ public class ControlServlet extends HttpServlet {
         		mint(request,response);
         		break;
          	case "/search":
-         		search(request,response);
+         		listNft(request,response);
          		break;
          	case "/createListing":
          		System.out.println("The action is: Create Listing");
@@ -150,10 +150,12 @@ public class ControlServlet extends HttpServlet {
 	    
 	    private void listNft(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
+	    	ListingDAO listingDAO = new ListingDAO();
 	        System.out.println("listNFT started: 00000000000000000000000000000000000");
 
 	     
 	        List<nft> listNft = nftDAO.listAllNfts();
+	        List<Listing> allListings = listingDAO.allListedNfts();
 	        request.setAttribute("listNft", listNft);       
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
 	        dispatcher.forward(request, response);
@@ -254,10 +256,4 @@ public class ControlServlet extends HttpServlet {
 	    	currentUser = "";
         		response.sendRedirect("login.jsp");
         	}	
-	    
-	    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	// Logic goes here
-	    	int n = 0;
-	    	n = n + 2;
-	    }
 }
