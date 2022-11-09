@@ -18,33 +18,33 @@ align-items: center;
 </style>
 
 
-<body>
-<div align="center">
-	<h1>Transfer a NFT to another User!:</h1>
-	<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
-	<form method="post" action="createListing">
-		<div class="wrap">
-			<label>Select the NFT that you wish to make a listing for</label>
-			<select name="nftid">
-		  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
-					<option value="${nfts.nftid}">
-				        <c:out value="${nfts.unique_name}" />
-				  	</option>
-				</c:forEach>
-			</select>
+	<body>
+		<div align="center">
+			<h1>Transfer a NFT to another User!:</h1>
+			<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
+			<form method="post" action="createListing">
+				<div class="wrap">
+					<label>Select the NFT that you wish to make a listing for</label>
+					<select name="nftid">
+				  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
+							<option value="${currentUser.nftid}">
+						        <c:out value="${currentUser.unique_name}" />
+						  	</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="wrap">
+					<label>Select the user that you would like to transfer the NFT to</label>
+					<select name="nftid">
+				  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
+							<option value="${currentUser.nftid}">
+						        <c:out value="${currentUser.unique_name}" />
+						  	</option>
+						</c:forEach>
+					</select>
+				</div>
+				<button type="submit">transfer</button>
+			</form>
 		</div>
-		<div class="wrap">
-			<label>Select the user that you would like to transfer the NFT to</label>
-			<select name="nftid">
-		  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
-					<option value="${nfts.nftid}">
-				        <c:out value="${nfts.unique_name}" />
-				  	</option>
-				</c:forEach>
-			</select>
-		</div>
-		<button type="submit">transfer</button>
-	</form>
-</div>
-</body>
+	</body>
 </html>

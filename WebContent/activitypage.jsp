@@ -7,11 +7,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Activity page</title>
+<style>
+	body {
+		margin: auto;
+  		width: 50%;
+		padding: 10px;
+	}
+</style>
 </head>
 	<body>
-			<center><h1>Welcome! You have been successfully logged in</h1> </center>
+			<h1>Welcome! You have been successfully logged in</h1>
 
-	 	<center>
 		 <a href="login.jsp"target ="_self" > logout</a><br><br> 
 		 <a href="mint.jsp"target ="_self" > Mint NFT</a>
 		 <a href="#"target ="_self" > Buy/Sell NFT</a>
@@ -39,6 +45,5 @@
 		                    <td><c:out value="${nfts.nft_image}" /></td>
 		            </c:forEach>
 		        </table>
-		 </center>
 	</body>
 </html>
