@@ -123,8 +123,6 @@ public class ControlServlet extends HttpServlet {
 	    		Timestamp startTime=new Timestamp(start.getTime());
 	    		Timestamp endTime= new Timestamp(end.getTime());
 	    		
-	    		
-				// error here
 	    		listingDAO.insert(new Listing(currentUser,nftid,startTime, endTime, price));
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("success!", "Listing has been Created!");
