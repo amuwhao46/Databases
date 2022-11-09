@@ -243,7 +243,6 @@ public class nftDAO
 		            "creator VARCHAR(100), " +
 		            "mint_time DATETIME, " +
 		            "PRIMARY KEY (nftid), "+
-		            
 		            "FOREIGN KEY (owner) REFERENCES User(userid), " +
 		            "FOREIGN KEY (creator) REFERENCES User(userid) " +
 		           "); ")

@@ -98,7 +98,8 @@ public class ListingDAO
     public Listing getListedNft(int nft) throws SQLException {
         Listing getListNft = null;        
         String sql = "SELECT * FROM Listing nftid = ?";      
-       
+        connect_func();    
+        
         try {
         	
         	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);

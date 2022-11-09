@@ -83,6 +83,12 @@ public class ControlServlet extends HttpServlet {
          	case "/search":
          		search(request,response);
          		break;
+         	case "/createListing":
+         		System.out.println("The action is: Create Listing");
+         		createListing(request,response);
+         		break;
+         		
+         		
 	    	}   
 	    }
 	    catch(Exception ex) {
@@ -97,25 +103,29 @@ public class ControlServlet extends HttpServlet {
 	    	int nftid= Integer.parseInt(request.getParameter("nftid"));
 	    	int lengthoftime= Integer.parseInt(request.getParameter("lengthoftime"));
 	    	double price= Double.parseDouble(request.getParameter("price"));
+	    	ListingDAO listingDAO = new ListingDAO();
 	    	
 	    	if (price<=0) {
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("error!", "Price of lissting myst be greater than 0! ");
 	    		dispatcher.forward(request, response);
 	    	}
-	    	/*else if(ListingDAO.getListedNft(nftid)!=null) {
+	    	else if(listingDAO.getListedNft(nftid)!=null) {
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("error!", "A listing for this NFT already exists! ");
 	    		dispatcher.forward(request, response);
-	    	}*/
+	    	}
 	    	else {
 	    		Calendar cvar= Calendar.getInstance();
 	    		cvar.add(Calendar.MONTH, lengthoftime);
 	    		Date start= new Date();
 	    		Date end=cvar.getTime();
+	    		Timestamp startTime=new Timestamp(start.getTime());
+	    		Timestamp endTime= new Timestamp(end.getTime());
 	    		
-	    		// error here
-	    	//	 ListingDAO.insert(new Listing(currentUser,nftid,startTime,endTime, price));
+	    		
+				// error here
+	    		listingDAO.insert(new Listing(currentUser,nftid,startTime, endTime, price));
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("success!", "Listing has been Created!");
 	    		dispatcher = request.getRequestDispatcher("Listings.jsp"); 

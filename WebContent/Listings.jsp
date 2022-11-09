@@ -4,41 +4,51 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List an NFT!</title>
+	<title>List a NFT</title>
 </head>
+
+
+<style>
+
+.wrap{
+padding: 1rem;
+align-items: center;
+}
+
+</style>
+
+
 <body>
 <div align="center">
-			<form method="post" action="createListing">
-				<table border="1" cellpadding="5">
-					<tr>
-						<th>Name:</th>
-						<td align="center" colspan="3">
-							<input type="text" name="unique_name" size="45"  value="Big Chungus" onfocus="this.value=''">
-						</td>
-					</tr>
-					<tr>
-						<th>Description:</th>
-						<td align="center" colspan="3">
-							<input type="text" name="description" size="45"  value="Elongated Bugs Bunny" onfocus="this.value=''">
-						</td>
-					</tr>
-					<tr>
-						<th>Image URL:</th>
-						<td align="center" colspan="3">
-							<input type="text" name="nft_image" size="45"  value="bigchungus.com" onfocus="this.value=''">
-						</td>
-					</tr>
-					<tr>
-						<td align="center" colspan="5">
-							<input type="submit" value="Mint"/>
-						</td>
-					</tr>
-				</table>
-			</form>
-			<a href="activitypage.jsp" target="_self">Back to Activity Page</a>
+	<h1>Please create a listing:</h1>
+	<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
+	<form method="post" action="createListing">
+		<div class="wrap">
+			<label>Select the NFT that you wish to make a listing for</label>
+			<select name="nftid">
+		  		<c:forEach items="${userNFT}" var="nfts" varStatus="loop">
+					<option value="${nft.nftid}">
+				        <c:out value="${nft.unique_name}" />
+				  	</option>
+				</c:forEach>
+			</select>
 		</div>
-
-
-
+		<div class="wrap">
+			<label>List Duration in Months</label>
+			<select name="lengthoftime">
+		  		<c:forEach var="i" begin = "1" end = "12">
+					<option value="${i}">
+				        <c:out value="${i}"/>
+				  	</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div class="wrap">
+			<label>Price (Etherium)</label>
+			<input type="number" name="price" step="0.001" value=".01" required>
+		</div>
+		<button type="submit">Create Listing</button>
+	</form>
+</div>
 </body>
 </html>
