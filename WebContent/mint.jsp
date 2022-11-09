@@ -5,10 +5,36 @@
 <html>
 	<head>
 		<title>Mint an NFT</title>
+			<style>
+				body {
+					font-family: 'Roboto', sans-serif;
+					background-color: rgb(255, 153, 153);
+					padding: 5rem;
+				}
+				
+				.box {
+					background-color:white;
+					filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+					border-radius: 0.25rem;
+					display:flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					padding-bottom:1rem;
+				}
+				.button {
+					position: relative;
+					padding: .5rem;
+					background-color: grey;
+					border-radius: 0.25rem;
+					margin: 3rem;
+					color: white;
+				}
+			</style>
 	</head>
 	<body>
-		<h1>Mint your first NFT!</h1>
-		<div align="center">
+		<div class="box">
+			<h1>Mint your first NFT!</h1>
 			<form method="post" action="mint">
 				<table border="1" cellpadding="5">
 					<tr>
@@ -36,7 +62,7 @@
 					</tr>
 				</table>
 			</form>
-			<a href="activitypage.jsp" target="_self">Back to Activity Page</a>
+			<a class="button" href="activitypage.jsp" target="_self">Back to Activity Page</a>
 		</div>
 	</body>
 </html>

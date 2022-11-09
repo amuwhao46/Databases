@@ -22,6 +22,14 @@
 				align-items: center;
 				padding-bottom:1rem;
 			}
+			.register {
+				position: relative;
+				padding: .5rem;
+				background-color: grey;
+				border-radius: 0.25rem;
+				margin: 3rem;
+				color: white;
+			}
 		</style>
 	</head>
 	<body>
@@ -48,8 +56,8 @@
 						</td>
 					</tr>
 				</table>
-				<a href="register.jsp" target="_self">Register Here</a>
 			</form>
+			<a class="register" href="register.jsp" target="_self">Register</a>
 		</div>
 	</body>
 </html>

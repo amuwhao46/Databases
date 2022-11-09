@@ -19,7 +19,15 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				padding-bottom:1rem;
+				padding:1rem;
+			}
+			
+			.login {
+				padding: .5rem;
+				background-color: grey;
+				border-radius: 0.25rem;
+				margin: 3rem;
+				color: white;
 			}
 		</style>
 </head>
@@ -27,53 +35,56 @@
 	<div align="center">
 		<p> ${errorOne } </p>
 		<p> ${errorTwo } </p>
-		<form class="box" action="register">
-			<table border="1" cellpadding="5">
-				<tr>
-					<th>Email: </th>
-					<td align="center" colspan="3">
-						<input type="text" name="userid" size="45"  value="example@gmail.com" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>First Name: </th>
-					<td align="center" colspan="3">
-						<input type="text" name="firstName" size="45" value="FirstName" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>Last Name: </th>
-					<td align="center" colspan="3">
-						<input type="text" name="lastName" size="45" value="LastName" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>Birthday: </th>
-					<td align="center" colspan="3">
-						<input type="text" name="birthday" size="45" value="YYYY-MM-DD" onfocus="this.value=''">
-					</td>
-	
-				</tr>
-				<tr>
-					<th>Password: </th>
-					<td align="center" colspan="3"> 
-						<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
-					</td>
-				</tr>
-				<tr>
-					<th>Password Confirmation: </th>
-					<td align="center" colspan="3">
-						<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
-					</td>
-				
-				</tr>
-				<tr>
-					<td align="center" colspan="5">
-						<input type="submit" value="Register"/>
-					</td>
-				</tr>
-			</table>
-			<a href="login.jsp" target="_self">Return to Login Page</a>
-		</form>
+		<div class="box">
+			<h1>Register</h1>
+			<form  action="register">
+				<table border="1" cellpadding="5">
+					<tr>
+						<th>Email: </th>
+						<td align="center" colspan="3">
+							<input type="text" name="userid" size="45"  value="example@gmail.com" onfocus="this.value=''">
+						</td>
+					</tr>
+					<tr>
+						<th>First Name: </th>
+						<td align="center" colspan="3">
+							<input type="text" name="firstName" size="45" value="FirstName" onfocus="this.value=''">
+						</td>
+					</tr>
+					<tr>
+						<th>Last Name: </th>
+						<td align="center" colspan="3">
+							<input type="text" name="lastName" size="45" value="LastName" onfocus="this.value=''">
+						</td>
+					</tr>
+					<tr>
+						<th>Birthday: </th>
+						<td align="center" colspan="3">
+							<input type="text" name="birthday" size="45" value="YYYY-MM-DD" onfocus="this.value=''">
+						</td>
+		
+					</tr>
+					<tr>
+						<th>Password: </th>
+						<td align="center" colspan="3"> 
+							<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
+						</td>
+					</tr>
+					<tr>
+						<th>Password Confirmation: </th>
+						<td align="center" colspan="3">
+							<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
+						</td>
+					
+					</tr>
+					<tr>
+						<td align="center" colspan="5">
+							<input type="submit" value="Register"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<a class="login" href="login.jsp" target="_self">Return to Login Page</a>
+		</div>
 	</div>
 </body>
