@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 //import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 /**
  * Servlet implementation class Connect
@@ -201,8 +202,11 @@ public class ListingDAO
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
         statement =  (Statement) connect.createStatement();
-        Date start= new Date();
-        Date end= new Date();
+        Date start = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 12);
+        Date end = cal.getTime();
+        
         Timestamp startTime= new Timestamp(start.getTime());
         Timestamp endTime= new Timestamp(end.getTime());
         String[] INITIAL = {"use NFTdb; ",
@@ -219,16 +223,16 @@ public class ListingDAO
 		            "FOREIGN KEY(nftid) REFERENCES NFT(nftid)"+"); ")
 				};
 		String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)" +
-				"values ('jondoe@gmail.com', '1', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '2', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '3', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '4', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '5', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '6', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '7', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '8', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '9', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-						"('jondoe@gmail.com', '10', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10');"
+				"values ('jondoe@gmail.com', '1', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10');" 
+//						"('jondoe@gmail.com', '2', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '3', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '4', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '5', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '6', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '7', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '8', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '9', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10')," +
+//						"('jondoe@gmail.com', '10', '"+ startTime.toString() + "', "+ endTime.toString() + "', '10');"
 		    			)};
         
         //for loop to put these in database
