@@ -218,7 +218,7 @@ public class ListingDAO
 		            "FOREIGN KEY(owner) REFERENCES User(userid), " +
 		            "FOREIGN KEY(nftid) REFERENCES User(nftid),"+"); ")
 				};
-String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price," +
+String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price" +
 		"values ('jondoe@gmail.com', '100', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
 				"('jackenoff@gmail.com', '101', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
 				"('bendover@gmail.com', '102', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
