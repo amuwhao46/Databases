@@ -218,18 +218,18 @@ public class ListingDAO
 		            "FOREIGN KEY(owner) REFERENCES User(userid), " +
 		            "FOREIGN KEY(nftid) REFERENCES NFT(nftid)"+"); ")
 				};
-String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)" +
-		"values ('jondoe@gmail.com', '1', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '2', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '3', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '4', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '5', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '6', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '7', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '8', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '9', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jondoe@gmail.com', '10', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10');"
-    			)};
+		String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)" +
+				"values ('jondoe@gmail.com', '1', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '2', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '3', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '4', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '5', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '6', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '7', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '8', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '9', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+						"('jondoe@gmail.com', '10', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10');"
+		    			)};
         
         //for loop to put these in database
         for (int i = 0; i < INITIAL.length; i++)

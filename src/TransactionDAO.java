@@ -90,7 +90,7 @@ public class TransactionDAO
 		            "timeStamp DATETIME, " +
 		            "FOREIGN KEY (sender) REFERENCES User(userid)," +
 		            "FOREIGN KEY (reciever) REFERENCES User(userid)," +
-		            "PRIMARY KEY (transferid) "+"); ")
+		            "PRIMARY KEY (transid) "+"); ")
 				};
         
         //for loop to put these in database
