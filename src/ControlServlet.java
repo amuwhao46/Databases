@@ -143,7 +143,6 @@ public class ControlServlet extends HttpServlet {
 	     
 	        List<nft> listNft = nftDAO.listAllNfts();
 	        List<Listing> allListings = listingDAO.allListedNfts();
-//	        request.setAttribute("allListings", listingDAO.allListedNfts());
 	        request.setAttribute("listNft", listNft);       
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
 	        dispatcher.forward(request, response);
@@ -313,10 +312,32 @@ public class ControlServlet extends HttpServlet {
 	    }
 	    
 	    private void beginTransfer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	
+	        System.out.println("listUser started: 00000000000000000000000000000000000");
+		     
+	        List<nft> listUserNFT = nftDAO.listOwnedNfts(currentUser);
+	        List<user> listAllUsers = userDAO.listAllUsers();
+	        request.setAttribute("userNft", listUserNFT);
+	        request.setAttribute("allUsers", listAllUsers);
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("transfer.jsp");       
+	        dispatcher.forward(request, response);
+	     
+	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
 	    }
 	    
 	    private void endTransfer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
+	    	String reciever = request.getParameter("reciever");
+	    	Date currentTime = new Date();
+	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
 	    	
+	    	ListingDAO.delete(nftid); // Delete the listing of the NFT if there exists one
+	    	nftDAO.updateOwner(nftid, reciever);
+	    	Transaction newTransfer = new Transaction(currentUser, reciever, timeStamp, (double) 0, "transfer");
+	    	TransactionDAO.insert(newTransfer); // Insert a new transaction into the database
+	    	
+	    	request.setAttribute("userNFTs", nftDAO.listOwnedNfts(currentUser));
+	        request.setAttribute("allUsers", userDAO.listAllUsers());
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("transfer.jsp");       
+	        dispatcher.forward(request, response);
 	    }
 }
