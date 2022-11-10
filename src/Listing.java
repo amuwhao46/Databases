@@ -24,13 +24,13 @@ public class Listing {
 	    	this.price=price;
 	    }
 	 
-	    public Listing( int listid,String owner, int nftid, Timestamp start,Timestamp end, double price) {
+	    public Listing(int listid, String owner, int nftid, Timestamp start,Timestamp end, double price) {
 	    	this.owner = owner;
 	    	this.nftid = nftid;
 	        this.start = start;
 	        this.end = end;
 	        this.price = price;
-	        this.listid=listid;
+	        this.listid = listid;
 	    }
 	    
 	   //getter and setter methods

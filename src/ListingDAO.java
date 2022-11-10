@@ -83,8 +83,7 @@ public class ListingDAO
         		int nftid = resultSet.getInt("nftid");
         		java.sql.Timestamp start= resultSet.getTimestamp("start");
         		double price = resultSet.getDouble("price");
-        		Listing newListing = new Listing(listid, owner, nftid, start, end, price);
-        		allListNft.add(newListing);
+        		allListNft.add(new Listing(listid, owner, nftid, start, end, price)); 
         		}	
         	}   
         resultSet.close();
