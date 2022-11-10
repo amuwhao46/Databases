@@ -208,28 +208,27 @@ public class ListingDAO
         String[] INITIAL = {"use NFTdb; ",
         		"drop table if exists Listing; ",
 		        ("CREATE TABLE if not exists Listing( " +
-		        	"listid INTEGER NOT NOT NULL AUTO_INCREMENT, " +
-                    "owner VARCHAR(50), " +
+		        	"listid INTEGER NOT NULL AUTO_INCREMENT, " +
+                    "owner VARCHAR(100), " +
 		            "nftid INTEGER, " +
 		            "start TIMESTAMP, " +
 		            "end TIMESTAMP, " +
 		            "price DOUBLE, " +
 		            "PRIMARY KEY(listid), " +
 		            "FOREIGN KEY(owner) REFERENCES User(userid), " +
-		            "FOREIGN KEY(nftid) REFERENCES User(nftid),"+"); ")
+		            "FOREIGN KEY(nftid) REFERENCES NFT(nftid)"+"); ")
 				};
-String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price" +
-		"values ('jondoe@gmail.com', '100', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jackenoff@gmail.com', '101', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('bendover@gmail.com', '102', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('erinmoore@gmail.com', '103', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('mikehunt@gmail.com', '104', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('mikehunt@gmail.com', '105', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('jessicacole@gmail.com', '106', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('meganfoxx@gmail.com', '107', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('meganfoxx@gmail.com', '108', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('harryballs@gmail.com', '109', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
-				"('marymean@gmail.com', '110', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10');"
+String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)" +
+		"values ('jondoe@gmail.com', '1', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '2', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '3', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '4', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '5', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '6', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '7', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '8', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '9', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10')," +
+				"('jondoe@gmail.com', '10', '"+ startTime.toString() + "',"+ endTime.toString()+ "', '10');"
     			)};
         
         //for loop to put these in database
