@@ -236,6 +236,29 @@ public class userDAO
     	return false;
     }
     
+    public boolean increaseUserBal(String userid, double amount) throws SQLException {
+        String sql = "update User set eth_bal=? where userID = ?";
+        user currentUser = getUser(userid);
+        preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        preparedStatement.setDouble(1, currentUser.getinit_bal() + amount);
+        preparedStatement.setString(2, userid);
+         
+        boolean rowUpdated = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        return rowUpdated;     
+    }
+    
+    public boolean decreaseUserBal(String userid, double amount) throws SQLException {
+        String sql = "update User set eth_bal=? where userID = ?";
+        user currentUser = getUser(userid);
+        preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        preparedStatement.setDouble(1, currentUser.getinit_bal() - amount);
+        preparedStatement.setString(2, userid);
+         
+        boolean rowUpdated = preparedStatement.executeUpdate() > 0;
+        preparedStatement.close();
+        return rowUpdated;     
+    }
     
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
