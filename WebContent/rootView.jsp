@@ -75,6 +75,30 @@
 		                    <td><c:out value="${nfts.mint_time}" /></td>
 		            </c:forEach>
 		        </table>
+		        
+		        			<h1>List all Listings</h1>
+		    <div align="center">
+		        <table border="1" cellpadding="6">
+		            <caption><h2>List of Listings</h2></caption>
+		            <tr>
+		                <th>Listid</th>
+		                <th>Nftid</th>
+		                <th>Owner</th>
+		                <th>Start</th>
+		                <th>End</th>
+		                <th>Price</th>
+	
+		            </tr>
+		            <c:forEach var="list" items="${listing}">
+		                <tr style="text-align:center">
+		                    <td><c:out value="${list.listid}" /></td>
+		                    <td><c:out value="${nfts.nftid}" /></td>
+		                    <td><c:out value="${nfts.owner}" /></td>
+		                    <td><c:out value="${nfts.start}" /></td>
+		                    <td><c:out value="${nfts.end}" /></td>
+		                    <td><c:out value="${nfts.price}" /></td>
+		            </c:forEach>
+		        </table>
 			</div>
 		</div>
 	</body>
