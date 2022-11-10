@@ -236,7 +236,7 @@ public class userDAO
     	return false;
     }
     
-    public boolean increaseUserBal(String userid, double amount) throws SQLException {
+    public boolean increaseBal(String userid, double amount) throws SQLException {
         String sql = "update User set eth_bal=? where userID = ?";
         user currentUser = getUser(userid);
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
@@ -248,7 +248,7 @@ public class userDAO
         return rowUpdated;     
     }
     
-    public boolean decreaseUserBal(String userid, double amount) throws SQLException {
+    public boolean decreaseBal(String userid, double amount) throws SQLException {
         String sql = "update User set eth_bal=? where userID = ?";
         user currentUser = getUser(userid);
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);

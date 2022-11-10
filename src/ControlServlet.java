@@ -291,10 +291,24 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	if (list != null) {
 	    		// Error handling
-	    		if (list.getEnd().compareTo(timeStamp) < 0) {
-	    			
-	    		}
+//	    		if (list.getEnd().compareTo(timeStamp) < 0) {
+//	    			
+//	    		}
 	    		
+	    		// Buy and Sell NFT
+	    		userDAO.increaseBal(list.getOwner(), list.getPrice());
+	    		userDAO.decreaseBal(currentUser, list.getPrice());
+	    		ListingDAO.delete(nftid);
+	    		nftDAO.updateOwner(nftid, currentUser);
+	    		
+	    		//Transaction
+	    		Transaction newTransfer = new Transaction(list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
+	    		TransactionDAO.insert(newTransfer);
+	    		
+		    	request.setAttribute("listNFT", nftDAO.listAllNfts());  
+		        request.setAttribute("allListings", ListingDAO.allListedNfts());  
+		        dispatcher.forward(request, response);
+		    	return;
 	    	}
 	    }
 	    
