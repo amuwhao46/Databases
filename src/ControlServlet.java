@@ -143,7 +143,9 @@ public class ControlServlet extends HttpServlet {
 	     
 	        List<nft> listNft = nftDAO.listAllNfts();
 	        List<Listing> allListings = listingDAO.allListedNfts();
+	        
 	        request.setAttribute("listNft", listNft);       
+	        request.setAttribute("allListings", allListings);       
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
 	        dispatcher.forward(request, response);
 	     
@@ -219,8 +221,6 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
-			//Testing what shows up
-			request.setAttribute("listing", ListingDAO.allListedNfts());
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response); //Root view to see how c:forEach is connected
 	    } 
 	    

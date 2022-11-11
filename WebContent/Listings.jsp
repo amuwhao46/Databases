@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@ align-items: center;
 		</div>
 		<div class="wrap">
 			<label>Price (Etherium)</label>
-			<input type="number" name="price" step="0.001" value=".01" required>
+			<input type="number" name="price" step="0.005" value=".01" required>
 		</div>
 		<button type="submit">Create Listing</button>
 	</form>

@@ -8,6 +8,17 @@
  <html>
 	 <head>
 	 	<title>Search</title>
+	 	<style>
+	 		body {
+				font-family: 'Roboto', sans-serif;
+				/* background-color: rgb(255, 153, 153); */
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+		  		width: 50%;
+				padding: 10px;
+			}
+	 	</style>
 	 </head>
 	 
 	 <body>
