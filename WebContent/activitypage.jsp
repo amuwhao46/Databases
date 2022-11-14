@@ -71,7 +71,10 @@
 		                    <td><c:out value="${nfts.unique_name}" /></td>
 		                    <td><c:out value="${nfts.description}" /></td>
 		                    <td><c:out value="${nfts.created_date}" /></td>
-		                    <td><c:out value="${nfts.nft_image}" /></td>
+		                    <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
+		                    <td><c:out value="${nfts.creator}" /></td>
+		                    <td><c:out value="${nfts.mint_time}" /></td>
+		                    
 		            </c:forEach>
 		        </table>
 	</body>

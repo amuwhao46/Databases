@@ -81,8 +81,7 @@ public class userDAO
         } catch (SQLException e) {
         	System.out.println(e.toString()+ ", that is the error");
         }
-        disconnect(); 
-        
+       
         return listUser;
     }
     

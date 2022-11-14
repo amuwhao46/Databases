@@ -99,6 +99,16 @@ public class ControlServlet extends HttpServlet {
         		dispatcher = request.getRequestDispatcher("listing.jsp");       
     	        dispatcher.forward(request, response);
          		break;
+         		
+         		
+         	case "/listCurrentUserNft":
+         		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+         		dispatcher = request.getRequestDispatcher("activitypage.jsp");       
+         		dispatcher.forward(request, response);
+         		break;
+         		
+         		
+         		
          	case "/buy":
          		System.out.println("Preparing to buy current NFT");
          		buy(request, response);
@@ -110,11 +120,6 @@ public class ControlServlet extends HttpServlet {
          	case "/endTransfer":
          		System.out.println("Completed transferring NFT");
          		endTransfer(request, response);
-         		break;
-         	case "/listCurrentUserNft":
-         		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
-         		dispatcher = request.getRequestDispatcher("activitypage.jsp");       
-         		dispatcher.forward(request, response);
          		break;
          		
 	    	}   
@@ -234,7 +239,7 @@ public class ControlServlet extends HttpServlet {
 	    private void createListing(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	    	
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("Listings.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("listings.jsp");
 	    	int nftid= Integer.parseInt(request.getParameter("nftid"));
 	    	int lengthoftime= Integer.parseInt(request.getParameter("lengthoftime"));
 	    	double price= Double.parseDouble(request.getParameter("price"));
@@ -261,7 +266,7 @@ public class ControlServlet extends HttpServlet {
 	    		listingDAO.insert(new Listing(currentUser,nftid,startTime, endTime, price));
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 	    		request.setAttribute("success!", "Listing has been Created!");
-	    		dispatcher = request.getRequestDispatcher("Listings.jsp"); 
+	    		dispatcher = request.getRequestDispatcher("listings.jsp"); 
 	    		dispatcher.forward(request, response);
 	    		
 	    	}
