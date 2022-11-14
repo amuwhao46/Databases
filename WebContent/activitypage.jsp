@@ -49,7 +49,7 @@
 		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
 		 <div class=container>
 			 <a class="Button2" href="mint.jsp"target ="_self" > Mint NFT</a>
-			 <a class="Button2" href="search"target ="_self" > Search for a NFT</a>
+			 <a class="Button2" href="search.jsp"target ="_self" > Search for a NFT</a>
 			 <a class="Button2" href="listing"target ="_self" > View Listed NFT's</a>
 			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer a NFT!</a>
 		 </div>
@@ -67,7 +67,7 @@
 		                <th>Time Minted</th>
 		                
 		            </tr>
-		            <c:forEach var="nfts" items="${listNft}">
+		            <c:forEach var="nfts" items="${userNFT}">
 		                <tr style="text-align:center">
 		                    <td><c:out value="${nfts.nftid}" /></td>
 		                    <td><c:out value="${nfts.unique_name}" /></td>
