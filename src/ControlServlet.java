@@ -294,9 +294,9 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	if (list != null) {
 	    		// Error handling
-//	    		if (list.getEnd().compareTo(timeStamp) < 0) {
-//	    			
-//	    		}
+	    		if (list.getEnd().compareTo(timeStamp) < 0) {
+	    			
+	    		}
 	    		
 	    		// Buy and Sell NFT
 	    		userDAO.increaseBal(list.getOwner(), list.getPrice());
@@ -339,7 +339,7 @@ public class ControlServlet extends HttpServlet {
 	    	Transaction newTransfer = new Transaction(currentUser, reciever, timeStamp, (double) 0, "transfer");
 	    	TransactionDAO.insert(newTransfer); // Insert a new transaction into the database
 	    	
-	    	request.setAttribute("userNFTs", nftDAO.listOwnedNfts(currentUser));
+	    	request.setAttribute("userNft", nftDAO.listOwnedNfts(currentUser));
 	        request.setAttribute("allUsers", userDAO.listAllUsers());
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("transfer.jsp");       
 	        dispatcher.forward(request, response);

@@ -20,11 +20,11 @@
 		<div align="center">
 			<h1>Transfer a NFT to another User!:</h1>
 			<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
-			<form action="endTransfer">
+			<form action="endTransfer"method="post">
 				<div class="wrap">
 					<label>Select the NFT that you wish to make a listing for</label>
 					<select name="nftid">
-				  		<c:forEach items="${userNFTs}" var="nfts" varStatus="loop">
+				  		<c:forEach items="${userNft}" var="nfts" varStatus="loop">
 							<option value="${nfts.nftid}">
 						        <c:out value="${nfts.unique_name}" />
 						  	</option>
