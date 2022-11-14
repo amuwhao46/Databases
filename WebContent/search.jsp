@@ -25,7 +25,34 @@
 			}
 	 	</style>
 	 </head>
-	 
+	 		<script>
+				function func() {
+				  let input;
+				  let filter;
+				  let table;
+				  let tr;
+				  let td;
+				  let i;
+				  let textVal;
+				  
+				  input = document.getElementById("nftInput");
+				  filter = input.value.toUpperCase();
+				  table = document.getElementById("nftTable");
+				  tr = table.getElementsByTagName("tr");
+				
+				  for (i = 0; i < tr.length; i++) {
+				   	td = tr[i].getElementsByTagName("td")[1];
+				    if (td) {
+				    	textVal = td.textContent || td.innerText;
+				      if (textVal.toUpperCase().indexOf(filter) > - 1) {
+				        tr[i].style.display = "";
+				      } else {
+				        tr[i].style.display = "none";
+				      }
+				    }
+				  }
+				}
+			</script>
 	 <body>
 		<table class="table-container" border="1" cellpadding="6">
 	    <tr>
@@ -79,27 +106,5 @@
 		    </c:forEach>
 		</table>
 		<a href="activitypage.jsp" target="_self">Back</a>
-		<script>
-			function func() {
-			  let input, filter, table, tr, td, i, txtValue;
-			  input = document.getElementById("nftInput");
-			  filter = input.value.toUpperCase();
-			  table = document.getElementById("nftTable");
-			  tr = table.getElementsByTagName("tr");
-			
-			  // Loop through all table rows, and hide those who don't match the search query
-			  for (i = 0; i < tr.length; i++) {
-			   	td = tr[i].getElementsByTagName("td")[1];
-			    if (td) {
-			      txtValue = td.textContent || td.innerText;
-			      if (txtValue.toUpperCase().indexOf(filter) > - 1) {
-			        tr[i].style.display = "";
-			      } else {
-			        tr[i].style.display = "none";
-			      }
-			    }
-			  }
-			}
-		</script>
 	 </body>
  </html>
