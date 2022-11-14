@@ -15,10 +15,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -97,7 +94,7 @@ public class ListingDAO
     
     public Listing getListedNft(int nft) throws SQLException {
         Listing getListNft = null;        
-        String sql = "SELECT * FROM Listing nftid = ?";      
+        String sql = "SELECT * FROM Listing WHERE nftid = ?";      
         connect_func();    
         
         try {

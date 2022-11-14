@@ -149,7 +149,7 @@ public class ControlServlet extends HttpServlet {
 	        
 	        request.setAttribute("listNft", listNft);       
 	        request.setAttribute("allListings", allListings);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listNFTs finished: 111111111111111111111111111111111111");

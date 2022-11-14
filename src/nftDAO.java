@@ -87,13 +87,13 @@ public class nftDAO
     public List<nft> listOwnedNfts(String userName) throws SQLException {
         List<nft> listOwnedNfts = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT where owner = ?";      
-        connect_func();      
+          
         
            try {
-        	
+        	 connect_func();   
         	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         	preparedStatement.setString(1, userName);
-        	ResultSet resultSet = statement.executeQuery(sql);
+        	ResultSet resultSet = preparedStatement.executeQuery();
         	
         	while (resultSet.next()) {
         		int nftid = resultSet.getInt("nftid");
