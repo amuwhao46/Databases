@@ -224,7 +224,8 @@ public class ControlServlet extends HttpServlet {
 	   	 	}
 	    } 
 	    
-	    private void rootPage(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException, SQLException{
+	    private void rootPage(HttpServletRequest request, HttpServletResponse response, String view)
+	    		throws ServletException, IOException, SQLException{
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
