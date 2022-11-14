@@ -63,6 +63,8 @@
 		                <th>Description</th>
 		                <th>Date created</th>
 		                <th>Image</th>
+		                <th>Creator</th>
+		                <th>Time Minted</th>
 		                
 		            </tr>
 		            <c:forEach var="nfts" items="${listNft}">
