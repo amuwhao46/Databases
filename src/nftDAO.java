@@ -178,14 +178,14 @@ public class nftDAO
         return rowUpdated;     
     }
     
-    public nft getNft(String nftid) throws SQLException {
+    public nft getNft(int nftid) throws SQLException {
     	nft nft = null;
         String sql = "SELECT * FROM NFT WHERE nftid = ?";
          
         connect_func();
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, nftid);
+        preparedStatement.setInt(1, nftid);
          
         ResultSet resultSet = preparedStatement.executeQuery();
          
@@ -196,7 +196,7 @@ public class nftDAO
             String owner = resultSet.getString("owner");
             String creator = resultSet.getString("creator");
             java.sql.Timestamp mint_time = resultSet.getTimestamp(nftid);
-            nft = new nft(unique_name, description, nft_image, owner, creator, mint_time);
+            nft = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
         }
          
         resultSet.close();
