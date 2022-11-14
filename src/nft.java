@@ -18,7 +18,7 @@ public class nft {
 	    public nft(int nftid, String unique_name, String description, String nft_image, 
 	    		String owner, String creator, java.sql.Timestamp mint_time) {
 	    	this(unique_name, description, nft_image, owner, creator, mint_time);
-	    	this.nftid = nftid;
+	    this.nftid=nftid;
 	    }
 	 
 	    public nft(String unique_name, String description, String nft_image, 
