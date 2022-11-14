@@ -111,13 +111,13 @@ public class nftDAO
         		
         		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
         		listOwnedNfts.add(nfts);
-        	}        
+        	}   resultSet.close();     
         } catch(Exception e) {
         	throw new SQLException(e);
         }
 
-        resultSet.close();
-        disconnect();        
+    
+             
         return listOwnedNfts;
     }
     
@@ -141,12 +141,12 @@ public class nftDAO
         preparedStatement.close();
     }
     
-    public boolean delete(String nftid) throws SQLException {
+    public boolean delete(int nftid) throws SQLException {
         String sql = "DELETE FROM NFT WHERE nftid = ?";        
         connect_func();
          
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, nftid);
+        preparedStatement.setInt(1, nftid);
          
         boolean rowDeleted = preparedStatement.executeUpdate() > 0;
         preparedStatement.close();
@@ -209,12 +209,12 @@ public class nftDAO
         return nft;
     }
     
-    public boolean checknftid(String nftid) throws SQLException {
+    public boolean checknftid(int nftid) throws SQLException {
     	boolean checks = false;
     	String sql = "SELECT * FROM NFT WHERE nftid = ?";
     	connect_func();
     	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-        preparedStatement.setString(1, nftid);
+        preparedStatement.setInt(1, nftid);
         ResultSet resultSet = preparedStatement.executeQuery();
         
         System.out.println(checks);	
@@ -269,7 +269,7 @@ String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner,
         	statement.execute(INITIAL[i]);
         for (int i = 0; i < TUPLES.length; i++)	
         	statement.execute(TUPLES[i]);
-        disconnect();
+
     }
     
     

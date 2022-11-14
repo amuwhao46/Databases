@@ -51,7 +51,7 @@
 			 <a class="Button2" href="mint.jsp"target ="_self" > Mint NFT</a>
 			 <a class="Button2" href="search.jsp"target ="_self" > Search for a NFT</a>
 			 <a class="Button2" href="listings.jsp"target ="_self" > View Listed NFT's</a>
-			 <a class="Button2" href="transfer.jsp"target ="_self" > Transfer a NFT!</a>
+			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer a NFT!</a>
 		 </div>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>Current NFTs</h1>
