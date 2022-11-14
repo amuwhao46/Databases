@@ -89,6 +89,7 @@
 		        <th>Buy</th>
 		    </tr>
 		    <c:forEach var="nfts" items="${listNFT}">
+		    
 		    <tr>
 		        <td><c:out value="${nfts.nftid}" /></td>
 		        <td><c:out value="${nfts.unique_name}" /></td>
