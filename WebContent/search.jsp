@@ -11,18 +11,23 @@
 	 	<style>
 	 		body {
 				font-family: 'Roboto', sans-serif;
-				/* background-color: rgb(255, 153, 153); */
+				background-color: rgb(255, 153, 153);
 				text-align: center;
 				margin-left: auto;
 				margin-right: auto;
 		  		width: 50%;
 				padding: 10px;
 			}
+			.table-container {
+				margin-left:auto;
+				margin-right:auto;
+				margin-bottom: 2rem;
+			}
 	 	</style>
 	 </head>
 	 
 	 <body>
-		<table border="1" cellpadding="6">
+		<table class="table-container" border="1" cellpadding="6">
 	    <tr>
 	        <th>NFTID</th>
 	        <th>Owner</th>
@@ -40,10 +45,12 @@
 	    </tr>
 	    </c:forEach>
 		</table>
+		
 		<input type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
+		
 	    <h1>Search available NFT's</h1>
 		<h3>Listed NFT's can be bought</h3>
-		<table border="1" cellpadding="6" id="nftTable">
+		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
 		        <th>NFTID</th>
 		        <th>Name</th>
@@ -74,7 +81,6 @@
 		<a href="activitypage.jsp" target="_self">Back</a>
 		<script>
 			function func() {
-			  // Declare variables
 			  let input, filter, table, tr, td, i, txtValue;
 			  input = document.getElementById("nftInput");
 			  filter = input.value.toUpperCase();
