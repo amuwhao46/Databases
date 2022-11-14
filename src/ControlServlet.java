@@ -23,12 +23,12 @@ import java.sql.PreparedStatement;
 
 public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
-	    private userDAO userDAO = new userDAO();
-	    private nftDAO nftDAO = new nftDAO();
+	    private static userDAO userDAO;
+	    private static nftDAO nftDAO;
 	    private String currentUser;
 	    private HttpSession session=null;
-	    private ListingDAO ListingDAO = new ListingDAO();
-	    private TransactionDAO TransactionDAO = new TransactionDAO();
+	    private static ListingDAO ListingDAO;
+	    private static TransactionDAO TransactionDAO;
 	    
 	    public ControlServlet()
 	    {
@@ -40,6 +40,8 @@ public class ControlServlet extends HttpServlet {
 	    	userDAO = new userDAO();
 	    	nftDAO = new nftDAO();
 	    	currentUser= "";
+	    	TransactionDAO= new TransactionDAO();
+	    	ListingDAO=new ListingDAO();
 	    }
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
