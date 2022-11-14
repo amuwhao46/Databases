@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -20,7 +20,7 @@
 		<div align="center">
 			<h1>Transfer a NFT to another User!:</h1>
 			<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
-			<form action="endTransfer"method="post">
+			<form action="endTransfer" method="post">
 				<div class="wrap">
 					<label>Select the NFT that you wish to make a listing for</label>
 					<select name="nftid">

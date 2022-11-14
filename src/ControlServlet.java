@@ -95,16 +95,11 @@ public class ControlServlet extends HttpServlet {
         		dispatcher = request.getRequestDispatcher("listings.jsp");       
     	        dispatcher.forward(request, response);
          		break;
-         		
-         		
          	case "/listCurrentUserNft":
          		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
          		dispatcher = request.getRequestDispatcher("activitypage.jsp");       
          		dispatcher.forward(request, response);
          		break;
-         		
-         		
-         		
          	case "/buy":
          		System.out.println("Preparing to buy current NFT");
          		buy(request, response);
