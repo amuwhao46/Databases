@@ -27,8 +27,8 @@ public class ControlServlet extends HttpServlet {
 	    private static nftDAO nftDAO;
 	    private String currentUser;
 	    private HttpSession session=null;
-	    private static ListingDAO ListingDAO;
-	    private static TransactionDAO TransactionDAO;
+	    private static ListingDAO listingDAO;
+	    private static TransactionDAO transactionDAO;
 	    
 	    public ControlServlet()
 	    {
@@ -40,8 +40,8 @@ public class ControlServlet extends HttpServlet {
 	    	userDAO = new userDAO();
 	    	nftDAO = new nftDAO();
 	    	currentUser= "";
-	    	TransactionDAO= new TransactionDAO();
-	    	ListingDAO=new ListingDAO();
+	    	transactionDAO= new TransactionDAO();
+	    	listingDAO=new ListingDAO();
 	    }
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,8 +65,8 @@ public class ControlServlet extends HttpServlet {
         	case "/initialize":
         		userDAO.init();
         		nftDAO.init();
-        		ListingDAO.init();
-        		TransactionDAO.init();
+        		listingDAO.init();
+        		transactionDAO.init();
         		System.out.println("Database successfully initialized!");
         		rootPage(request,response,"");
         		break;
@@ -79,10 +79,6 @@ public class ControlServlet extends HttpServlet {
         	 case "/list": 
                  System.out.println("The action is: list");
                  listUser(request, response);           	
-                 break;
-        	 case "/listNft": 
-                 System.out.println("The action is: list");
-                 listNft(request, response);           	
                  break;
          	case "/mint":
         		mint(request,response);
@@ -144,7 +140,7 @@ public class ControlServlet extends HttpServlet {
 	    
 	    private void listNft(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
-	    	ListingDAO listingDAO = new ListingDAO();
+	    
 	        System.out.println("listNFT started: 00000000000000000000000000000000000");
 
 	     
@@ -244,7 +240,7 @@ public class ControlServlet extends HttpServlet {
 	    	int nftid= Integer.parseInt(request.getParameter("nftid"));
 	    	int lengthoftime= Integer.parseInt(request.getParameter("lengthoftime"));
 	    	double price= Double.parseDouble(request.getParameter("price"));
-	    	ListingDAO listingDAO = new ListingDAO();
+	
 	    	
 	    	if (price<=0) {
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
@@ -296,7 +292,7 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
 	    	user currentBuyer = userDAO.getUser(currentUser);
-	    	Listing list = ListingDAO.getListedNft(nftid);
+	    	Listing list = listingDAO.getListedNft(nftid);
 	    	
 	    	if (list != null) {
 	    		// Error handling
@@ -307,15 +303,15 @@ public class ControlServlet extends HttpServlet {
 	    		// Buy and Sell NFT
 	    		userDAO.increaseBal(list.getOwner(), list.getPrice());
 	    		userDAO.decreaseBal(currentUser, list.getPrice());
-	    		ListingDAO.delete(nftid);
+	    		listingDAO.delete(nftid);
 	    		nftDAO.updateOwner(nftid, currentUser);
 	    		
 	    		//Transaction
 	    		Transaction newTransfer = new Transaction(list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
-	    		TransactionDAO.insert(newTransfer);
+	    		transactionDAO.insert(newTransfer);
 	    		
 		    	request.setAttribute("listNFT", nftDAO.listAllNfts());  
-		        request.setAttribute("allListings", ListingDAO.allListedNfts());  
+		        request.setAttribute("allListings", listingDAO.allListedNfts());  
 		        dispatcher.forward(request, response);
 		    	return;
 	    	}
@@ -340,10 +336,10 @@ public class ControlServlet extends HttpServlet {
 	    	Date currentTime = new Date();
 	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
 	    	
-	    	ListingDAO.delete(nftid); // Delete the listing of the NFT if there exists one
+	    	listingDAO.delete(nftid); // Delete the listing of the NFT if there exists one
 	    	nftDAO.updateOwner(nftid, reciever);
 	    	Transaction newTransfer = new Transaction(currentUser, reciever, timeStamp, (double) 0, "transfer");
-	    	TransactionDAO.insert(newTransfer); // Insert a new transaction into the database
+	    	transactionDAO.insert(newTransfer); // Insert a new transaction into the database
 	    	
 	    	request.setAttribute("userNft", nftDAO.listOwnedNfts(currentUser));
 	        request.setAttribute("allUsers", userDAO.listAllUsers());
