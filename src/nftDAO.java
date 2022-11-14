@@ -57,11 +57,14 @@ public class nftDAO
     public List<nft> listAllNfts() throws SQLException {
         List<nft> listNft = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT";      
-        connect_func();      
-        statement = (Statement) connect.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
+        
         
         try {
+        	
+        	connect_func();      
+        	statement = (Statement) connect.createStatement();
+        	ResultSet resultSet = statement.executeQuery(sql);
+        	
         	while (resultSet.next()) {
         		int nftid = resultSet.getInt("nftid");
         		String unique_name = resultSet.getString("unique_name");
@@ -74,13 +77,14 @@ public class nftDAO
         		
         		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
         		listNft.add(nfts);
-        	}        
+        	}  
+        	  resultSet.close(); 
+        	
         } catch(Exception e) {
         	throw new SQLException(e);
         }
 
-        resultSet.close();
-        disconnect();        
+         
         return listNft;
     }
     
