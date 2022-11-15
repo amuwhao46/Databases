@@ -84,7 +84,7 @@
 	    </c:forEach>
 		</table> --%>
 		
-		<h3>Listed NFT's can be bought</h3>
+		<h3>Listed NFT's that can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
 		        <th>NFTID</th>

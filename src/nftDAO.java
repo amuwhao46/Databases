@@ -257,8 +257,8 @@ String[] TUPLES = {("insert into NFT(unique_name, description, nft_image, owner,
     	 	 	"('Enraged Master','Entitled man is upset over small deal','1485', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
     		 	"('Gleam Steam','Shiny steam cakes air and catches attention','3780', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
     		 	"('Corrupt Rose','The baddest of all roses','3921', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
-    		 	"('Fancy Unicorn','You know hes fly with his little hat','426', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
-    			"('Murky Dragonfly','This guys been flying through the desert','444', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
+    		 	"('Fancy Unicorn','You know hes fly with his little hat','426', 'oke@gmail.com', 'oke@gmail.com', '" + mint_time + "')," +
+    			"('Murky Dragonfly','This guys been flying through the desert','444', 'alf@gmail.com', 'alf@gmail.com', '" + mint_time + "')," +
     			"('Wealthy Stardust','Personified gold','3513', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "')," +
     			"('Misty Bat','If batman worked at a water park','859', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "'),"+
     			"('Good Oak','Bad City','2562', 'bendover@gmail.com', 'bendover@gmail.com', '" + mint_time + "');"
