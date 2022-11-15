@@ -290,7 +290,7 @@ public class ControlServlet extends HttpServlet {
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
 	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp"); 
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("search"); 
 	    	
 	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
 	    	user currentBuyer = userDAO.getUser(currentUser);

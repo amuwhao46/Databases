@@ -88,7 +88,7 @@
 		        <th>Date Created</th>
 		        <th>Buy</th>
 		    </tr>
-		    <c:forEach var="nfts" items="${listNFT}">
+		    <c:forEach var="nfts" items="${listNft}">
 		    
 		    <tr>
 		        <td><c:out value="${nfts.nftid}" /></td>
@@ -98,11 +98,11 @@
 		        <td><c:out value="${nfts.owner}" /></td>
 		        <td><c:out value="${nfts.creator}" /></td>  
 		        <td><c:out value="${nfts.mint_time}" /></td>
-<%-- 		        <td>
+	        <td>
 		            <a href="buy?nftid=<c:out value="${nfts.nftid}" />">
 		                <button class="unnamed">Buy</button>
 		            </a>
-		        </td>  --%>  
+		        </td>   
 		    </tr>
 		    </c:forEach>
 		</table>
