@@ -287,9 +287,9 @@ String[] TUPLES = {("insert into User(userid, firstName, lastName, password, bir
     	 	 	"('jackenoff@gmail.com', 'Jack', 'Enoff', '99C2*iXAn3', '2001-04-12', '1485', 'Tator Patch Road', 'Chicago', 'IL', '60605', '100')," +
     		 	"('bendover@gmail.com', 'Ben', 'Dover', '77@Z!G54pa', '2000-09-12', '3780', 'Green Acres Road', 'Greenville', 'NC', '27834', '100')," +
     		 	"('erinmoore@gmail.com', 'Erin', 'Moore', 'f5eO#24Z4@', '2002-04-18', '3921', 'Junior Avenue', 'Atlanta', 'GA', '30309', '100')," +
-    		 	"('alf@gmail.com', 'Alfred', 'Carra', 'alfred', '2000-07-28', '426', 'Farnum Road', 'New York City', 'NY', '10004', '100')," +
+    		 	"('alf@gmail.com', 'Alfred', 'Carra', 'alfred123', '2000-07-28', '426', 'Farnum Road', 'New York City', 'NY', '10004', '100')," +
     			"('jessicacole@gmail.com', 'Jessica', 'Cole', 'G@078D*k3x', '2001-04-10', '444', 'Five Points', 'Easton', 'MD', '21601', '100')," +
-    			"('oke@gmail.com', 'oke', 'Amuwha', 'oke', '2000-08-14', '3513', 'Palmer Road', 'Worthington', 'OH', '43085', '100')," +
+    			"('oke@gmail.com', 'oke', 'Amuwha', 'oke123', '2000-08-14', '3513', 'Palmer Road', 'Worthington', 'OH', '43085', '100')," +
     			"('harryballs@gmail.com', 'Harry', 'Balls', '*x^Z9%me40', '2000-08-17', '859', 'Bassel Street', 'Metairie', 'LA', '70001', '100'),"+
     			"('test@gmail.com', 'Test', 'Testing', 'Test1234', '2000-08-17', '859', 'Bassel Street', 'Metairie', 'LA', '70001', '100'),"+
     			"('marymean@gmail.com', 'Mary', 'Mean', 'd^F3!s39$%', '1998-09-26', '2562', 'Gateway Avenue', 'Bakersfield', 'CA', '93301', '100');"
