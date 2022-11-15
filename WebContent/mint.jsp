@@ -62,7 +62,7 @@
 					</tr>
 				</table>
 			</form>
-			<a class="button" href="activitypage.jsp" target="_self">Back to Activity Page</a>
+			<a class="button" href="goHome" target="_self">Back to Activity Page</a>
 		</div>
 	</body>
 </html>

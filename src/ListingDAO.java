@@ -130,46 +130,7 @@ public class ListingDAO
         return getListNft;
     }
     
-    public List<Listing> userListedNfts(String username) throws SQLException {
-        List<Listing> allListNft = new ArrayList<Listing>();        
-        String sql = "SELECT * FROM Listing WHERE owner= ?";      
-        connect_func();      
-
-        try {
-        	
-
-      	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-      	  preparedStatement.setString(1, username);
-      	  ResultSet resultSet = statement.executeQuery(sql);
-      
- 
-        	while (resultSet.next()) {
-        		
-        		int listid= resultSet.getInt("listid");
-        		java.sql.Timestamp end= resultSet.getTimestamp("end");
-        		
-        		if (end.compareTo(new Date())<0) {
-        			
-        			this.delete(listid);
-        		}
-        		
-        		else{
-        		String owner = resultSet.getString("owner");
-        		int nftid = resultSet.getInt("nftid");
-        		java.sql.Timestamp start= resultSet.getTimestamp("start");
-        		double price = resultSet.getDouble("price");
-        		Listing newListing = new Listing(listid, owner, nftid, start, end, price);
-        		allListNft.add(newListing);
-        		}	
-        	}   
-        resultSet.close();
-        } catch(Exception e) {
-        	throw new SQLException(e);
-        }
-     
-        return allListNft;
-    }
-    
+  
     public void insert(Listing newListing) throws SQLException {
     	connect_func();         
 		String sql = "insert into Listing(owner, nftid, start, end, price) values (?, ?, ?, ?, ?)";
@@ -222,15 +183,15 @@ public class ListingDAO
         
         String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)"+
     			"values ('jondoe@gmail.com', '1', '" + startTime.toString() + "', '" + endTime.toString() + "', '10'), "+
-    			"('jondoe@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '4', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '5', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '6', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '7', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '8', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '9', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('jondoe@gmail.com', '10', '" + startTime.toString() + "', '" + endTime.toString() + "', '10');")
+    			"('bendover@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '4', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '5', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '6', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '7', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '8', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '9', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '10', '" + startTime.toString() + "', '" + endTime.toString() + "', '10');")
 		    	};
         
         //for loop to put these in database

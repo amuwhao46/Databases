@@ -95,11 +95,6 @@ public class ControlServlet extends HttpServlet {
         		dispatcher = request.getRequestDispatcher("listings.jsp");       
     	        dispatcher.forward(request, response);
          		break;
-         	case "/listCurrentUserNft":
-         		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
-         		dispatcher = request.getRequestDispatcher("activitypage.jsp");       
-         		dispatcher.forward(request, response);
-         		break;
          	case "/buy":
          		System.out.println("Preparing to buy current NFT");
          		buy(request, response);
@@ -112,8 +107,13 @@ public class ControlServlet extends HttpServlet {
          		System.out.println("Completed transferring NFT");
          		endTransfer(request, response);
          		break;
-         		
-	    	}   
+         	case "/goHome":
+         		System.out.println("Going back home");
+         		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+         		dispatcher = request.getRequestDispatcher("activitypage.jsp");
+         		dispatcher.forward(request, response);
+        	
+        	}   
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
@@ -141,6 +141,10 @@ public class ControlServlet extends HttpServlet {
 	     
 	        List<nft> listNft = nftDAO.listAllNfts();
 	        List<Listing> allListings = listingDAO.allListedNfts();
+	        
+	        for(Listing list: allListings) {
+	        	System.out.println(list.getNFTid());
+	        }
 	        
 	        request.setAttribute("listNft", listNft);       
 	        request.setAttribute("allListings", allListings);       
@@ -170,8 +174,9 @@ public class ControlServlet extends HttpServlet {
 			 	 currentUser = userid;
 			 	 session = request.getSession();
 			 	 session.setAttribute("currentUser", user.getFirstName());
-				 System.out.println("Login Successful! Redirecting");
-				 request.setAttribute("listUser", userDAO.listAllUsers());
+			 	 session.setAttribute("userid", user.getUserid());				 
+			 	 System.out.println("Login Successful! Redirecting");
+				 request.setAttribute("userNFT", nftDAO.listOwnedNfts(userid));
 				 request.getRequestDispatcher("activitypage.jsp").forward(request, response); // Activity page here!!!!!!!!!
 			 			 			 			 
 	    	 }
@@ -224,6 +229,7 @@ public class ControlServlet extends HttpServlet {
 	    } 
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	    	session.setAttribute("userid", "");
 	    	currentUser = "";
         		response.sendRedirect("login.jsp");
         }	
@@ -277,7 +283,8 @@ public class ControlServlet extends HttpServlet {
 	   	 	nftDAO.insert(nfts);
 	   	 	
 		    System.out.println("Saved to NFT database");
-		   	response.sendRedirect("activitypage.jsp");
+		    request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+		   	response.sendRedirect("goHome");
 	    } 
 	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
@@ -340,5 +347,6 @@ public class ControlServlet extends HttpServlet {
 	        request.setAttribute("allUsers", userDAO.listAllUsers());
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("transfer.jsp");       
 	        dispatcher.forward(request, response);
+	       
 	    }
 }

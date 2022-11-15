@@ -106,6 +106,6 @@
 		    </tr>
 		    </c:forEach>
 		</table>
-		<a href="activitypage.jsp" target="_self">Back</a>
+		<a href="goHome" target="_self">Back</a>
 	 </body>
  </html>

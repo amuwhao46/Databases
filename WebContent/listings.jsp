@@ -22,7 +22,7 @@ align-items: center;
 <body>
 <div align="center">
 	<h1>Please create a listing:</h1>
-	<h2><a href="activitypage.jsp">Go back to the activity page!</a></h2>
+	<h2><a href="goHome">Go back to the activity page!</a></h2>
 	<form method="post" action="createListing">
 		<div class="wrap">
 			<label>Select the NFT that you wish to make a listing for</label>
