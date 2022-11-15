@@ -236,7 +236,7 @@ public class userDAO
     }
     
     public boolean increaseBal(String userid, double amount) throws SQLException {
-        String sql = "update User set eth_bal=? where userID = ?";
+        String sql = "update User set init_bal=? where userID = ?";
         user currentUser = getUser(userid);
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         preparedStatement.setDouble(1, currentUser.getinit_bal() + amount);
@@ -248,7 +248,7 @@ public class userDAO
     }
     
     public boolean decreaseBal(String userid, double amount) throws SQLException {
-        String sql = "update User set eth_bal=? where userID = ?";
+        String sql = "update User set init_bal=? where userID = ?";
         user currentUser = getUser(userid);
         preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         preparedStatement.setDouble(1, currentUser.getinit_bal() - amount);

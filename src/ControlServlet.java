@@ -290,7 +290,7 @@ public class ControlServlet extends HttpServlet {
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
 	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp"); 
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("search"); 
 	    	
 	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
 	    	user currentBuyer = userDAO.getUser(currentUser);
@@ -312,8 +312,7 @@ public class ControlServlet extends HttpServlet {
 	    		Transaction newTransfer = new Transaction(list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
 	    		transactionDAO.insert(newTransfer);
 	    		
-		    	request.setAttribute("listNFT", nftDAO.listAllNfts());  
-		        request.setAttribute("allListings", listingDAO.allListedNfts());  
+	    		response.sendRedirect("search");   
 		        dispatcher.forward(request, response);
 		    	return;
 	    	}
