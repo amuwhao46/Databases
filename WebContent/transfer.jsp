@@ -29,7 +29,7 @@
 			<h2><a href="goHome">Go back to the activity page!</a></h2>
 			<form action="endTransfer" method="post">
 				<div class="wrap">
-					<label>Select the NFT that you wish to make a listing for</label>
+					<label>Select the NFT that you wish to transfer</label>
 					<select name="nftid">
 				  		<c:forEach items="${userNft}" var="nfts" varStatus="loop">
 							<option value="${nfts.nftid}">
