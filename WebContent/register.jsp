@@ -42,38 +42,38 @@
 					<tr>
 						<th>Email: </th>
 						<td align="center" colspan="3">
-							<input type="text" name="userid" size="45"  value="example@gmail.com" onfocus="this.value=''">
+							<input type="text" name="userid" size="45"  placeholder="example@gmail.com">
 						</td>
 					</tr>
 					<tr>
 						<th>First Name: </th>
 						<td align="center" colspan="3">
-							<input type="text" name="firstName" size="45" value="FirstName" onfocus="this.value=''">
+							<input type="text" name="firstName" size="45" placeholder="FirstName">
 						</td>
 					</tr>
 					<tr>
 						<th>Last Name: </th>
 						<td align="center" colspan="3">
-							<input type="text" name="lastName" size="45" value="LastName" onfocus="this.value=''">
+							<input type="text" name="lastName" size="45" placeholder="LastName">
 						</td>
 					</tr>
 					<tr>
 						<th>Birthday: </th>
 						<td align="center" colspan="3">
-							<input type="text" name="birthday" size="45" value="YYYY-MM-DD" onfocus="this.value=''">
+							<input type="text" name="birthday" size="45" placeholder="YYYY-MM-DD">
 						</td>
 		
 					</tr>
 					<tr>
 						<th>Password: </th>
 						<td align="center" colspan="3"> 
-							<input type="password" name="password" size="45" value="password" onfocus="this.value=''">
+							<input type="password" name="password" size="45" placeholder="password">
 						</td>
 					</tr>
 					<tr>
 						<th>Password Confirmation: </th>
 						<td align="center" colspan="3">
-							<input type="password" name="confirmation" size="45" value="password" onfocus="this.value=''">
+							<input type="password" name="confirmation" size="45" placeholder="password">
 						</td>
 					
 					</tr>

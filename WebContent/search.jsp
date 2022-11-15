@@ -23,37 +23,25 @@
 				margin-right:auto;
 				margin-bottom: 2rem;
 			}
+			.search-container {
+				box-sizing: border-box;
+				padding: 1rem;
+				border: 2px solid black;
+				border-radius: 4px;
+				outline: none;
+				transition: 0.3s;
+				margin-bottom: 2rem;
+			}
+			.search-container:focus {
+				border: 2px solid #FFD700;
+			}
 	 	</style>
 	 </head>
-	 		<script>
-				function func() {
-				  let input;
-				  let filter;
-				  let table;
-				  let tr;
-				  let td;
-				  let i;
-				  let textVal;
-				  
-				  input = document.getElementById("nftInput");
-				  filter = input.value.toUpperCase();
-				  table = document.getElementById("nftTable");
-				  tr = table.getElementsByTagName("tr");
-				
-				  for (i = 0; i < tr.length; i++) {
-				   	td = tr[i].getElementsByTagName("td")[1];
-				    if (td) {
-				    	textVal = td.textContent || td.innerText;
-				      if (textVal.toUpperCase().indexOf(filter) > - 1) {
-				        tr[i].style.display = "";
-				      } else {
-				        tr[i].style.display = "none";
-				      }
-				    }
-				  }
-				}
-			</script>
 	 <body>
+	    <h1>Search available NFT's</h1>
+	    
+		<input class="search-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
+		
 		<table class="table-container" border="1" cellpadding="6">
 	    <tr>
 	        <th>NFTID</th>
@@ -73,9 +61,6 @@
 	    </c:forEach>
 		</table>
 		
-		<input type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
-		
-	    <h1>Search available NFT's</h1>
 		<h3>Listed NFT's can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
@@ -107,5 +92,34 @@
 		    </c:forEach>
 		</table>
 		<a href="goHome" target="_self">Back</a>
+		
+			 		<script>
+				function func() {
+				  let input;
+				  let filter;
+				  let table;
+				  let tr;
+				  let td;
+				  let i;
+				  let textVal;
+				  
+				  input = document.getElementById("nftInput");
+				  filter = input.value.toUpperCase();
+				  table = document.getElementById("nftTable");
+				  tr = table.getElementsByTagName("tr");
+				
+				  for (i = 0; i < tr.length; i++) {
+				   	td = tr[i].getElementsByTagName("td")[1];
+				    if (td) {
+				    	textVal = td.textContent || td.innerText;
+				      if (textVal.toUpperCase().indexOf(filter) > - 1) {
+				        tr[i].style.display = "";
+				      } else {
+				        tr[i].style.display = "none";
+				      }
+				    }
+				  }
+				}
+			</script>
 	 </body>
  </html>
