@@ -40,19 +40,19 @@
 					<tr>
 						<th>Name:</th>
 						<td align="center" colspan="3">
-							<input type="text" name="unique_name" size="45"  value="Big Chungus" onfocus="this.value=''">
+							<input type="text" name="unique_name" size="45"  placeholder="Big Chungus">
 						</td>
 					</tr>
 					<tr>
 						<th>Description:</th>
 						<td align="center" colspan="3">
-							<input type="text" name="description" size="45"  value="Elongated Bugs Bunny" onfocus="this.value=''">
+							<input type="text" name="description" size="45"  placeholder="Elongated Bugs Bunny">
 						</td>
 					</tr>
 					<tr>
 						<th>Image URL:</th>
 						<td align="center" colspan="3">
-							<input type="text" name="nft_image" size="45"  value="bigchungus.com" onfocus="this.value=''">
+							<input type="text" name="nft_image" size="45"  placeholder="bigchungus.com">
 						</td>
 					</tr>
 					<tr>

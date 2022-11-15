@@ -85,8 +85,7 @@
 		</table> --%>
 		
 		<h3>Listed NFT's can be bought</h3>
-		<div class="table-container">
-		<table border="1" cellpadding="6" id="nftTable">
+		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
 		        <th>NFTID</th>
 		        <th>Name</th>
@@ -115,7 +114,6 @@
 		    </tr>
 		    </c:forEach>
 		</table>
-		</div>
 		
 			 <script>
 				function func() {

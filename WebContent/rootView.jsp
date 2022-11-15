@@ -19,6 +19,10 @@
 			table {
 				margin-bottom: 3rem;
 			}
+			.table-container {
+				margin-left: auto;
+				margin-right: auto;
+			}
 		</style>
 	</head>
 	<body>
@@ -29,7 +33,7 @@
 		<a href="login.jsp"target ="_self" > logout</a><br><br> 
 		
 		<h1>List all users</h1>
-	    <table border="1" cellpadding="6">
+	    <table class="table-container" border="1" cellpadding="6">
 		    <tr>
 		        <th>Email</th>
 		        <th>First name</th>
@@ -52,7 +56,7 @@
 		</table>
 		
 		<h1>List all NFTs</h1>
-  		<table border="1" cellpadding="6">
+  		<table class="table-container" border="1" cellpadding="6">
 	        <tr>
 	            <th>NFTid</th>
 	            <th>Name</th>
