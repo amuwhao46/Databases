@@ -3,12 +3,11 @@
 * Oke Amuwha gv4281
 
 
-Alfred- Set up files for configuration. Assisted in translating variables to fit project. Solved github issues when they arose. 
-Oke- Assisted in setting up Files for configuration. Translated files to fit project. Assisted in solving github issues. 
-We spent ~19 hours working collaboratively. Designing our Relational model, ER Diagram, and actually implementing the code. 
+Alfred- Worked on initiialization of  lists and users. Applies some front end styling.
+Oke-  Worked on NFT initialization and transfer abilities. Applied front end designs that enabled us to test our code aswell. 
+We worked concurrently with everything so wour variables wouldnt get messed up. 
+We spent ~15 hours working collaboratively on this part of the project. 
 
 In order to run our project, we recommend you install eclipse. You will want to ensure the properties of the project have a recent version of Java, Dynamic Web Module, 
-and JavaScript. It is also important that in your java Build Path, you have JRE System Library (your version), Server runtime(recent apache tomcat), web app libraries, 
-and EAR Libraries all checked off. Then you will want to run the code by first running "register.jsp" on your tomcat server and registering a user then logging in. If 
-you are looking for administrative actions, you must log into the root user. 
+and JavaScript. It is also important that in your java Build Path, you have JRE System Library (your version), Server runtime(recent apache tomcat), web app libraries, and EAR Libraries all checked off. Then you will want to run the code by first running "register.jsp" on your tomcat server and registering a user then logging in. If you are looking for administrative actions amd am overview of the currently listed NFT's, you must log into the root user. 
 
