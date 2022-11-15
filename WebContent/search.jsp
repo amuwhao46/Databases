@@ -23,7 +23,10 @@
 				margin-right:auto;
 				margin-bottom: 2rem;
 			}
-			.search-container {
+			th {
+				height: 4rem;
+			}
+			.input-container {
 				box-sizing: border-box;
 				padding: 1rem;
 				border: 2px solid black;
@@ -40,7 +43,7 @@
 	 <body>
 	    <h1>Search available NFT's</h1>
 	    
-		<input class="search-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
+		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 		
 		<table class="table-container" border="1" cellpadding="6">
 	    <tr>
