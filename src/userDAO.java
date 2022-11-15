@@ -57,7 +57,7 @@ public class userDAO
         List<user> listUser = new ArrayList<user>();        
         String sql = "SELECT * FROM User";      
         try {
-        	connect_func(); // Call this function in try block in case NFTdb was dropped in MySQL Workbench      
+        	connect_func();   
             statement = (Statement) connect.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
         	while (resultSet.next()) {
