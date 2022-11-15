@@ -101,7 +101,7 @@ public class ListingDAO
         	
         	  preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         	  preparedStatement.setInt(1, nft);
-        	  ResultSet resultSet = statement.executeQuery(sql);
+        	  ResultSet resultSet = preparedStatement.executeQuery();
         
         
         	while (resultSet.next()) {
@@ -136,7 +136,7 @@ public class ListingDAO
 		String sql = "insert into Listing(owner, nftid, start, end, price) values (?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setString(1, newListing.getOwner());
-		preparedStatement.setInt(2, newListing.getNFTid());
+		preparedStatement.setInt(2, newListing.getNftid());
 		preparedStatement.setTimestamp(3, newListing.getStart());
 		preparedStatement.setTimestamp(4, newListing.getEnd());
 		preparedStatement.setDouble(5, newListing.getPrice());		

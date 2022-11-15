@@ -143,7 +143,7 @@ public class ControlServlet extends HttpServlet {
 	        List<Listing> allListings = listingDAO.allListedNfts();
 	        
 	        for(Listing list: allListings) {
-	        	System.out.println(list.getNFTid());
+	        	System.out.println(list.getNftid());
 	        }
 	        
 	        request.setAttribute("listNft", listNft);       

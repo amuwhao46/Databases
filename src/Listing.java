@@ -48,10 +48,10 @@ public class Listing {
 	        this.owner = owner;
 	    }
 	    
-	    public int getNFTid() {
+	    public int getNftid() {
 	        return nftid;
 	    }
-	    public void setNFTid(int nftid) {
+	    public void setNftid(int nftid) {
 	        this.nftid = nftid;
 	    }
 	    
