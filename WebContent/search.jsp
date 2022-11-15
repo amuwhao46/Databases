@@ -15,7 +15,6 @@
 				text-align: center;
 				margin-left: auto;
 				margin-right: auto;
-		  		width: 50%;
 				padding: 10px;
 			}
 			.table-container {
@@ -38,14 +37,35 @@
 			.input-container:focus {
 				border: 2px solid #FFD700;
 			}
+			.Button {
+				padding: .5rem;
+				background-color: red;
+				border-radius: 0.25rem;
+				margin: 1rem;
+				color: white;
+			}
+			.Button2 {
+				padding: .5rem;
+				background-color: red;
+				border-radius: 0.25rem;
+				margin: 1rem;
+				color: white;
+				outline: none;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+			.Button2:hover {
+				background-color: green;
+			}
 	 	</style>
 	 </head>
 	 <body>
 	    <h1>Search available NFT's</h1>
 	    
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
+	    <a class="Button" href="goHome" target="_self">Back</a>
 		
-		<table class="table-container" border="1" cellpadding="6">
+<%-- 		<table class="table-container" border="1" cellpadding="6">
 	    <tr>
 	        <th>NFTID</th>
 	        <th>Owner</th>
@@ -62,10 +82,11 @@
 	        <td><fmt:formatNumber type="currency" value="${list.price}" /></td>
 	    </tr>
 	    </c:forEach>
-		</table>
+		</table> --%>
 		
 		<h3>Listed NFT's can be bought</h3>
-		<table class="table-container" border="1" cellpadding="6" id="nftTable">
+		<div class="table-container">
+		<table border="1" cellpadding="6" id="nftTable">
 		    <tr>
 		        <th>NFTID</th>
 		        <th>Name</th>
@@ -88,15 +109,15 @@
 		        <td><c:out value="${nfts.mint_time}" /></td>
 	        <td>
 		            <a href="buy?nftid=<c:out value="${nfts.nftid}" />">
-		                <button class="unnamed">Buy</button>
+		                <button class="Button2">Buy</button>
 		            </a>
 		        </td>   
 		    </tr>
 		    </c:forEach>
 		</table>
-		<a href="goHome" target="_self">Back</a>
+		</div>
 		
-			 		<script>
+			 <script>
 				function func() {
 				  let input;
 				  let filter;

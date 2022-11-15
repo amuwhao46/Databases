@@ -14,7 +14,6 @@
 				text-align: center;
 				margin-left: auto;
 				margin-right: auto;
-		  		width: 50%;
 				padding: 10px;
 			}
 			table {
@@ -31,7 +30,6 @@
 		
 		<h1>List all users</h1>
 	    <table border="1" cellpadding="6">
-	        <caption><h2>List of Users</h2></caption>
 		    <tr>
 		        <th>Email</th>
 		        <th>First name</th>
@@ -55,7 +53,6 @@
 		
 		<h1>List all NFTs</h1>
   		<table border="1" cellpadding="6">
-	        <caption><h2>List of NFTs</h2></caption>
 	        <tr>
 	            <th>NFTid</th>
 	            <th>Name</th>
