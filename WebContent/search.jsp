@@ -65,25 +65,6 @@
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 	    <a class="Button" href="goHome" target="_self">Back</a>
 		
-<%-- 		<table class="table-container" border="1" cellpadding="6">
-	    <tr>
-	        <th>NFTID</th>
-	        <th>Owner</th>
-	        <th>Start Time</th>
-	        <th>End Time</th>
-	        <th>Price</th>
-	    </tr>
-	    <c:forEach var="list" items="${allListings}">
-	    <tr>
-	        <td><c:out value="${list.nftid}" /></td>
-	        <td><c:out value="${list.owner}" /></td>
-	        <td><c:out value="${list.start}" /></td>
-	        <td><c:out value="${list.end}"/></td>
-	        <td><fmt:formatNumber type="currency" value="${list.price}" /></td>
-	    </tr>
-	    </c:forEach>
-		</table> --%>
-		
 		<h3>Listed NFT's that can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
