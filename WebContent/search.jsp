@@ -35,7 +35,7 @@
 				transition: 0.3s;
 				margin-bottom: 2rem;
 			}
-			.search-container:focus {
+			.input-container:focus {
 				border: 2px solid #FFD700;
 			}
 	 	</style>

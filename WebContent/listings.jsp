@@ -10,11 +10,19 @@
 
 
 <style>
-
-.wrap{
-padding: 1rem;
-align-items: center;
-}
+	body {
+		font-family: 'Roboto', sans-serif;
+		background-color: rgb(255, 153, 153);
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+  		width: 50%;
+		padding: 10px;
+	}
+	.wrap{
+		padding: 1rem;
+		align-items: center;
+	}
 
 </style>
 
