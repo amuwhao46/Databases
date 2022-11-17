@@ -60,11 +60,12 @@
 	 	</style>
 	 </head>
 	 <body>
-	    <h1>Search available NFT's</h1>
+	    <h1>Search for Users and NFT's</h1>
 	    
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 	    <a class="Button" href="goHome" target="_self">Back</a>
 		
+		<!-- Lists and allows search for users -->
 		<h3>Listed NFT's that can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
@@ -93,6 +94,22 @@
 		            </a>
 		        </td>   
 		    </tr>
+		    </c:forEach>
+		</table>
+		
+		<!-- Lists and allows search for users -->
+		<h1>List Users</h1>
+	    <table class="table-container" border="1" cellpadding="6">
+		    <tr>
+		        <th>Email</th>
+		        <th>First name</th>
+		        <th>Last name</th>
+		    </tr>
+		    <c:forEach var="users" items="${listUser}">
+		        <tr style="text-align:center">
+		            <td><c:out value="${users.userid}" /></td>
+		            <td><c:out value="${users.firstName}" /></td>
+		            <td><c:out value="${users.lastName}" /></td>
 		    </c:forEach>
 		</table>
 		

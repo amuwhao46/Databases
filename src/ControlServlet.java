@@ -85,6 +85,7 @@ public class ControlServlet extends HttpServlet {
         		break;
          	case "/search":
          		listNft(request,response);
+         		listUser(request,response);
          		break;
          	case "/createListing":
          		System.out.println("The action is: Create Listing");
@@ -112,7 +113,6 @@ public class ControlServlet extends HttpServlet {
          		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
          		dispatcher = request.getRequestDispatcher("activitypage.jsp");
          		dispatcher.forward(request, response);
-        	
         	}   
 	    }
 	    catch(Exception ex) {

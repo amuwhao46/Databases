@@ -44,14 +44,14 @@
 </style>
 </head>
 	<body>
-			<h1>Welcome!</h1>
+			<h1>Logged in as: <c:out value="${sessionScope.userid}"/> </h1>
 
 		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
 		 <div class=container>
-			 <a class="Button2" href="mint.jsp"target ="_self" > Mint NFT</a>
-			 <a class="Button2" href="search"target ="_self" > Search for a NFT</a>
-			 <a class="Button2" href="listing"target ="_self" > List a NFT's</a>
-			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer a NFT!</a>
+			 <a class="Button2" href="mint.jsp"target ="_self" > Mint an NFT</a>
+			 <a class="Button2" href="search"target ="_self" > Search for an NFT</a>
+			 <a class="Button2" href="listing"target ="_self" > List an NFT</a>
+			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer an NFT!</a>
 		 </div>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>Current NFTs</h1>
