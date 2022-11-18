@@ -63,7 +63,6 @@
                <th>Image</th>
                <th>Creator</th>
                <th>Time Minted</th>
-               
            </tr>
            <c:forEach var="nfts" items="${userNFT}">
                <tr style="text-align:center">
@@ -73,7 +72,6 @@
                    <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
                    <td><c:out value="${nfts.creator}" /></td>
                    <td><c:out value="${nfts.mint_time}" /></td>
-                   
            </c:forEach>
        </table>
 	</body>
