@@ -69,7 +69,7 @@
 		<h3>Listed NFT's that can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
-		        <th>NFTID</th>
+		        <th></a>NFTID</th>
 		        <th>Name</th>
 		        <th>Description</th>
 		        <th>Image</th>
@@ -82,7 +82,7 @@
 		    
 		    <tr>
 		        <td><c:out value="${nfts.nftid}" /></td>
-		        <td><c:out value="${nfts.unique_name}" /></td>
+		        <td><a href="nftList.jsp"><c:out value="${nfts.unique_name}" /></a></td>
 		        <td><c:out value="${nfts.description}" /></td>
 		        <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
 		        <td><c:out value="${nfts.owner}" /></td>
