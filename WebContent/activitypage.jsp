@@ -54,8 +54,9 @@
 			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer an NFT!</a>
 		 </div>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
-		 <h1>Current NFTs</h1>
+		 <h1>Your current NFTs</h1>
 	    <table class=table-container border="1" cellpadding="6">
+	    <caption>Includes minted, transferred, and purchased NFTs</caption>
            <tr>
                <th>NFTid</th>
                <th>Name</th>
