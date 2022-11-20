@@ -76,4 +76,5 @@ public class nft {
 	    public void setMint_time(java.sql.Timestamp mint_time) {
 	    	this.mint_time = mint_time;
 	    }
+	    
 	}
