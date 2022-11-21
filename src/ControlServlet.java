@@ -101,7 +101,7 @@ public class ControlServlet extends HttpServlet {
          		buy(request, response);
          		break;
          	case "/beginTransfer":
-         		System.out.println("Beginning to transfer NFT");
+         		System.out.println("Beginning to transfer sNFT");
          		beginTransfer(request, response);
          		break;
          	case "/endTransfer":
