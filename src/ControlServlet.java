@@ -101,7 +101,7 @@ public class ControlServlet extends HttpServlet {
          		buy(request, response);
          		break;
          	case "/beginTransfer":
-         		System.out.println("Beginning to transfer sNFT");
+         		System.out.println("Beginning to transfer NFT");
          		beginTransfer(request, response);
          		break;
          	case "/endTransfer":
@@ -113,11 +113,37 @@ public class ControlServlet extends HttpServlet {
          		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
          		dispatcher = request.getRequestDispatcher("activitypage.jsp");
          		dispatcher.forward(request, response);
+         		break;
+         	case "/userProfile":
+         		System.out.println("Preparing to buy current NFT");
+         		userProfile(request, response);
+         	case "/nftProfile":
+         		System.out.println("Preparing to buy current NFT");
+         		nftProfile(request, response);
         	}   
 	    }
 	    catch(Exception ex) {
         	System.out.println(ex.getMessage());
 	    	}
+	    }
+	    
+	    private void userProfile(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	String userid = request.getParameter("userid");
+	    	user activeUser = userDAO.getUser(userid);
+	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(userid);
+	    	request.setAttribute("", activeUser);
+	    	request.setAttribute("", activeUserNFT);
+	    	
+	    	System.out.print("Getting the currently active user");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
+	    	dispatcher.forward(request, response);
+	    }
+	    
+	    private void nftProfile(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	nft activeNFT = nftDAO.getNft(nftid);
+	    	Listing activeListing = ListingDAO.getListedNft();
 	    }
 	    
 	    private void search(HttpServletRequest request, HttpServletResponse response)
