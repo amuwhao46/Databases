@@ -74,7 +74,7 @@ public class userDAO
                 int init_bal = resultSet.getInt("init_bal");
 
                  
-                user users = new user(userid,firstName, lastName, password, birthday, address_street_num,  address_street,  address_city,  address_state,  address_zip_code, init_bal);
+                user users = new user(userid, firstName, lastName, password, birthday, address_street_num,  address_street,  address_city,  address_state,  address_zip_code, init_bal);
                 listUser.add(users);
             }        
             resultSet.close();

@@ -123,11 +123,15 @@ public class ControlServlet extends HttpServlet {
 	    private void listUser(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	        System.out.println("listUser started: 00000000000000000000000000000000000");
-
-	     
+	        
 	        List<user> listUser = userDAO.listAllUsers();
+	        
+//	        for (user userListing: listUser) {
+//	        	System.out.println(user.getUserid());
+//	        }
+	        
 	        request.setAttribute("listUser", listUser);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
