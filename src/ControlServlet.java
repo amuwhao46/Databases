@@ -84,8 +84,8 @@ public class ControlServlet extends HttpServlet {
         		mint(request,response);
         		break;
          	case "/search":
-         		listNft(request,response);
-         		listUser(request,response);
+         		search(request,response);
+         		System.out.println("Testing to see if this message prints");
          		break;
          	case "/createListing":
          		System.out.println("The action is: Create Listing");
@@ -120,18 +120,29 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    }
 	    
+	    private void search(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	
+	    	List<nft> listNft = nftDAO.listAllNfts();
+	        List<user> listUser = userDAO.listAllUsers();
+	        
+	        
+	        request.setAttribute("listUser", listUser);	        
+	        request.setAttribute("listNft", listNft);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
+	        dispatcher.forward(request, response);
+	    	
+	    }
+	    
 	    private void listUser(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	        System.out.println("listUser started: 00000000000000000000000000000000000");
 	        
 	        List<user> listUser = userDAO.listAllUsers();
 	        
-//	        for (user userListing: listUser) {
-//	        	System.out.println(user.getUserid());
-//	        }
 	        
 	        request.setAttribute("listUser", listUser);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listPeople finished: 111111111111111111111111111111111111");

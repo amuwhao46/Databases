@@ -79,7 +79,6 @@
 		        <th>Buy</th>
 		    </tr>
 		    <c:forEach var="nfts" items="${listNft}">
-		    
 		    <tr>
 		        <td><c:out value="${nfts.nftid}" /></td>
 		        <td><a href="nftList.jsp"><c:out value="${nfts.unique_name}" /></a></td>
@@ -98,48 +97,48 @@
 		</table>
 		
 		<!-- Lists and allows search for users -->
-		<h1>List Users</h1>
-	    <table class="table-container" border="1" cellpadding="6">
+		<h1>Current Users</h1>
+	    <table class="table-container" id="nftTable" border="1" cellpadding="6">
 		    <tr>
 		        <th>Email</th>
-		        <th>First name</th>
+ 		        <th>First name</th>
 		        <th>Last name</th>
 		    </tr>
 		    <c:forEach var="users" items="${listUser}">
-		        <tr style="text-align:center">
+		        <tr>
 		            <td><c:out value="${users.userid}" /></td>
-		            <td><c:out value="${users.firstName}" /></td>
+ 		            <td><c:out value="${users.firstName}" /></td>
 		            <td><c:out value="${users.lastName}" /></td>
 		    </c:forEach>
-		</table>
+		 </table>
 		
-			 <script>
-				function func() {
-				  let input;
-				  let filter;
-				  let table;
-				  let tr;
-				  let td;
-				  let i;
-				  let textVal;
-				  
-				  input = document.getElementById("nftInput");
-				  filter = input.value.toUpperCase();
-				  table = document.getElementById("nftTable");
-				  tr = table.getElementsByTagName("tr");
-				
-				  for (i = 0; i < tr.length; i++) {
-				   	td = tr[i].getElementsByTagName("td")[1];
-				    if (td) {
-				    	textVal = td.textContent || td.innerText;
-				      if (textVal.toUpperCase().indexOf(filter) > - 1) {
-				        tr[i].style.display = "";
-				      } else {
-				        tr[i].style.display = "none";
-				      }
-				    }
-				  }
-				}
-			</script>
-	 </body>
- </html>
+		 <script>
+			function func() {
+			  let input;
+			  let filter;
+			  let table;
+			  let tr;
+			  let td;
+			  let i;
+			  let textVal;
+			  
+			  input = document.getElementById("nftInput");
+			  filter = input.value.toUpperCase();
+			  table = document.getElementById("nftTable");
+			  tr = table.getElementsByTagName("tr");
+			
+			  for (i = 0; i < tr.length; i++) {
+			   	td = tr[i].getElementsByTagName("td")[1];
+			    if (td) {
+			    	textVal = td.textContent || td.innerText;
+			      if (textVal.toUpperCase().indexOf(filter) > - 1) {
+			        tr[i].style.display = "";
+			      } else {
+			        tr[i].style.display = "none";
+			      }
+			    }
+			  }
+			}
+		</script>
+	</body>
+</html>
