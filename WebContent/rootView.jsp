@@ -41,7 +41,7 @@
 		        <th>Address</th>
 		        <th>Password</th>
 		        <th>Birthday</th>
-		        <th>init_bal($)</th>
+		        <th>init_bal(ETH)</th>
 		    </tr>
 		    <c:forEach var="users" items="${listUser}">
 		        <tr style="text-align:center">

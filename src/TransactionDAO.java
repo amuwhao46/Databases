@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
@@ -58,7 +59,25 @@ public class TransactionDAO
     	try {
 			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 			preparedStatement.setInt(1, nftid);
-			ResultSet resultSet = preparedStatement.executeQuery();    		
+			ResultSet resultSet = preparedStatement.executeQuery(); 
+			
+			while (resultSet.next()) {
+				String sender = resultSet.getString("sender");
+				String reciever = resultSet.getString("reciever");
+				String transType;
+				
+				if (resultSet.getString("transType").equals("s"))
+					transType = "sale";
+				else
+					transType = "transfer";
+				
+				double price = resultSet.getDouble("price");
+				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
+				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
+			}
+			
+			resultSet.close();
+			
     	} catch(SQLException e) {
     		e.toString();
     	}
