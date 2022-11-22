@@ -18,7 +18,7 @@
                 <!-- <th>address</th> -->
 				<!-- <th>Password</th> -->
                 <!-- <th>Birthday</th> -->
-                <th>cash_bal(ETH)</th>
+                <th>init_bal(ETH)</th>
             </tr>
             <c:forEach var="users" items="${userNFT}">
                 <tr style="text-align:center">
@@ -32,6 +32,29 @@
                 </tr>
             </c:forEach>
         </table>
+        
+        <h1>Your current NFTs</h1>
+	    <table class=table-container border="1" cellpadding="6">
+	    <caption>Includes minted, transferred, and purchased NFTs</caption>
+           <tr>
+               <th>NFTid</th>
+               <th>Name</th>
+               <th>Description</th>
+               <th>Image</th>
+               <th>Creator</th>
+               <th>Time Minted</th>
+           </tr>
+           <c:forEach var="nfts" items="${userNFT}">
+               <tr style="text-align:center">
+                   <td><c:out value="${nfts.nftid}" /></td>
+                   <td><c:out value="${nfts.unique_name}" /></td>
+                   <td><c:out value="${nfts.description}" /></td>
+                   <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
+                   <td><c:out value="${nfts.creator}" /></td>
+                   <td><c:out value="${nfts.mint_time}" /></td>
+           </c:forEach>
+       </table>
+        
     </div>   
 </body>
 </html>
