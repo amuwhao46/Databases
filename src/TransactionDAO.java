@@ -52,6 +52,20 @@ public class TransactionDAO
         }
     }
     
+    public List<Transaction> getAllNftTransactions(int nftid) throws SQLException {
+    	String sql = "SELECT * FROM Transaction WHERE nftID = ?";
+    	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
+    	try {
+			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+			preparedStatement.setInt(1, nftid);
+			ResultSet resultSet = preparedStatement.executeQuery();    		
+    	} catch(SQLException e) {
+    		e.toString();
+    	}
+    	
+    	return listAllTransactions;
+    }
+    
     public void insert(Transaction trans) throws SQLException {
     	connect_func();         
 		String sql = "insert into Transaction(transid, reciever, sender, transType, price, timeStamp) values (?, ?, ?, ?, ?, ?)";

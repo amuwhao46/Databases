@@ -142,7 +142,9 @@ public class ControlServlet extends HttpServlet {
 	    
 	    private void nftProfile(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
+	    	int nftid = request.getParameter("nftid");
 	    	nft activeNFT = nftDAO.getNft(nftid);
+	    	List<Transaction> activeActivity = TransactionDAO.getAllNftTransactions(nftid);
 	    	Listing activeListing = ListingDAO.getListedNft(nftid);
 	    	
 	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(nftid);
