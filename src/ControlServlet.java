@@ -134,9 +134,9 @@ public class ControlServlet extends HttpServlet {
 	    private void getUserActivity(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	    	
-	    	List<nft> listBoughtNfts = nftDAO.listOwnedNfts(currentUser);
-	    	List<nft> listSoldNfts = nftDAO.listOwnedNfts(currentUser);
-	    	List<nft> listMintedNfts = nftDAO.listOwnedNfts(currentUser);
+	    	List<nft> listBoughtNfts = nftDAO.listBoughtNfts(currentUser);
+	    	List<nft> listSoldNfts = nftDAO.listSoldNfts(currentUser);
+	    	List<nft> listMintedNfts = nftDAO.listMintedNfts(currentUser);
 	    	
 	    	
 	    	request.setAttribute("userBoughtNft", listBoughtNfts);
@@ -155,7 +155,7 @@ public class ControlServlet extends HttpServlet {
 	    	user activeUser = userDAO.getUser(userid);
 	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(userid);
 	    	request.setAttribute("users", activeUser);
-	    	request.setAttribute("listUser", activeUserNFT);
+	    	request.setAttribute("userNFT", activeUserNFT);
 	    	
 	    	System.out.print("Getting the currently active user");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");

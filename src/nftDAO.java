@@ -88,6 +88,109 @@ public class nftDAO
         return listNft;
     }
     
+    // unsure of sql statement
+    public List<nft> listBoughtNfts(String userName) throws SQLException {
+        List<nft> listBoughtNfts = new ArrayList<nft>();        
+        String sql = "SELECT * FROM NFT WHERE nftid in (SELECT nftid FROM Transaction WHERE (transType = 's' AND reciever = ?));";      
+          
+        
+           try {
+        	 connect_func();   
+        	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        	preparedStatement.setString(1, userName);
+        	ResultSet resultSet = preparedStatement.executeQuery();
+        	
+        	while (resultSet.next()) {
+        		int nftid = resultSet.getInt("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
+        		listBoughtNfts.add(nfts);
+        	}   resultSet.close();     
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+
+    
+             
+        return listBoughtNfts;
+    }
+    
+    
+    // unsure of sql statement is correct
+    public List<nft> listSoldNfts(String userName) throws SQLException {
+        List<nft> listSoldNfts = new ArrayList<nft>();        
+        String sql = "SELECT * FROM NFT WHERE nftid in (SELECT nftid FROM Transaction WHERE (transType = 's' AND sender = ?));";      
+          
+        
+           try {
+        	 connect_func();   
+        	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        	preparedStatement.setString(1, userName);
+        	ResultSet resultSet = preparedStatement.executeQuery();
+        	
+        	while (resultSet.next()) {
+        		int nftid = resultSet.getInt("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
+        		listSoldNfts.add(nfts);
+        	}   resultSet.close();     
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+
+    
+             
+        return listSoldNfts;
+    }
+    
+    // unsure of sql statement
+    public List<nft> listMintedNfts(String userName) throws SQLException {
+        List<nft> listOwnedNfts = new ArrayList<nft>();        
+        String sql = "SELECT * FROM NFT where creator = ?";      
+          
+        
+           try {
+        	 connect_func();   
+        	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
+        	preparedStatement.setString(1, userName);
+        	ResultSet resultSet = preparedStatement.executeQuery();
+        	
+        	while (resultSet.next()) {
+        		int nftid = resultSet.getInt("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
+        		listOwnedNfts.add(nfts);
+        	}   resultSet.close();     
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
+
+    
+             
+        return listOwnedNfts;
+    }
+    
     public List<nft> listOwnedNfts(String userName) throws SQLException {
         List<nft> listOwnedNfts = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT where owner = ?";      
