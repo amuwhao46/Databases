@@ -5,13 +5,48 @@
 <html>
 <head>
 	<title>NFT</title>
+	<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			background-color: rgb(255, 153, 153);
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+	  		width: 50%;
+			padding: 10px;
+		}
+		.Button {
+			padding: .5rem;
+			background-color: red;
+			border-radius: 0.25rem;
+			margin: 1rem;
+			color: white;
+		}
+		.Button2 {
+			padding: .5rem;
+			background-color: blue;
+			border-radius: 0.25rem;
+			margin: 1rem;
+			color: white;
+		}
+		.container {
+			display: flex;
+			justify-content: center;
+			
+		}
+		.table-container {
+			margin-left:auto;
+			margin-right:auto;
+		}
+	</style>
 </head>
 	<body>
 		<div align = "center">
+			<a class="Button" href="goHome" target="_self">Home</a>
 			<h1>List all NFTs</h1>
 		    <div align="center">
 		        <table border="1" cellpadding="6">
-		            <caption><h2>List of NFTs</h2></caption>
+		            <caption>List of NFTs</caption>
 		            <tr>
 		               <th>NFTid</th>
 		               <th>Name</th>

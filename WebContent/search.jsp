@@ -70,7 +70,7 @@
 	    
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 	    <a class="Button3" href="searchUser" target="_self">Search Users</a>
-	    <a class="Button" href="goHome" target="_self">Back</a>
+	    <a class="Button" href="goHome" target="_self">Home</a>
 		
 		<!-- Lists and allows search for nfts -->
 		<h3>Listed NFT's that can be bought</h3>
@@ -88,17 +88,21 @@
 		    <c:forEach var="nfts" items="${listNft}">
 		    <tr>
 		        <td><c:out value="${nfts.nftid}" /></td>
-		        <td><a href="nftList.jsp"><c:out value="${nfts.unique_name}" /></a></td>
+		        <td>
+		        	<a href="nftProfile?nftid=<c:out value="${nfts.nftid}" />">
+		        		<c:out value="${nfts.unique_name}"></c:out>
+		        	</a>
+		        </td>
 		        <td><c:out value="${nfts.description}" /></td>
 		        <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
 		        <td><c:out value="${nfts.owner}" /></td>
 		        <td><c:out value="${nfts.creator}" /></td>  
 		        <td><c:out value="${nfts.mint_time}" /></td>
-	        <td>
+	        	<td>
 		            <a href="buy?nftid=<c:out value="${nfts.nftid}" />">
 		                <button class="Button2">Buy</button>
 		            </a>
-		        </td>   
+		        </td>  
 		    </tr>
 		    </c:forEach>
 		</table>
