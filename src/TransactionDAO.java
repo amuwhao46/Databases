@@ -52,7 +52,7 @@ public class TransactionDAO
         }
     }
     
-    public List<Transaction> getAllNftTransactions(int nftid) throws SQLException {
+    public List<Transaction> getNftTransactions(int nftid) throws SQLException {
     	String sql = "SELECT * FROM Transaction WHERE nftID = ?";
     	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
     	try {

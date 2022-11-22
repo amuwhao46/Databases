@@ -115,11 +115,15 @@ public class ControlServlet extends HttpServlet {
          		dispatcher.forward(request, response);
          		break;
          	case "/userProfile":
-         		System.out.println("Preparing to buy current NFT");
+         		System.out.println("Preparing to view current active user");
          		userProfile(request, response);
          	case "/nftProfile":
-         		System.out.println("Preparing to buy current NFT");
-         		nftProfile(request, response);
+         		System.out.println("Preparing to view current NFT");
+         		int nftid = Integer.parseInt(request.getParameter("nftid"));
+         		nftProfile(request, response,nftid);
+         	case "/getUserActivity":
+         		System.out.println("Preparing to view current active users activity");
+         		userProfile(request, response);
         	}   
 	    }
 	    catch(Exception ex) {
@@ -135,9 +139,9 @@ public class ControlServlet extends HttpServlet {
 	    	List<nft> listMintedNfts = nftDAO.listOwnedNfts(currentUser);
 	    	
 	    	
-	    	request.setAttribute("", listBoughtNfts);
-	    	request.setAttribute("", listSoldNfts);
-	    	request.setAttribute("", listMintedNfts);
+	    	request.setAttribute("userBoughtNft", listBoughtNfts);
+	    	request.setAttribute("userSoldNft", listSoldNfts);
+	    	request.setAttribute("userMintedNft", listMintedNfts);
 	    	
 	    	System.out.print("Listing the current users activity");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("");
@@ -150,24 +154,26 @@ public class ControlServlet extends HttpServlet {
 	    	String userid = request.getParameter("userid");
 	    	user activeUser = userDAO.getUser(userid);
 	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(userid);
-	    	request.setAttribute("", activeUser);
-	    	request.setAttribute("", activeUserNFT);
+	    	request.setAttribute("users", activeUser);
+	    	request.setAttribute("listUser", activeUserNFT);
 	    	
 	    	System.out.print("Getting the currently active user");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
 	    	dispatcher.forward(request, response);
 	    }
 	    
-	    private void nftProfile(HttpServletRequest request, HttpServletResponse response)
+	    private void nftProfile(HttpServletRequest request, HttpServletResponse response, int nftid)
 	            throws SQLException, IOException, ServletException {
-	    	int nftid = request.getParameter("nftid");
+	    	
 	    	nft activeNFT = nftDAO.getNft(nftid);
-	    	List<Transaction> activeActivity = TransactionDAO.getAllNftTransactions(nftid);
-	    	Listing activeListing = ListingDAO.getListedNft(nftid);
+	    	List<Transaction> activity = transactionDAO.getNftTransactions(nftid);
+	    	Listing activeListing = listingDAO.getListedNft(nftid);
 	    	
-	    	request.setAttribute("", activeNFT);
+	    	request.setAttribute("nfts", activeNFT);
+	    	request.setAttribute("userNFT", activity);
+	    	request.setAttribute("", activeListing);
 	    	
-	    	System.out.print("Getting the currently active user");
+	    	System.out.print("Getting the currently active NFT");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");
 	    	dispatcher.forward(request, response);
 	    	

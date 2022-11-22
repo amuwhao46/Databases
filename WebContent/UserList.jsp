@@ -5,12 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>All User list</title>
+    <title>User Profile Page</title>
 </head>
 <body>
    <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>List of People</h2></caption>
+            <caption><h2>Information for <c:out value="${users.userid}" /></h2></caption>
             <tr>
 				<th>Email</th>
                 <th>First name</th>
@@ -20,7 +20,7 @@
                 <!-- <th>Birthday</th> -->
                 <th>cash_bal(ETH)</th>
             </tr>
-            <c:forEach var="users" items="${listUser}">
+            <c:forEach var="users" items="${userNFT}">
                 <tr style="text-align:center">
                     <td><c:out value="${users.userid}" /></td>
                     <td><c:out value="${users.firstName}" /></td>
