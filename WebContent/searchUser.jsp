@@ -80,7 +80,11 @@
 		    </tr>
 		    <c:forEach var="users" items="${listUser}">
 		        <tr id="userItem">
-		            <td><c:out value="${users.userid}" /></td>
+		        	<td>
+     				    <a href="userProfile?userid=<c:out value="${users.userid}" />">
+		        			<c:out value="${users.userid}"></c:out>
+		        		</a>
+		        	</td>
  		            <td><c:out value="${users.firstName}" /></td>
 		            <td><c:out value="${users.lastName}" /></td>
 		    </c:forEach>

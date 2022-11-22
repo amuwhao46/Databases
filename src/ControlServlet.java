@@ -84,7 +84,7 @@ public class ControlServlet extends HttpServlet {
         		mint(request,response);
         		break;
          	case "/searchNFT":
-         		searchNFT(request,response);
+         		listNft(request,response);
          		System.out.println("Routed to search nft page");
          		break;
          	case "/searchUser":
@@ -158,6 +158,7 @@ public class ControlServlet extends HttpServlet {
 	    	String userid = request.getParameter("userid");
 	    	user activeUser = userDAO.getUser(userid);
 	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(userid);
+	    	
 	    	request.setAttribute("users", activeUser);
 	    	request.setAttribute("userNFT", activeUserNFT);
 	    	
@@ -169,15 +170,15 @@ public class ControlServlet extends HttpServlet {
 	    private void nftProfile(HttpServletRequest request, HttpServletResponse response, int nftid)
 	            throws SQLException, IOException, ServletException {
 	    	
+	    	System.out.print("Getting the currently active NFT");
 	    	nft activeNFT = nftDAO.getNft(nftid);
 	    	List<Transaction> activity = transactionDAO.getNftTransactions(nftid);
 	    	Listing activeListing = listingDAO.getListedNft(nftid);
 	    	
 	    	request.setAttribute("nfts", activeNFT);
 	    	request.setAttribute("userNFT", activity);
-	    	request.setAttribute("", activeListing);
+	    	request.setAttribute("activeList", activeListing);
 	    	
-	    	System.out.print("Getting the currently active NFT");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");
 	    	dispatcher.forward(request, response);
 	    	
