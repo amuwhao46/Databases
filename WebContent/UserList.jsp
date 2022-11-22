@@ -49,19 +49,13 @@
 				<th>Email</th>
                 <th>First name</th>
                 <th>Last name</th>
-                <!-- <th>address</th> -->
-				<!-- <th>Password</th> -->
-                <!-- <th>Birthday</th> -->
                 <th>init_bal(ETH)</th>
             </tr>
-            <c:forEach var="users" items="${userNFT}">
+            <c:forEach var="users" items="${listUser}">
                 <tr style="text-align:center">
                     <td><c:out value="${users.userid}" /></td>
                     <td><c:out value="${users.firstName}" /></td>
                     <td><c:out value="${users.lastName}" /></td>
-                    <%-- <td><c:out value= "${users.address_street_num} ${users.address_street} ${users.address_city} ${users.address_state} ${users.address_zip_code}" /></td> --%>
-                    <%-- <td><c:out value="${users.password}" /></td> --%>
-                    <%-- <td><c:out value="${users.birthday}" /></td> --%>
                     <td><c:out value="${users.init_bal}"/></td>
                 </tr>
             </c:forEach>
