@@ -43,6 +43,7 @@
 </head>
 <body>
    <div align="center">
+   <a class="Button" href="goHome" target="_self">Home</a>
         <table border="1" cellpadding="5">
             <caption><h2>Information for <c:out value="${users.userid}" /></h2></caption>
             <tr>

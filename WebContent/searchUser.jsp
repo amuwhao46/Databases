@@ -68,7 +68,7 @@
 		<h1>Search for NFT's</h1>
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 	    <a class="Button3" href="searchNFT" target="_self">Search NFTs</a>
-	    <a class="Button" href="goHome" target="_self">Back</a>
+	    <a class="Button" href="goHome" target="_self">Home</a>
 	    
 	    <!-- Lists and allows search for users -->
 		<h1>Current Users</h1>
