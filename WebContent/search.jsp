@@ -65,11 +65,11 @@
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
 	    <a class="Button" href="goHome" target="_self">Back</a>
 		
-		<!-- Lists and allows search for users -->
+		<!-- Lists and allows search for nfts -->
 		<h3>Listed NFT's that can be bought</h3>
 		<table class="table-container" border="1" cellpadding="6" id="nftTable">
 		    <tr>
-		        <th></a>NFTID</th>
+		        <th>NFTID</th>
 		        <th>Name</th>
 		        <th>Description</th>
 		        <th>Image</th>
@@ -98,14 +98,14 @@
 		
 		<!-- Lists and allows search for users -->
 		<h1>Current Users</h1>
-	    <table class="table-container" id="nftTable" border="1" cellpadding="6">
+	    <table class="table-container" id="userTable" border="1" cellpadding="6">
 		    <tr>
 		        <th>Email</th>
  		        <th>First name</th>
 		        <th>Last name</th>
 		    </tr>
 		    <c:forEach var="users" items="${listUser}">
-		        <tr>
+		        <tr id="userItem">
 		            <td><c:out value="${users.userid}" /></td>
  		            <td><c:out value="${users.firstName}" /></td>
 		            <td><c:out value="${users.lastName}" /></td>
@@ -117,6 +117,7 @@
 			  let input;
 			  let filter;
 			  let table;
+			  let table2;
 			  let tr;
 			  let td;
 			  let i;
@@ -125,6 +126,7 @@
 			  input = document.getElementById("nftInput");
 			  filter = input.value.toUpperCase();
 			  table = document.getElementById("nftTable");
+			  table2 = document.getElementById("userTable");
 			  tr = table.getElementsByTagName("tr");
 			
 			  for (i = 0; i < tr.length; i++) {

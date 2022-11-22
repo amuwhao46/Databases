@@ -23,10 +23,10 @@ import java.sql.PreparedStatement;
 
 public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
-	    private static userDAO userDAO;
-	    private static nftDAO nftDAO;
 	    private String currentUser;
 	    private HttpSession session=null;
+	    private static userDAO userDAO;
+	    private static nftDAO nftDAO;
 	    private static ListingDAO listingDAO;
 	    private static TransactionDAO transactionDAO;
 	    
@@ -147,9 +147,7 @@ public class ControlServlet extends HttpServlet {
 	    	List<Transaction> activeActivity = TransactionDAO.getAllNftTransactions(nftid);
 	    	Listing activeListing = ListingDAO.getListedNft(nftid);
 	    	
-	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(nftid);
 	    	request.setAttribute("", activeNFT);
-	    	request.setAttribute("", activeUserNFT);
 	    	
 	    	System.out.print("Getting the currently active user");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftProfile");
