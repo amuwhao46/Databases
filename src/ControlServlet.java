@@ -83,9 +83,13 @@ public class ControlServlet extends HttpServlet {
          	case "/mint":
         		mint(request,response);
         		break;
-         	case "/search":
-         		search(request,response);
-         		System.out.println("Testing to see if this message prints");
+         	case "/searchNFT":
+         		searchNFT(request,response);
+         		System.out.println("Routed to search nft page");
+         		break;
+         	case "/searchUser":
+         		searchUser(request,response);
+         		System.out.println("routing to search user page");
          		break;
          	case "/createListing":
          		System.out.println("The action is: Create Listing");
@@ -180,16 +184,25 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    }
 	    
-	    private void search(HttpServletRequest request, HttpServletResponse response)
+	    private void searchNFT(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	    	
 	    	List<nft> listNft = nftDAO.listAllNfts();
+	        
+	        request.setAttribute("listNft", listNft);       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
+	        dispatcher.forward(request, response);
+	    	
+	    }
+	    
+	    private void searchUser(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	
 	        List<user> listUser = userDAO.listAllUsers();
 	        
 	        
 	        request.setAttribute("listUser", listUser);	        
-	        request.setAttribute("listNft", listNft);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("search.jsp");       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("searchUser.jsp");       
 	        dispatcher.forward(request, response);
 	    	
 	    }
@@ -365,7 +378,7 @@ public class ControlServlet extends HttpServlet {
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
 	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("search"); 
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("searchNFT"); 
 	    	
 	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
 	    	user currentBuyer = userDAO.getUser(currentUser);
@@ -387,7 +400,7 @@ public class ControlServlet extends HttpServlet {
 	    		Transaction newTransfer = new Transaction(list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
 	    		transactionDAO.insert(newTransfer);
 	    		
-	    		response.sendRedirect("search");   
+	    		response.sendRedirect("searchNFT");   
 		        dispatcher.forward(request, response);
 		    	return;
 	    	}

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
- 
- <!DOCTYPE html>
- <html>
-	 <head>
-	 	<title>Search</title>
-	 	<style>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Search</title>
+		<style>
 	 		body {
 				font-family: 'Roboto', sans-serif;
 				background-color: rgb(255, 153, 153);
@@ -64,44 +63,28 @@
 				color: white;
 			}
 	 	</style>
-	 </head>
-	 <body>
-	    <h1>Search for NFT's</h1>
-	    
+	</head>
+	<body>
+		<h1>Search for NFT's</h1>
 		<input class="input-container" type="text" id="nftInput" onkeyup="func()" placeholder="Search" />
-	    <a class="Button3" href="searchUser" target="_self">Search Users</a>
+	    <a class="Button3" href="searchNFT" target="_self">Search NFTs</a>
 	    <a class="Button" href="goHome" target="_self">Back</a>
-		
-		<!-- Lists and allows search for nfts -->
-		<h3>Listed NFT's that can be bought</h3>
-		<table class="table-container" border="1" cellpadding="6" id="nftTable">
+	    
+	    <!-- Lists and allows search for users -->
+		<h1>Current Users</h1>
+	    <table class="table-container" id="userTable" border="1" cellpadding="6">
 		    <tr>
-		        <th>NFTID</th>
-		        <th>Name</th>
-		        <th>Description</th>
-		        <th>Image</th>
-		        <th>Owner</th>
-		        <th>Creator</th>
-		        <th>Date Created</th>
-		        <th>Buy</th>
+		        <th>Email</th>
+ 		        <th>First name</th>
+		        <th>Last name</th>
 		    </tr>
-		    <c:forEach var="nfts" items="${listNft}">
-		    <tr>
-		        <td><c:out value="${nfts.nftid}" /></td>
-		        <td><a href="nftList.jsp"><c:out value="${nfts.unique_name}" /></a></td>
-		        <td><c:out value="${nfts.description}" /></td>
-		        <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
-		        <td><c:out value="${nfts.owner}" /></td>
-		        <td><c:out value="${nfts.creator}" /></td>  
-		        <td><c:out value="${nfts.mint_time}" /></td>
-	        <td>
-		            <a href="buy?nftid=<c:out value="${nfts.nftid}" />">
-		                <button class="Button2">Buy</button>
-		            </a>
-		        </td>   
-		    </tr>
+		    <c:forEach var="users" items="${listUser}">
+		        <tr id="userItem">
+		            <td><c:out value="${users.userid}" /></td>
+ 		            <td><c:out value="${users.firstName}" /></td>
+		            <td><c:out value="${users.lastName}" /></td>
 		    </c:forEach>
-		</table>
+		 </table>
 		
 		 <script>
 			function func() {
@@ -115,7 +98,7 @@
 			  
 			  input = document.getElementById("nftInput");
 			  filter = input.value.toUpperCase();
-			  table = document.getElementById("nftTable");
+			  table = document.getElementById("userTable");
 			  tr = table.getElementsByTagName("tr");
 			
 			  for (i = 0; i < tr.length; i++) {

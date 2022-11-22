@@ -49,7 +49,7 @@
 		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
 		 <div class=container>
 			 <a class="Button2" href="mint.jsp"target ="_self" > Mint an NFT</a>
-			 <a class="Button2" href="search"target ="_self" > Search for a User or NFT</a>
+			 <a class="Button2" href="searchNFT"target ="_self" >Search</a>
 			 <a class="Button2" href="listing"target ="_self" > List an NFT</a>
 			 <a class="Button2" href="beginTransfer"target ="_self" > Transfer an NFT!</a>
 		 </div>
