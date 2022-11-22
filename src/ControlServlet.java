@@ -136,14 +136,24 @@ public class ControlServlet extends HttpServlet {
 	    	request.setAttribute("", activeUserNFT);
 	    	
 	    	System.out.print("Getting the currently active user");
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userProfile");
 	    	dispatcher.forward(request, response);
 	    }
 	    
 	    private void nftProfile(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	    	nft activeNFT = nftDAO.getNft(nftid);
-	    	Listing activeListing = ListingDAO.getListedNft();
+	    	Listing activeListing = ListingDAO.getListedNft(nftid);
+	    	
+	    	List<nft> activeUserNFT = nftDAO.listOwnedNfts(nftid);
+	    	request.setAttribute("", activeNFT);
+	    	request.setAttribute("", activeUserNFT);
+	    	
+	    	System.out.print("Getting the currently active user");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftProfile");
+	    	dispatcher.forward(request, response);
+	    	
+	    	
 	    }
 	    
 	    private void search(HttpServletRequest request, HttpServletResponse response)
