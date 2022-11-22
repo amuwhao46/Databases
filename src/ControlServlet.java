@@ -148,7 +148,7 @@ public class ControlServlet extends HttpServlet {
 	    	request.setAttribute("userMintedNft", listMintedNfts);
 	    	
 	    	System.out.print("Listing the current users activity");
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("usersActivityPage.jsp");
 	    	dispatcher.forward(request, response);
 	    }
 	    
@@ -163,7 +163,7 @@ public class ControlServlet extends HttpServlet {
 	    	request.setAttribute("userNFT", activeUserNFT);
 	    	
 	    	System.out.print("Getting the currently active user");
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("UserList.jsp");
 	    	dispatcher.forward(request, response);
 	    }
 	    
@@ -172,8 +172,8 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	System.out.print("Getting the currently active NFT");
 	    	nft activeNFT = nftDAO.getNft(nftid);
-	    	List<Transaction> activity = transactionDAO.getNftTransactions(nftid);
 	    	Listing activeListing = listingDAO.getListedNft(nftid);
+	    	List<Transaction> activity = transactionDAO.getNftTransactions(nftid);
 	    	
 	    	request.setAttribute("nfts", activeNFT);
 	    	request.setAttribute("userNFT", activity);
@@ -198,7 +198,6 @@ public class ControlServlet extends HttpServlet {
 	    
 	    private void searchUser(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
-	    	
 	        List<user> listUser = userDAO.listAllUsers();
 	        
 	        
@@ -216,7 +215,7 @@ public class ControlServlet extends HttpServlet {
 	        
 	        
 	        request.setAttribute("listUser", listUser);       
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("userList.jsp");       
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("UserList.jsp");       
 	        dispatcher.forward(request, response);
 	     
 	        System.out.println("listPeople finished: 111111111111111111111111111111111111");
@@ -230,10 +229,6 @@ public class ControlServlet extends HttpServlet {
 	     
 	        List<nft> listNft = nftDAO.listAllNfts();
 	        List<Listing> allListings = listingDAO.allListedNfts();
-	        
-	        for(Listing list: allListings) {
-	        	System.out.println(list.getNftid());
-	        }
 	        
 	        request.setAttribute("listNft", listNft);       
 	        request.setAttribute("allListings", allListings);       
