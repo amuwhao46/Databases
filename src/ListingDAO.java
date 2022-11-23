@@ -182,7 +182,7 @@ public class ListingDAO
 				};
         
         String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)"+
-    			"values ('jondoe@gmail.com', '1', '" + startTime.toString() + "', '" + endTime.toString() + "', '10'), "+
+    			"values ('bendover@gmail.com', '1', '" + startTime.toString() + "', '" + endTime.toString() + "', '10'), "+
     			"('bendover@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '4', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
