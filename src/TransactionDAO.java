@@ -119,7 +119,7 @@ public class TransactionDAO
                     "nftid int NOT NULL, " +
 		            "sender VARCHAR(100), " +
 		            "reciever VARCHAR(100), " +
-		            "transtype VARCHAR(1), " +
+		            "transType VARCHAR(1), " +
 		            "price DOUBLE, " +
 		            "timeStamp DATETIME, " +
 		            "FOREIGN KEY (sender) REFERENCES User(userid)," +
