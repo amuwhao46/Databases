@@ -115,6 +115,10 @@ public class ControlServlet extends HttpServlet {
          	case "/goHome":
          		System.out.println("Going back home");
          		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
+         		request.setAttribute("userMintedNft", nftDAO.listMintedNfts(currentUser));
+         		request.setAttribute("userSoldNft", nftDAO.listSoldNfts(currentUser));
+         		request.setAttribute("userBoughtNft", nftDAO.listBoughtNfts(currentUser));
+         		
          		dispatcher = request.getRequestDispatcher("activitypage.jsp");
          		dispatcher.forward(request, response);
          		break;
@@ -135,22 +139,22 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    }
 	    
-	    private void getUserActivity(HttpServletRequest request, HttpServletResponse response)
-	            throws SQLException, IOException, ServletException {
-	    	
-	    	List<nft> listBoughtNfts = nftDAO.listBoughtNfts(currentUser);
-	    	List<nft> listSoldNfts = nftDAO.listSoldNfts(currentUser);
-	    	List<nft> listMintedNfts = nftDAO.listMintedNfts(currentUser);
-	    	
-	    	
-	    	request.setAttribute("userBoughtNft", listBoughtNfts);
-	    	request.setAttribute("userSoldNft", listSoldNfts);
-	    	request.setAttribute("userMintedNft", listMintedNfts);
-	    	
-	    	System.out.print("Listing the current users activity");
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("usersActivityPage.jsp");
-	    	dispatcher.forward(request, response);
-	    }
+//	    private void getUserActivity(HttpServletRequest request, HttpServletResponse response)
+//	            throws SQLException, IOException, ServletException {
+//	    	
+//	    	List<nft> listBoughtNfts = nftDAO.listBoughtNfts(currentUser);
+//	    	List<nft> listSoldNfts = nftDAO.listSoldNfts(currentUser);
+//	    	List<nft> listMintedNfts = nftDAO.listMintedNfts(currentUser);
+//	    	
+//	    	
+//	    	request.setAttribute("userBoughtNft", listBoughtNfts);
+//	    	request.setAttribute("userSoldNft", listSoldNfts);
+//	    	request.setAttribute("userMintedNft", listMintedNfts);
+//	    	
+//	    	System.out.print("Listing the current users activity");
+//	    	RequestDispatcher dispatcher = request.getRequestDispatcher("usersActivityPage.jsp");
+//	    	dispatcher.forward(request, response);
+//	    }
 	    
 	    
 	    private void userProfile(HttpServletRequest request, HttpServletResponse response)

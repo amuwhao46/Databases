@@ -30,9 +30,7 @@
                    <td><c:out value="${nfts.mint_time}" /></td>
            </c:forEach>
        </table>
-       
-       
-       
+ 
 	    <table class=table-container border="1" cellpadding="6">
 	    <caption>Sold NFTs</caption>
            <tr>
@@ -53,11 +51,7 @@
                    <td><c:out value="${nfts.mint_time}" /></td>
            </c:forEach>
        </table>
-       
-       
-       
-       
-       
+
 	    <table class=table-container border="1" cellpadding="6">
 	    <caption>Minted NFTs</caption>
            <tr>
