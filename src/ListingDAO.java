@@ -183,13 +183,13 @@ public class ListingDAO
         
         String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)"+
     			"values ('jondoe@gmail.com', '1', '" + startTime.toString() + "', '" + endTime.toString() + "', '10'), "+
-    			"('alf@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('oke@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('bendover@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '4', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '5', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '6', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '7', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '8', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('alf@gmail.com', '7', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
+    			"('oke@gmail.com', '8', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '9', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
     			"('bendover@gmail.com', '10', '" + startTime.toString() + "', '" + endTime.toString() + "', '10');")
 		    	};
