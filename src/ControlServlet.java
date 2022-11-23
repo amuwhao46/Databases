@@ -166,8 +166,8 @@ public class ControlServlet extends HttpServlet {
 	    	Listing activeListing = listingDAO.getListedNft(nftid);
 	    	List<Transaction> activity = transactionDAO.getNftTransactions(nftid);
 	    	
-	    	request.setAttribute("nfts", activeNFT);
-	    	request.setAttribute("userNFT", activity);
+	    	request.setAttribute("userNFT", activeNFT);
+	    	request.setAttribute("nftActivity", activity);
 	    	request.setAttribute("activeList", activeListing);
 	    	
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");
