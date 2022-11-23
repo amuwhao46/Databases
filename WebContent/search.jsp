@@ -90,7 +90,7 @@
 		        <td><c:out value="${nfts.nftid}" /></td>
 		        <td>
 		        	<a href="nftProfile?nftid=<c:out value="${nfts.nftid}" />">
-		        		<p><c:out value="${nfts.unique_name}"></c:out></p>
+		        		${nfts.unique_name}
 		        	</a>
 		        </td>
 		        <td><c:out value="${nfts.description}" /></td>

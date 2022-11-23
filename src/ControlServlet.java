@@ -125,13 +125,16 @@ public class ControlServlet extends HttpServlet {
          	case "/userProfile":
          		System.out.println("Preparing to view current active user");
          		userProfile(request, response);
+         		break;
          	case "/nftProfile":
          		System.out.println("Preparing to view current NFT");
          		int nftid = Integer.parseInt(request.getParameter("nftid"));
          		nftProfile(request, response,nftid);
+         		break;
          	case "/getUserActivity":
          		System.out.println("Preparing to view current active users activity");
          		userProfile(request, response);
+         		break;
         	}   
 	    }
 	    catch(Exception ex) {
@@ -186,7 +189,7 @@ public class ControlServlet extends HttpServlet {
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("nftList.jsp");
 	    	dispatcher.forward(request, response);
 	    	
-	    	
+	 
 	    }
 	    
 	    private void searchNFT(HttpServletRequest request, HttpServletResponse response)
