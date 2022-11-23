@@ -54,7 +54,7 @@ public class TransactionDAO
     }
     // to complete
     public List<Transaction> getNftTransactions(int nftid) throws SQLException {
-    	String sql = "SELECT * FROM Transaction WHERE nftID = ?";
+    	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
     	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
     	try {
 			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);

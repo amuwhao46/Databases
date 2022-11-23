@@ -47,19 +47,14 @@
         <table border="1" cellpadding="5">
             <caption><h2>Information for <c:out value="${users.userid}" /></h2></caption>
             <tr>
-				<th>Email</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>init_bal(ETH)</th>
+				<th>Email: <c:out value="${users.userid}" /></th>
+                <th>First name: <c:out value="${users.firstName}" /></th>
+                <th>Last name: <c:out value="${users.lastName}" /></th>
+                <th>init_bal(ETH): <c:out value="${users.init_bal}"/></th>
             </tr>
-            <c:forEach var="users" items="${listUser}">
-                <tr style="text-align:center">
-                    <td><c:out value="${users.userid}" /></td>
-                    <td><c:out value="${users.firstName}" /></td>
-                    <td><c:out value="${users.lastName}" /></td>
-                    <td><c:out value="${users.init_bal}"/></td>
-                </tr>
-            </c:forEach>
+          
+                
+            
         </table>
         
         <h1>Your current NFTs</h1>
