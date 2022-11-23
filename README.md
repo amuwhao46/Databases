@@ -4,7 +4,7 @@
 
 
 Alfred- Worked on the activity page and implemented the bought, sold, and minted tables. Added the user profile and the buttons that connect the pages together
-Oke- Worked on the search, updated it to search for users as well as nfts. worked on the NFT profile page and also  control servlet to fixed where alfred messed up.
+Oke- Worked on the search, updated it to search for users as well as nfts. worked on the NFT profile page
 We spent ~20 hours working collaboratively on this part of the project. 
 
 In order to run our project, we recommend you install eclipse. You will want to ensure the properties of the project have a recent version of Java, Dynamic Web Module, 
