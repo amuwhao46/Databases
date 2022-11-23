@@ -3,9 +3,9 @@
 * Oke Amuwha gv4281
 
 
-Alfred- Worked on initiialization of  lists and users. Applies some front end styling. Focused on Transfer and listing implementation.
-Oke-  Worked on NFT initialization and transfer abilities. Applied front end designs that enabled us to test our code aswell. Mainly focused on Adding integration for minting and searching
-We worked concurrently with everything so wour variables wouldnt get messed up. 
+Alfred- Worked on the activity page and implemented the bought, sold, and minted tables. Added the user profile and the buttons that connect the pages together
+Oke- Worked on the search, updated it to search for users as well as nfts. worked on the NFT profile page and also  
+
 We spent ~25 hours working collaboratively on this part of the project. 
 
 In order to run our project, we recommend you install eclipse. You will want to ensure the properties of the project have a recent version of Java, Dynamic Web Module, 
