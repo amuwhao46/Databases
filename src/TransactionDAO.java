@@ -87,9 +87,9 @@ public class TransactionDAO
     
     public void insert(Transaction trans) throws SQLException {
     	connect_func();         
-		String sql = "insert into Transaction(transid, reciever, sender, transType, price, timeStamp) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into Transaction(nftid, reciever, sender, transType, price, timeStamp) values (?, ?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-		preparedStatement.setInt(1, trans.getTransid());
+		preparedStatement.setInt(1, trans.getNftid());
 		preparedStatement.setString(2, trans.getReciever());
 		preparedStatement.setString(3, trans.getSender());
 		
@@ -116,6 +116,7 @@ public class TransactionDAO
         		"drop table if exists Transaction; ",
 		        ("CREATE TABLE if not exists Transaction( " +
                     "transid int NOT NULL AUTO_INCREMENT, " +
+                    "nftid int NOT NULL, " +
 		            "sender VARCHAR(100), " +
 		            "reciever VARCHAR(100), " +
 		            "transtype VARCHAR(1), " +

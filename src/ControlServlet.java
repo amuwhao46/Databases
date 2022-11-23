@@ -397,7 +397,7 @@ public class ControlServlet extends HttpServlet {
 	    		nftDAO.updateOwner(nftid, currentUser);
 	    		
 	    		//Transaction
-	    		Transaction newTransfer = new Transaction(list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
+	    		Transaction newTransfer = new Transaction(nftid,list.getOwner(), currentUser, timeStamp, list.getPrice(), "sale");
 	    		transactionDAO.insert(newTransfer);
 	    		
 	    		response.sendRedirect("searchNFT");   
@@ -427,7 +427,7 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	listingDAO.delete(nftid); // Delete the listing of the NFT if there exists one
 	    	nftDAO.updateOwner(nftid, reciever);
-	    	Transaction newTransfer = new Transaction(currentUser, reciever, timeStamp, (double) 0, "transfer");
+	    	Transaction newTransfer = new Transaction(nftid, currentUser, reciever, timeStamp, (double) 0, "transfer");
 	    	transactionDAO.insert(newTransfer); // Insert a new transaction into the database
 	    	
 	    	request.setAttribute("userNft", nftDAO.listOwnedNfts(currentUser));

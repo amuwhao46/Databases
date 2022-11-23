@@ -2,6 +2,7 @@ import java.sql.Timestamp;
 
 public class Transaction {
 		protected int transid;
+		protected int nftid;
 	    protected String sender;
 	    protected String reciever;
 	    protected double price; 
@@ -16,12 +17,13 @@ public class Transaction {
 	        this.transid = transid;
 	    }
 	    
-	    public Transaction(int transid, String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
-	    	this(sender, reciever, timeStamp, price, transType);
+	    public Transaction(int transid, int nftid, String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
+	    	this(nftid, sender, reciever, timeStamp, price, transType);
 	    	this.transid = transid;
 	    }
 	 
-	    public Transaction(String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
+	    public Transaction(int nftid, String sender, String reciever, java.sql.Timestamp timeStamp, double price, String transType) {
+	    	this.nftid = nftid;
 	    	this.sender = sender;
 	    	this.reciever = reciever;
 	        this.timeStamp = timeStamp;
@@ -35,6 +37,13 @@ public class Transaction {
 	    }
 	    public void setTransid(int transid) {
 	        this.transid = transid;
+	    }
+	    
+	    public int getNftid() {
+	    	return nftid;
+	    }
+	    public void setNftid(int nftid) {
+	    	this.nftid = nftid;
 	    }
 
 	    public String getSender() {

@@ -77,7 +77,7 @@
        </table>  --%>
        
        	<table class=table-container border="1" cellpadding="6">
-	    <caption>Includes bought, sold, and minted NFTs</caption>
+	    <caption>Bought NFTs</caption>
            <tr>
                <th>NFTid</th>
                <th>Name</th>
