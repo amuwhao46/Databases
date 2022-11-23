@@ -127,8 +127,7 @@ public class ControlServlet extends HttpServlet {
          		userProfile(request, response);
          	case "/nftProfile":
          		System.out.println("Preparing to view current NFT");
-         		int nftid = Integer.parseInt(request.getParameter("nftid"));
-         		nftProfile(request, response,nftid);
+         		nftProfile(request, response);
          	case "/getUserActivity":
          		System.out.println("Preparing to view current active users activity");
          		userProfile(request, response);
@@ -139,22 +138,7 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    }
 	    
-//	    private void getUserActivity(HttpServletRequest request, HttpServletResponse response)
-//	            throws SQLException, IOException, ServletException {
-//	    	
-//	    	List<nft> listBoughtNfts = nftDAO.listBoughtNfts(currentUser);
-//	    	List<nft> listSoldNfts = nftDAO.listSoldNfts(currentUser);
-//	    	List<nft> listMintedNfts = nftDAO.listMintedNfts(currentUser);
-//	    	
-//	    	
-//	    	request.setAttribute("userBoughtNft", listBoughtNfts);
-//	    	request.setAttribute("userSoldNft", listSoldNfts);
-//	    	request.setAttribute("userMintedNft", listMintedNfts);
-//	    	
-//	    	System.out.print("Listing the current users activity");
-//	    	RequestDispatcher dispatcher = request.getRequestDispatcher("usersActivityPage.jsp");
-//	    	dispatcher.forward(request, response);
-//	    }
+
 	    
 	    
 	    private void userProfile(HttpServletRequest request, HttpServletResponse response)
@@ -171,9 +155,9 @@ public class ControlServlet extends HttpServlet {
 	    	dispatcher.forward(request, response);
 	    }
 	    
-	    private void nftProfile(HttpServletRequest request, HttpServletResponse response, int nftid)
+	    private void nftProfile(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
-	    	
+	    	int nftid = Integer.parseInt(request.getParameter("nftid"));
 	    	System.out.print("Getting the currently active NFT");
 	    	nft activeNFT = nftDAO.getNft(nftid);
 	    	Listing activeListing = listingDAO.getListedNft(nftid);
