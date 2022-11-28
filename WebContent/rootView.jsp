@@ -78,5 +78,97 @@
 	                <td><c:out value="${nfts.mint_time}" /></td>
 	        </c:forEach>
       	</table>
+      	<div class="flex-container">
+      		<h1>Big Creators</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Big Sellers</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Big Buyers</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Hot NFTs</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Common NFTs</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Diamond Hands</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Paper Hands</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Good Buyers</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Inactive Users</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      		<h1>Stats</h1>
+      		<table>
+      			<tr>
+      				<th>User</th>
+      			</tr>
+      			<tr>
+      				<td>(data goes here)</th>
+      			</tr>
+      		</table>
+      	</div>
 	</body>
 </html>

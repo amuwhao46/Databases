@@ -44,6 +44,10 @@
 </style>
 </head>
 	<body>
+<%-- 	<%
+		String name = (String)session.getAttribute("firstName");
+		out.print("Logged in as " + name);
+	%> --%>
 		<h1>Logged in as: <c:out value="${sessionScope.userid}"/> </h1>
 
 		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
