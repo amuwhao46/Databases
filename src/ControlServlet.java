@@ -320,7 +320,7 @@ public class ControlServlet extends HttpServlet {
 	    	
 	    	if (price<=0) {
 	    		request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
-	    		request.setAttribute("error!", "Price of lissting myst be greater than 0! ");
+	    		request.setAttribute("error!", "Price of listing must be greater than 0! ");
 	    		dispatcher.forward(request, response);
 	    	}
 	    	else if(listingDAO.getListedNft(nftid)!=null) {
@@ -361,6 +361,17 @@ public class ControlServlet extends HttpServlet {
 		    request.setAttribute("userNFT", nftDAO.listOwnedNfts(currentUser));
 		   	response.sendRedirect("goHome");
 	    } 
+	    
+	    private void bigCreators(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	String userid = request.getParameter("userid");
+	    	user activeUser = userDAO.getUser(userid);
+	    	List<nft> nftNum = nftDAO.listOwnedNfts(userid);
+	    	
+	    	request.setAttribute("users", activeUser);
+	    	request.setAttribute("userNFT", nftNum);
+	    	
+	    	System.out.print("Comparing max number of NFT's per user");
+	    }
 	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
