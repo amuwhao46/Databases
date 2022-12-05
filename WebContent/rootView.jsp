@@ -52,6 +52,7 @@
 		            <td><c:out value="${users.password}" /></td>
 		            <td><c:out value="${users.birthday}" /></td>
 		            <td><c:out value="${users.init_bal}"/></td>
+	            </tr>
 		    </c:forEach>
 		</table>
 		
@@ -76,99 +77,132 @@
 	                <td><c:out value="${nfts.owner}" /></td>
 	                <td><c:out value="${nfts.creator}" /></td>
 	                <td><c:out value="${nfts.mint_time}" /></td>
+                </tr>
 	        </c:forEach>
       	</table>
       	<div class="flex-container">
       		<h1>Big Creators</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>User that created the most NFT's</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Created</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Big Sellers</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>User that sold the most NFT's</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Sold</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigSellers}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Big Buyers</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>User that purchased the most NFT's</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Bought</th>
       			</tr>
+      			<c:forEach var="user" items="${bigBuyers}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
+      		</table>      		
+      		<h1>Hot NFT's</h1>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>NFT with the most amount of owners</caption>
       			<tr>
-      				<td>(data goes here)</th>
+      				<th>User(s)</th>
+      				<th>Owned NFTs</th>
       			</tr>
-      		</table>
-      		<h1>Hot NFTs</h1>
-      		<table>
+      			<c:forEach var="user" items="${hotNFTs}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
+      		</table>      	
+      		<h1>Common NFT's</h1>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>WORK IN PROGRESS</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Created</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
-      		</table>
-      		<h1>Common NFTs</h1>
-      		<table>
-      			<tr>
-      				<th>User</th>
-      			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Diamond Hands</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>Users that bought and never sold NFTs</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Something</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Paper Hands</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>Users that bought NFTs but sold all of them</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
+      				<th>NFT's Something</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Good Buyers</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>Users who've bought at least 3 NFTs</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
       		<h1>Inactive Users</h1>
-      		<table>
+      		<table class="table-container" border="1" cellpadding="6">
+      			<caption>Users that haven't performed any NFT activities</caption>
       			<tr>
-      				<th>User</th>
+      				<th>User(s)</th>
       			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
+      			<c:forEach var="user" items="${bigCreators}">
+	      			<tr>
+	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
+	      			</tr>
+      			</c:forEach>
       		</table>
-      		<h1>Stats</h1>
-      		<table>
-      			<tr>
-      				<th>User</th>
-      			</tr>
-      			<tr>
-      				<td>(data goes here)</th>
-      			</tr>
-      		</table>
-      	</div>
+    	</div>
 	</body>
 </html>
