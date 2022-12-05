@@ -23,5 +23,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class hotUser {
-
+	
+	String hotUserResult;
+	int resultNum;
+	
+	
+	public hotUser(String hotUserResult, int resultNum){
+				
+		this.hotUserResult= hotUserResult;
+		this.resultNum=resultNum;
+		
+	}
+	
+	
+public void setHotUser(String hotUserResult) {
+		
+		this.hotUserResult=hotUserResult;
+		
+		
+	}
+	
+	
+	
+	public String getHotUser() {
+		
+		return hotUserResult;
+		
+		
+	}
+	
+	
+public void setResultNum(int resultNum) {
+		
+		this.resultNum=resultNum;
+		
+		
+	}
+	
+public int getResultNum() {
+	
+	return resultNum;
+	
+	
+	}
+	
+	
 }
