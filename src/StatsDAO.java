@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Servlet implementation class Connect
  */
-@WebServlet("/ListingDAO")
+@WebServlet("/StatsDAO")
 public class StatsDAO 
 {
 	private static final long serialVersionUID = 1L;
