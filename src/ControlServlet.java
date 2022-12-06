@@ -362,6 +362,20 @@ public class ControlServlet extends HttpServlet {
 		   	response.sendRedirect("goHome");
 	    } 
 	    
+	    //==============================================================================================================================
+	    // part 4. function calling every function to display on rootview homescreen
+	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    	String userid = request.getParameter("userid");
+	    	user activeUser = userDAO.getUser(userid);
+	    	List<nft> nftNum = nftDAO.listOwnedNfts(userid);
+	    	
+	    	request.setAttribute("users", activeUser);
+	    	request.setAttribute("userNFT", nftNum);
+	    	
+	    	System.out.print("Comparing max number of NFT's per user");
+	    }
+	    
+	    // unsure of where this is going
 	    private void bigCreators(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	String userid = request.getParameter("userid");
 	    	user activeUser = userDAO.getUser(userid);

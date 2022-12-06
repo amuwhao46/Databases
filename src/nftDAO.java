@@ -88,7 +88,7 @@ public class nftDAO
         return listNft;
     }
     
-    // unsure of sql statement
+
     public List<nft> listBoughtNfts(String userName) throws SQLException {
         List<nft> listBoughtNfts = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT WHERE nftid in (SELECT nftid FROM Transaction WHERE (transType = 's' AND reciever = ?));";      
@@ -123,7 +123,7 @@ public class nftDAO
     }
     
     
-    // unsure of sql statement is correct
+  
     public List<nft> listSoldNfts(String userName) throws SQLException {
         List<nft> listSoldNfts = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT WHERE nftid in (SELECT nftid FROM Transaction WHERE (transType = 's' AND sender = ?));";      
@@ -157,7 +157,7 @@ public class nftDAO
         return listSoldNfts;
     }
     
-    // unsure of sql statement
+
     public List<nft> listMintedNfts(String userName) throws SQLException {
         List<nft> listOwnedNfts = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT where creator = ?";      
