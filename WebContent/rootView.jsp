@@ -80,6 +80,12 @@
                 </tr>
 	        </c:forEach>
       	</table>
+      	
+      	<!-- For the stats -->
+      	<div>
+      		
+      	</div>
+      	
       	<div class="flex-container">
       		<h1>Big Creators</h1>
       		<table class="table-container" border="1" cellpadding="6">
@@ -136,7 +142,8 @@
 	      				<td><c:out value="${user.resultNum}"></c:out></td>
 	      			</tr>
       			</c:forEach>
-      		</table>      	
+      		</table>  
+      		<!-- Still gotta figure out ngl -->    	
       		<h1>Common NFT's</h1>
       		<table class="table-container" border="1" cellpadding="6">
       			<caption>WORK IN PROGRESS</caption>

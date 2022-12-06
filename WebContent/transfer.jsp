@@ -15,17 +15,29 @@
 			margin-right: auto;
 			padding: 10px;
 		}
+		
 		.wrap{
 			padding: 1rem;
 			align-items: center;
 		}
-	
+		
+		.box {
+			background-color:white;
+			filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+			border-radius: 0.25rem;
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding:1rem;
+		}
 	</style>
 </head>
 
 	<body>
 		<div align="center">
-			<h1>Transfer a NFT to another User!:</h1>
+		<div class="box">
+			<h1>Transfer a NFT to another User:</h1>
 			<h2><a href="goHome">Go back to the activity page!</a></h2>
 			<form action="endTransfer" method="post">
 				<div class="wrap">
@@ -50,6 +62,7 @@
 				</div>
 				<button type="submit">transfer</button>
 			</form>
+		</div>
 		</div>
 	</body>
 </html>
