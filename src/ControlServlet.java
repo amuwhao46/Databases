@@ -368,9 +368,7 @@ public class ControlServlet extends HttpServlet {
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	 
-	    	
-	    	
-	    	List<hotUser> bigCreators = hotUserDAO.getBigCreators();
+	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
 	    	 List<hotUser> goodBuyers=hotUserDAO.getGoodBuyers();
