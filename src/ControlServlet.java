@@ -24,12 +24,13 @@ import java.sql.PreparedStatement;
 public class ControlServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
 	    private String currentUser;
-	    private HttpSession session=null;
+	    private HttpSession session = null;
 	    private static userDAO userDAO;
 	    private static nftDAO nftDAO;
 	    private static ListingDAO listingDAO;
 	    private static TransactionDAO transactionDAO;
 	    private static hotUserDAO hotUserDAO;
+	    private static StatsDAO StatsDAO;
 	    
 	    public ControlServlet()
 	    {
@@ -40,10 +41,11 @@ public class ControlServlet extends HttpServlet {
 	    {
 	    	userDAO = new userDAO();
 	    	nftDAO = new nftDAO();
-	    	currentUser= "";
-	    	transactionDAO= new TransactionDAO();
-	    	listingDAO=new ListingDAO();
+	    	currentUser = "";
+	    	transactionDAO = new TransactionDAO();
+	    	listingDAO = new ListingDAO();
 	    	hotUserDAO = new hotUserDAO();
+	    	StatsDAO = new StatsDAO();
 	    }
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -302,7 +304,20 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
-	    	request.getRequestDispatcher("rootView.jsp").forward(request, response); //Root view to see how c:forEach is connected
+			
+			//Part 4
+	    	System.out.println("Terminal: Loading statistics for the selected user");
+	    	
+	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
+	    	List<user> user = userDAO.listAllUsers();
+	    	
+	    	// Loops through each user and gets the associated stats
+	    	for (user currentUser: user) {
+	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
+	    	}
+	    	request.setAttribute("selectedUserStats", selectedUserStats);
+			
+	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
