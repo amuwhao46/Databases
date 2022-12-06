@@ -365,14 +365,19 @@ public class ControlServlet extends HttpServlet {
 	    //==============================================================================================================================
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	String userid = request.getParameter("userid");
-	    	user activeUser = userDAO.getUser(userid);
-	    	List<nft> nftNum = nftDAO.listOwnedNfts(userid);
-	    	
-	    	request.setAttribute("users", activeUser);
-	    	request.setAttribute("userNFT", nftNum);
-	    	
-	    	System.out.print("Comparing max number of NFT's per user");
+	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
+	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
+	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
+	    	 List<hotUser> goodBuyers=hotUserDAO.getGoodBuyers();
+	    	 List<hotUser> hotNFTs=hotUserDAO.getHotNFTs();
+
+
+	    	 request.setAttribute("bigCreators", bigCreators);
+	    	 request.setAttribute("bigSellers", bigSellers);
+	    	 request.setAttribute("bigBuyers", bigBuyers);
+	    	 request.setAttribute("goodBuyers", goodBuyers);
+	    	 request.setAttribute("hotNFTs", hotNFTs);
+	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
 	    // unsure of where this is going
