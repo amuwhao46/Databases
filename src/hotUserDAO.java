@@ -61,69 +61,87 @@ public class hotUserDAO {
     //=====================================================================================
     // get big creators
     public List<hotUser> getBigCreators() throws SQLException {
-    	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
-    	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
-    	try {
-			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setInt(1, nftid);
-			ResultSet resultSet = preparedStatement.executeQuery(); 
-			
-			while (resultSet.next()) {
-				String sender = resultSet.getString("sender");
-				String reciever = resultSet.getString("reciever");
-				String transType;
-				
-				if (resultSet.getString("transType").equals("s"))
-					transType = "sale";
-				else
-					transType = "transfer";
-				
-				double price = resultSet.getDouble("price");
-				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
-				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
-			}
-			
-			resultSet.close();
-			
-    	} catch(SQLException e) {
-    		e.toString();
-    	}
-    	
-    	return listAllTransactions;
+    	String sql = "SELECT * from UsersMinted\r\n"
+                + "WHERE count = (SELECT MAX(count) FROM UsersMinted);";
+
+        List<hotUser> bigCreators = new ArrayList<hotUser>();
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("drop view if exists UsersMinted;");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+                    + "AS (\r\n"
+                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     FROM NFT\r\n"
+                    + "     GROUP BY creator);");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String hotUserResult = resultSet.getString("creator");
+                int resultItem = resultSet.getInt("count");
+
+                bigCreators.add(new hotUser(hotUserResult, resultItem));
+            }
+
+            resultSet.close();
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+            return bigCreators;
     }
     
     //=====================================================================================
     // get BigBuyers
     List<hotUser> getBigBuyers() throws SQLException {
-    	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
-    	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
+    	String sql = "SELECT * from UsersMinted;\n"
+                + "WHERE count = (SELECT MAX(count) FROM UsersMinted);";
+    	List<hotUser> getBigBuyers = new ArrayList<hotUser>();
     	try {
-			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setInt(1, nftid);
-			ResultSet resultSet = preparedStatement.executeQuery(); 
-			
-			while (resultSet.next()) {
-				String sender = resultSet.getString("sender");
-				String reciever = resultSet.getString("reciever");
-				String transType;
-				
-				if (resultSet.getString("transType").equals("s"))
-					transType = "sale";
-				else
-					transType = "transfer";
-				
-				double price = resultSet.getDouble("price");
-				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
-				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
-			}
-			
-			resultSet.close();
-			
-    	} catch(SQLException e) {
-    		e.toString();
-    	}
+            statement = (Statement) connect.createStatement();
+            statement.execute("drop view if exists UsersMinted;");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+                    + "AS (\r\n"
+                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     FROM NFT\r\n"
+                    + "     GROUP BY creator);");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String hotUserResult = resultSet.getString("creator");
+                int resultItem = resultSet.getInt("count");
+
+                getBigBuyers.add(new hotUser(hotUserResult, resultItem));
+            }
+
+            resultSet.close();
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
     	
-    	return listAllTransactions;
+    	return getBigBuyers;
     }
     
     
@@ -131,34 +149,42 @@ public class hotUserDAO {
     // get big sellers
     public List<hotUser> getBigSellers() throws SQLException {
     	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
-    	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
+    	List<hotUser> getBigSellers = new ArrayList<hotUser>();
     	try {
-			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setInt(1, nftid);
-			ResultSet resultSet = preparedStatement.executeQuery(); 
-			
-			while (resultSet.next()) {
-				String sender = resultSet.getString("sender");
-				String reciever = resultSet.getString("reciever");
-				String transType;
-				
-				if (resultSet.getString("transType").equals("s"))
-					transType = "sale";
-				else
-					transType = "transfer";
-				
-				double price = resultSet.getDouble("price");
-				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
-				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
-			}
-			
-			resultSet.close();
-			
-    	} catch(SQLException e) {
-    		e.toString();
-    	}
+            statement = (Statement) connect.createStatement();
+            statement.execute("drop view if exists UsersMinted;");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+                    + "AS (\r\n"
+                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     FROM NFT\r\n"
+                    + "     GROUP BY creator);");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String hotUserResult = resultSet.getString("creator");
+                int resultItem = resultSet.getInt("count");
+
+                getBigSellers.add(new hotUser(hotUserResult, resultItem));
+            }
+
+            resultSet.close();
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
     	
-    	return listAllTransactions;
+    	return getBigSellers;
     }
 	
     //=====================================================================================
@@ -166,34 +192,42 @@ public class hotUserDAO {
  // get good buyers
     public List<hotUser> getGoodBuyers() throws SQLException {
     	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
-    	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
+    	List<hotUser> getGoodBuyers  = new ArrayList<hotUser>();
     	try {
-			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-			preparedStatement.setInt(1, nftid);
-			ResultSet resultSet = preparedStatement.executeQuery(); 
-			
-			while (resultSet.next()) {
-				String sender = resultSet.getString("sender");
-				String reciever = resultSet.getString("reciever");
-				String transType;
-				
-				if (resultSet.getString("transType").equals("s"))
-					transType = "sale";
-				else
-					transType = "transfer";
-				
-				double price = resultSet.getDouble("price");
-				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
-				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
-			}
-			
-			resultSet.close();
-			
-    	} catch(SQLException e) {
-    		e.toString();
-    	}
+            statement = (Statement) connect.createStatement();
+            statement.execute("drop view if exists UsersMinted;");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+                    + "AS (\r\n"
+                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     FROM NFT\r\n"
+                    + "     GROUP BY creator);");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String hotUserResult = resultSet.getString("creator");
+                int resultItem = resultSet.getInt("count");
+
+                getGoodBuyers.add(new hotUser(hotUserResult, resultItem));
+            }
+
+            resultSet.close();
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
     	
-    	return listAllTransactions;
+    	return getGoodBuyers;
     }
 	
     //=====================================================================================
@@ -201,34 +235,42 @@ public class hotUserDAO {
     // get hotNFTs
        public List<hotUser> getHotNFTs() throws SQLException {
        	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
-       	List<Transaction> listAllTransactions = new ArrayList<Transaction>();
+       	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
        	try {
-   			preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
-   			preparedStatement.setInt(1, nftid);
-   			ResultSet resultSet = preparedStatement.executeQuery(); 
-   			
-   			while (resultSet.next()) {
-   				String sender = resultSet.getString("sender");
-   				String reciever = resultSet.getString("reciever");
-   				String transType;
-   				
-   				if (resultSet.getString("transType").equals("s"))
-   					transType = "sale";
-   				else
-   					transType = "transfer";
-   				
-   				double price = resultSet.getDouble("price");
-   				Timestamp timeStamp = resultSet.getTimestamp("timeStamp");
-   				listAllTransactions.add(new Transaction(nftid, sender, reciever, timeStamp, price, transType));
-   			}
-   			
-   			resultSet.close();
-   			
-       	} catch(SQLException e) {
-       		e.toString();
-       	}
+            statement = (Statement) connect.createStatement();
+            statement.execute("drop view if exists UsersMinted;");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+                    + "AS (\r\n"
+                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     FROM NFT\r\n"
+                    + "     GROUP BY creator);");
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+
+    		try {
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String hotUserResult = resultSet.getString("creator");
+                int resultItem = resultSet.getInt("count");
+
+                getHotNFTs.add(new hotUser(hotUserResult, resultItem));
+            }
+
+            resultSet.close();
+        } catch(SQLException e) {
+            System.out.println(e.toString());
+        }
        	
-       	return listAllTransactions;
+       	return getHotNFTs;
        }
     
     

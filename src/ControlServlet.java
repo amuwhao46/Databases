@@ -29,6 +29,7 @@ public class ControlServlet extends HttpServlet {
 	    private static nftDAO nftDAO;
 	    private static ListingDAO listingDAO;
 	    private static TransactionDAO transactionDAO;
+	    private static hotUserDAO hotUserDAO;
 	    
 	    public ControlServlet()
 	    {
@@ -42,6 +43,7 @@ public class ControlServlet extends HttpServlet {
 	    	currentUser= "";
 	    	transactionDAO= new TransactionDAO();
 	    	listingDAO=new ListingDAO();
+	    	hotUserDAO = new hotUserDAO();
 	    }
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -365,7 +367,10 @@ public class ControlServlet extends HttpServlet {
 	    //==============================================================================================================================
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
+	    	 
+	    	
+	    	
+	    	List<hotUser> bigCreators = hotUserDAO.getBigCreators();
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
 	    	 List<hotUser> goodBuyers=hotUserDAO.getGoodBuyers();
