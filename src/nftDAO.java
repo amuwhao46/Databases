@@ -53,7 +53,44 @@ public class nftDAO
         }
     }
     
+    // list common NFT function -- unsure of implementation
+    public List<nft> listCommonNfts(String userA, String userB) throws SQLException {
+        List<nft> listCommonNft = new ArrayList<nft>();        
+        String sql = "SELECT DISTINCT (nftid)FROM Transaction WHERE ";      
+        
+        
+        try {
+        	
+        	connect_func();      
+        	preparedStatement.setString(1, userA);
+        	preparedStatement.setString(2, userB);
+        	preparedStatement.setString(3, userA);
+        	preparedStatement.setString(4, userB);
+        	ResultSet resultSet = statement.executeQuery(sql);
+        	
+        	while (resultSet.next()) {
+        		int nftid = resultSet.getInt("nftid");
+        		String unique_name = resultSet.getString("unique_name");
+        		String description = resultSet.getString("description");
+        		String nft_image = resultSet.getString("nft_image");
+        		String owner = resultSet.getString("owner");
+        		String creator = resultSet.getString("creator");
+        		java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
+        		
+        		
+        		nft nfts = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
+        		listCommonNft.add(nfts);
+        	}  
+        	  resultSet.close(); 
+        	
+        } catch(Exception e) {
+        	throw new SQLException(e);
+        }
 
+         
+        return listCommonNft;
+    }
+    
     public List<nft> listAllNfts() throws SQLException {
         List<nft> listNft = new ArrayList<nft>();        
         String sql = "SELECT * FROM NFT";      
@@ -62,6 +99,7 @@ public class nftDAO
         try {
         	
         	connect_func();      
+        	
         	statement = (Statement) connect.createStatement();
         	ResultSet resultSet = statement.executeQuery(sql);
         	
