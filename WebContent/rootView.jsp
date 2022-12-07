@@ -26,9 +26,17 @@
 		</style>
 	</head>
 	<body>
-		
+		<!-- Initialize database -->
 		<form action = "initialize">
 			<input type = "submit" value = "Initialize the Database"/>
+		</form>
+		
+		<!-- Initialize hotUser and stats -->
+		<form action = "hotUser">
+			<input type = "submit" value = "Initialize Achievements"/>
+		</form>
+		<form action = "statistics">
+			<input type = "submit" value = "Initialize Statistics"/>
 		</form>
 		<a href="login.jsp"target ="_self" > logout</a><br><br> 
 		

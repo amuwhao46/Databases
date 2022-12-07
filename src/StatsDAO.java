@@ -72,20 +72,20 @@ public class StatsDAO
     	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT " +
     			"WHERE owner = ?;";
     	
-    	System.out.println("Terminal: [DEBUGGING] Run SQL commands");
+    	System.out.println("[DEBUGGING] Run SQL commands");
     	
-    	System.out.println("Terminal: [DEBUGGING] This section before the Try block");
+    	System.out.println("[DEBUGGING] This section before the Try block");
     	
     	try {    
-    		System.out.println("Terminal: [DEBUGGING] Immediately inside try block");
+    		System.out.println("[DEBUGGING] Immediately inside try block");
     		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys); // <---- dbTotalBuys why you no work???
-    		System.out.println("Terminal: [DEBUGGING] preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);");
+    		System.out.println("[DEBUGGING] preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);");
     		preparedStatement.setString(1, userid);
-    		System.out.println("Terminal: [DEBUGGING] preparedStatement.setString(1, userid);");
+    		System.out.println("[DEBUGGING] preparedStatement.setString(1, userid);");
     		ResultSet resultSet = preparedStatement.executeQuery();
-    		System.out.println("Terminal: [DEBUGGING] ResultSet resultSet = preparedStatement.executeQuery();");
+    		System.out.println("[DEBUGGING] ResultSet resultSet = preparedStatement.executeQuery();");
 
-    		System.out.println("Terminal: [DEBUGGING] Prepared statement in try block");
+    		System.out.println("[DEBUGGING] Prepared statement in try block");
     		
     		while (resultSet.next()) {
     			userStats.setTotalBuys(resultSet.getInt("Total"));

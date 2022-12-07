@@ -77,6 +77,9 @@ public class ControlServlet extends HttpServlet {
         	case "/root":
         		rootPage(request,response, "");
         		break;
+        	case "/statistics":
+        		statistics(request,response);
+        		break;
         	case "/logout":
         		logout(request,response);
         		break;
@@ -328,7 +331,11 @@ public class ControlServlet extends HttpServlet {
 //			
 //			System.out.print("Comparing max number of NFT's per user");
 			
-			
+	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
+	    } 
+	    
+	    private void statistics(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
 	    	System.out.println("Terminal: Loading statistics for the selected user");
 	    	
 	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
@@ -345,7 +352,7 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.println("Terminal: [DEBUGGING] TO SEE IF THIS MESSAGE PRINTS");
 	    	
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
-	    } 
+	    }
 	    
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
