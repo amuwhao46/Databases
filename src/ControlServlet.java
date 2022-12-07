@@ -311,14 +311,19 @@ public class ControlServlet extends HttpServlet {
 	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
 	    	List<user> user = userDAO.listAllUsers();
 	    	
-	    	// Loops through each user and gets the associated stats
-	    	for (user currentUser: user) {
-	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
+	    	// Loops through each user and gets the associated statistics
+	    	for (user users: user) {
+	    		System.out.println("Terminal: [DEBUGGING] PRINTS BEFORE execute");
+	    		selectedUserStats.add(StatsDAO.getUserStats(users.getUserid()));
+	    		System.out.println("Terminal: [DEBUGGING] PRINTS AFTER execute");
 	    	}
 	    	request.setAttribute("selectedUserStats", selectedUserStats);
-			
+	    	
+	    	System.out.println("Terminal: [DEBUGGING] TO SEE IF THIS MESSAGE PRINTS");
+	    	
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
+	    
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	session.setAttribute("userid", "");
