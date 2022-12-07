@@ -83,7 +83,25 @@
       	
       	<!-- For the stats -->
       	<div>
-      		
+      		<h1>Statistics</h1>
+      		<table class="table-container" border="1" cellpadding="6">
+      		<tr>
+      			<th>User (email)</th>
+      			<th>Total Bought NFTs</th>
+      			<th>Total Sold NFTs</th>
+      			<th>Total Transfers</th>
+      			<th>Total Owned NFTs</th>
+      		</tr>
+      		<c:forEach var="stats" items="${selectedUserStats}">
+	      		<tr>
+	      			<td><c:out value="${stats.user}"></c:out></td>
+	      			<td><c:out value="${stats.totalBuys}"></c:out></td>
+	      			<td><c:out value="${stats.totalSells}"></c:out></td>
+	      			<td><c:out value="${stats.totalTransfers}"></c:out></td>
+	      			<td><c:out value="${stats.ownedNfts}"></c:out></td>
+	      		</tr>
+      		</c:forEach>
+      		</table>
       	</div>
       	
       	<div class="flex-container">
