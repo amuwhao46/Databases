@@ -78,7 +78,7 @@ public class StatsDAO
     	
     	try {    
     		System.out.println("Terminal: [DEBUGGING] Immediately inside try block");
-    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);
+    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys); // <---- dbTotalBuys why you no work???
     		System.out.println("Terminal: [DEBUGGING] preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);");
     		preparedStatement.setString(1, userid);
     		System.out.println("Terminal: [DEBUGGING] preparedStatement.setString(1, userid);");
