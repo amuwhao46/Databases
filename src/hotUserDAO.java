@@ -33,7 +33,7 @@ public class hotUserDAO {
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	
+	private nftDAO conversion=null;
 	public hotUserDAO(){
 		
 		
@@ -61,24 +61,23 @@ public class hotUserDAO {
     //=====================================================================================
     // get big creators
     public List<hotUser> getBigCreators() throws SQLException {
-    	String sql = "SELECT * from UsersMinted\r\n"
-                + "WHERE count = (SELECT MAX(count) FROM UsersMinted);";
+    	String sql = "SELECT * from UserMinted WHERE count = (SELECT MAX(count) FROM UserMinted);";
 
         List<hotUser> bigCreators = new ArrayList<hotUser>();
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists UsersMinted;");
+            statement.execute("drop view if exists UserMinted;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
-                    + "AS (\r\n"
-                    + "     SELECT creator, COUNT(*) as Num\r\n"
-                    + "     FROM NFT\r\n"
-                    + "     GROUP BY creator);");
+            statement.execute("CREATE VIEW UserMinted(creator, count)\n"
+                    + "AS (\n"
+                    + "SELECT creator, COUNT(*) as Num\n"
+                    + "FROM NFT\n"
+                    + "GROUP BY creator);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -104,23 +103,24 @@ public class hotUserDAO {
     //=====================================================================================
     // get BigBuyers
     List<hotUser> getBigBuyers() throws SQLException {
-    	String sql = "SELECT * from UsersMinted;\r\n"
-                + "WHERE count = (SELECT MAX(count) FROM UsersMinted);";
+    	String sql = "SELECT * from PurchasedAmt;\n"
+                + "WHERE count = (SELECT MAX(count) FROM PurchasedAmt);";
     	List<hotUser> getBigBuyers = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists UsersMinted;");
+            statement.execute("drop view if exists PurchaseAmt;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UsersMinted(creator, count)\r\n"
-                    + "AS (\r\n"
-                    + "     SELECT creator, COUNT(*) as Num\r\n"
-                    + "     FROM NFT\r\n"
-                    + "     GROUP BY creator);");
+            statement.execute("CREATE VIEW PurchaseAmt(sender, count)\n"
+                    + "AS (\n"
+                    + "SELECT creator, COUNT(*) as Num\n"
+                    + "FROM Transaction\n"
+                    + "WHERE transType = \"s\"\n"
+                    + "GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -130,7 +130,7 @@ public class hotUserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String hotUserResult = resultSet.getString("creator");
+                String hotUserResult = resultSet.getString("sender");
                 int resultItem = resultSet.getInt("count");
 
                 getBigBuyers.add(new hotUser(hotUserResult, resultItem));
@@ -159,10 +159,10 @@ public class hotUserDAO {
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW NFTSeller(sender, count)\r\n"
-                    + "AS (\r\n"
-                    + "SELECT sender, COUNT(*) as Num\r\n"
-                    + "FROM NFT\r\n"
+            statement.execute("CREATE VIEW NFTSeller(sender, count)\n"
+                    + "AS (\n"
+                    + "SELECT sender, COUNT(*) as Num\n"
+                    + "FROM NFT\n"
                     + "GROUP BY sender);");
         } catch(SQLException e) {
             System.out.println(e.toString());
@@ -202,11 +202,11 @@ public class hotUserDAO {
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW purchasedAmt(reciever, count)\r\n"
-                    + "AS (\r\n"
-                    + "     SELECT reciever, COUNT(*) as Num\r\n"
-                    + "     FROM NFT\r\n"
-                    + "     GROUP BY reciever);");
+            statement.execute("CREATE VIEW purchasedAmt(reciever, count)\n"
+                    + "AS (\n"
+                    + "SELECT reciever, COUNT(*) as Num\n"
+                    + "FROM NFT\n"
+                    + "GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -234,22 +234,22 @@ public class hotUserDAO {
     
     // get hotNFTs
        public List<hotUser> getHotNFTs() throws SQLException {
-       	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
+       	String sql = "SELECT * FROM OwnedNFTs WHERE count = (SELECT MAX(count)FROM OwnedNFTs)";
        	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
        	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists UsersMinted;");
+            statement.execute("drop view if exists OwnedNFTs;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
-                    + "AS (\r\n"
-                    + "     SELECT creator, COUNT(*) as Num\r\n"
-                    + "     FROM NFT\r\n"
-                    + "     GROUP BY creator);");
+            statement.execute("CREATE VIEW OwnedNFTs(nftid, count)\n"
+                    + "AS (\n"
+                    + "SELECT creator, COUNT(*) as Num\n"
+                    + "FROM (SELECT DISTINCT reciever,nftid FROM Transaction)as T\n"
+                    + "GROUP BY nftid);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -259,9 +259,11 @@ public class hotUserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String hotUserResult = resultSet.getString("creator");
+                int result = resultSet.getInt("nftid");
                 int resultItem = resultSet.getInt("count");
 
+                String hotUserResult= conversion.getNft(result).getUnique_name();
+                
                 getHotNFTs.add(new hotUser(hotUserResult, resultItem));
             }
 
