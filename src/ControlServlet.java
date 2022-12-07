@@ -312,9 +312,9 @@ public class ControlServlet extends HttpServlet {
 	    	List<user> user = userDAO.listAllUsers();
 	    	
 	    	// Loops through each user and gets the associated stats
-	    	/*for (user currentUser: user) {
+	    	for (user currentUser: user) {
 	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
-	    	}*/
+	    	}
 	    	request.setAttribute("selectedUserStats", selectedUserStats);
 			
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);

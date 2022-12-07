@@ -62,13 +62,13 @@ public class StatsDAO
     	userStats.setUser(userid);
     	
     	String dbTotalBuys = "SELECT sender, COUNT(*) AS Total From Transaction\r\n" +
-    			 "WHERE transType = 't' AND sender = ?;";
+    			 "WHERE transType = 's' AND reciever = ?;";
     	
     	String dbTotalSells = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
-    			"WHERE transType = 's' AND reciever = ?;";
+    			"WHERE transType = 's' AND sender = ?;";
     	
     	String dbTotalTransfers = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
-    			"WHERE transType = 't' AND reciever = ?;";
+    			"WHERE transType = 't' AND sender = ?;";
     	
     	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT\r\n" +
     			"WHERE owner = ?;";
@@ -85,7 +85,7 @@ public class StatsDAO
     		resultSet.close();
     		
     	} catch (SQLException e) {
-    		System.out.println(e);
+    		System.out.println(e.toString());
     	}
     	
     	try {    		
@@ -100,7 +100,7 @@ public class StatsDAO
     		resultSet.close();
     		
     	} catch (SQLException e) {
-    		System.out.println(e);
+    		System.out.println(e.toString());
     	}
     	
     	try {    		
@@ -115,7 +115,7 @@ public class StatsDAO
     		resultSet.close();
     		
     	} catch (SQLException e) {
-    		System.out.println(e);
+    		System.out.println(e.toString());
     	}
     	
     	try {    		
@@ -130,7 +130,7 @@ public class StatsDAO
     		resultSet.close();
     		
     	} catch (SQLException e) {
-    		System.out.println(e);
+    		System.out.println(e.toString());
     	}
     	
     	return userStats;
