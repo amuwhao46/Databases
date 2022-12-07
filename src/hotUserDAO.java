@@ -104,7 +104,7 @@ public class hotUserDAO {
     //=====================================================================================
     // get BigBuyers
     List<hotUser> getBigBuyers() throws SQLException {
-    	String sql = "SELECT * from UsersMinted;\n"
+    	String sql = "SELECT * from UsersMinted;\r\n"
                 + "WHERE count = (SELECT MAX(count) FROM UsersMinted);";
     	List<hotUser> getBigBuyers = new ArrayList<hotUser>();
     	try {
@@ -116,7 +116,7 @@ public class hotUserDAO {
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+            statement.execute("CREATE VIEW UsersMinted(creator, count)\r\n"
                     + "AS (\r\n"
                     + "     SELECT creator, COUNT(*) as Num\r\n"
                     + "     FROM NFT\r\n"
@@ -148,22 +148,22 @@ public class hotUserDAO {
     //=====================================================================================
     // get big sellers
     public List<hotUser> getBigSellers() throws SQLException {
-    	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
+    	String sql = "SELECT * FROM NFTSeller WHERE nftid = ?";
     	List<hotUser> getBigSellers = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists UsersMinted;");
+            statement.execute("drop view if exists NFTSeller;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+            statement.execute("CREATE VIEW NFTSeller(sender, count)\r\n"
                     + "AS (\r\n"
-                    + "     SELECT creator, COUNT(*) as Num\r\n"
-                    + "     FROM NFT\r\n"
-                    + "     GROUP BY creator);");
+                    + "SELECT sender, COUNT(*) as Num\r\n"
+                    + "FROM NFT\r\n"
+                    + "GROUP BY sender);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -173,7 +173,7 @@ public class hotUserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String hotUserResult = resultSet.getString("creator");
+                String hotUserResult = resultSet.getString("sender");
                 int resultItem = resultSet.getInt("count");
 
                 getBigSellers.add(new hotUser(hotUserResult, resultItem));
@@ -191,22 +191,22 @@ public class hotUserDAO {
     
  // get good buyers
     public List<hotUser> getGoodBuyers() throws SQLException {
-    	String sql = "SELECT * FROM Transaction WHERE nftid = ?";
+    	String sql = "SELECT * FROM purchasedAmt WHERE count >=3";
     	List<hotUser> getGoodBuyers  = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists UsersMinted;");
+            statement.execute("drop view if exists purchasedAmt;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\r\n"
+            statement.execute("CREATE VIEW purchasedAmt(reciever, count)\r\n"
                     + "AS (\r\n"
-                    + "     SELECT creator, COUNT(*) as Num\r\n"
+                    + "     SELECT reciever, COUNT(*) as Num\r\n"
                     + "     FROM NFT\r\n"
-                    + "     GROUP BY creator);");
+                    + "     GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
@@ -216,7 +216,7 @@ public class hotUserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String hotUserResult = resultSet.getString("creator");
+                String hotUserResult = resultSet.getString("reciever");
                 int resultItem = resultSet.getInt("count");
 
                 getGoodBuyers.add(new hotUser(hotUserResult, resultItem));
