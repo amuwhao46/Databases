@@ -312,9 +312,9 @@ public class ControlServlet extends HttpServlet {
 	    	List<user> user = userDAO.listAllUsers();
 	    	
 	    	// Loops through each user and gets the associated stats
-//	    	for (user currentUser: user) {
-//	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
-//	    	}
+	    	for (user currentUser: user) {
+	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
+	    	}
 	    	request.setAttribute("selectedUserStats", selectedUserStats);
 			
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
@@ -386,8 +386,8 @@ public class ControlServlet extends HttpServlet {
 	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
-	    	 List<hotUser> goodBuyers=hotUserDAO.getGoodBuyers();
-	    	 List<hotUser> hotNFTs=hotUserDAO.getHotNFTs();
+	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();
+	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
 
 
 	    	 request.setAttribute("bigCreators", bigCreators);

@@ -36,41 +36,41 @@ public class StatsDAO
 	/** 
 	 * @see HttpServlet#HttpServlet()
      */
-//    protected void connect_func() throws SQLException {
-//    	//uses default connection to the database
-//        if (connect == null || connect.isClosed()) {
-//            try {
-//                Class.forName("com.mysql.cj.jdbc.Driver");
-//            } catch (ClassNotFoundException e) {
-//                throw new SQLException(e);
-//            }
-//            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false"
-//            		+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
-//            		+ "&user=john&password=pass1234");
-//            System.out.println(connect);
-//        }
-//    }
-//    
-//    protected void disconnect() throws SQLException {
-//        if (connect != null && !connect.isClosed()) {
-//        	connect.close();
-//        }
-//    }
+    protected void connect_func() throws SQLException {
+    	//uses default connection to the database
+        if (connect == null || connect.isClosed()) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new SQLException(e);
+            }
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/NFTdb?allowPublicKeyRetrieval=true&useSSL=false"
+            		+ "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
+            		+ "&user=john&password=pass1234");
+            System.out.println(connect);
+        }
+    }
+    
+    protected void disconnect() throws SQLException {
+        if (connect != null && !connect.isClosed()) {
+        	connect.close();
+        }
+    }
   
     public Stats getUserStats(String userid) {
     	Stats userStats = new Stats();
     	userStats.setUser(userid);
     	
-    	String dbTotalBuys = "SELECT sender, COUNT(*) AS Total From Transaction" +
+    	String dbTotalBuys = "SELECT sender, COUNT(*) AS Total From Transaction\r\n" +
     			 "WHERE transType = 't' AND sender = ?;";
     	
-    	String dbTotalSells = "SELECT reciever, COUNT(*) AS Total From Transaction" +
+    	String dbTotalSells = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
     			"WHERE transType = 's' AND reciever = ?;";
     	
-    	String dbTotalTransfers = "SELECT reciever, COUNT(*) AS Total From Transaction" +
+    	String dbTotalTransfers = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
     			"WHERE transType = 't' AND reciever = ?;";
     	
-    	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT" +
+    	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT\r\n" +
     			"WHERE owner = ?;";
     	
     	try {    		
@@ -81,6 +81,9 @@ public class StatsDAO
     		while (resultSet.next()) {
     			userStats.setTotalBuys(resultSet.getInt("Total"));
     		}
+    		
+    		resultSet.close();
+    		
     	} catch (SQLException e) {
     		System.out.println(e);
     	}
@@ -91,8 +94,11 @@ public class StatsDAO
     		ResultSet resultSet = preparedStatement.executeQuery();
     		
     		while (resultSet.next()) {
-    			userStats.setTotalBuys(resultSet.getInt("Total"));
+    			userStats.setTotalSells(resultSet.getInt("Total"));
     		}
+    		
+    		resultSet.close();
+    		
     	} catch (SQLException e) {
     		System.out.println(e);
     	}
@@ -103,8 +109,11 @@ public class StatsDAO
     		ResultSet resultSet = preparedStatement.executeQuery();
     		
     		while (resultSet.next()) {
-    			userStats.setTotalBuys(resultSet.getInt("Total"));
+    			userStats.setTotalTransfers(resultSet.getInt("Total"));
     		}
+    		
+    		resultSet.close();
+    		
     	} catch (SQLException e) {
     		System.out.println(e);
     	}
@@ -115,8 +124,11 @@ public class StatsDAO
     		ResultSet resultSet = preparedStatement.executeQuery();
     		
     		while (resultSet.next()) {
-    			userStats.setTotalBuys(resultSet.getInt("Total"));
+    			userStats.setOwnedNfts(resultSet.getInt("Total"));
     		}
+    		
+    		resultSet.close();
+    		
     	} catch (SQLException e) {
     		System.out.println(e);
     	}
