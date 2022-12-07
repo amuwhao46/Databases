@@ -61,22 +61,31 @@ public class StatsDAO
     	Stats userStats = new Stats();
     	userStats.setUser(userid);
     	
-    	String dbTotalBuys = "SELECT sender, COUNT(*) AS Total From Transaction\r\n" +
-    			 "WHERE transType = 's' AND reciever = ?;";
+    	String dbTotalBuys = "SELECT reciever, COUNT(*) AS Total From Transaction WHERE transType = 's' AND reciever = ?;";
     	
-    	String dbTotalSells = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
+    	String dbTotalSells = "SELECT sender, COUNT(*) AS Total From Transaction " +
     			"WHERE transType = 's' AND sender = ?;";
     	
-    	String dbTotalTransfers = "SELECT reciever, COUNT(*) AS Total From Transaction\r\n" +
+    	String dbTotalTransfers = "SELECT sender, COUNT(*) AS Total From Transaction " +
     			"WHERE transType = 't' AND sender = ?;";
     	
-    	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT\r\n" +
+    	String dbOwnedNfts = "SELECT owner, COUNT(*) AS Total FROM NFT " +
     			"WHERE owner = ?;";
     	
-    	try {    		
-    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);
+    	System.out.println("Terminal: [DEBUGGING] Run SQL commands");
+    	
+    	System.out.println("Terminal: [DEBUGGING] This section before the Try block");
+    	
+    	try {    
+    		System.out.println("Terminal: [DEBUGGING] Immediately inside try block");
+    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys); // <---- dbTotalBuys why you no work???
+    		System.out.println("Terminal: [DEBUGGING] preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);");
     		preparedStatement.setString(1, userid);
+    		System.out.println("Terminal: [DEBUGGING] preparedStatement.setString(1, userid);");
     		ResultSet resultSet = preparedStatement.executeQuery();
+    		System.out.println("Terminal: [DEBUGGING] ResultSet resultSet = preparedStatement.executeQuery();");
+
+    		System.out.println("Terminal: [DEBUGGING] Prepared statement in try block");
     		
     		while (resultSet.next()) {
     			userStats.setTotalBuys(resultSet.getInt("Total"));
@@ -88,50 +97,50 @@ public class StatsDAO
     		System.out.println(e.toString());
     	}
     	
-    	try {    		
-    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalSells);
-    		preparedStatement.setString(1, userid);
-    		ResultSet resultSet = preparedStatement.executeQuery();
-    		
-    		while (resultSet.next()) {
-    			userStats.setTotalSells(resultSet.getInt("Total"));
-    		}
-    		
-    		resultSet.close();
-    		
-    	} catch (SQLException e) {
-    		System.out.println(e.toString());
-    	}
-    	
-    	try {    		
-    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalTransfers);
-    		preparedStatement.setString(1, userid);
-    		ResultSet resultSet = preparedStatement.executeQuery();
-    		
-    		while (resultSet.next()) {
-    			userStats.setTotalTransfers(resultSet.getInt("Total"));
-    		}
-    		
-    		resultSet.close();
-    		
-    	} catch (SQLException e) {
-    		System.out.println(e.toString());
-    	}
-    	
-    	try {    		
-    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbOwnedNfts);
-    		preparedStatement.setString(1, userid);
-    		ResultSet resultSet = preparedStatement.executeQuery();
-    		
-    		while (resultSet.next()) {
-    			userStats.setOwnedNfts(resultSet.getInt("Total"));
-    		}
-    		
-    		resultSet.close();
-    		
-    	} catch (SQLException e) {
-    		System.out.println(e.toString());
-    	}
+//    	try {    		
+//    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalSells);
+//    		preparedStatement.setString(1, userid);
+//    		ResultSet resultSet = preparedStatement.executeQuery();
+//    		
+//    		while (resultSet.next()) {
+//    			userStats.setTotalSells(resultSet.getInt("Total"));
+//    		}
+//    		
+//    		resultSet.close();
+//    		
+//    	} catch (SQLException e) {
+//    		System.out.println(e.toString());
+//    	}
+//    	
+//    	try {    		
+//    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalTransfers);
+//    		preparedStatement.setString(1, userid);
+//    		ResultSet resultSet = preparedStatement.executeQuery();
+//    		
+//    		while (resultSet.next()) {
+//    			userStats.setTotalTransfers(resultSet.getInt("Total"));
+//    		}
+//    		
+//    		resultSet.close();
+//    		
+//    	} catch (SQLException e) {
+//    		System.out.println(e.toString());
+//    	}
+//    	
+//    	try {    		
+//    		preparedStatement = (PreparedStatement) connect.prepareStatement(dbOwnedNfts);
+//    		preparedStatement.setString(1, userid);
+//    		ResultSet resultSet = preparedStatement.executeQuery();
+//    		
+//    		while (resultSet.next()) {
+//    			userStats.setOwnedNfts(resultSet.getInt("Total"));
+//    		}
+//    		
+//    		resultSet.close();
+//    		
+//    	} catch (SQLException e) {
+//    		System.out.println(e.toString());
+//    	}
     	
     	return userStats;
     }

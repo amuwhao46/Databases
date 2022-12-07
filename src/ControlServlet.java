@@ -306,19 +306,47 @@ public class ControlServlet extends HttpServlet {
 			request.setAttribute("listNft", nftDAO.listAllNfts());
 			
 			//Part 4
+//			List<hotUser> bigCreators = hotUserDAO.getBigCreators();
+//			List<hotUser> bigSellers = hotUserDAO.getBigSellers();
+//			List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
+//			List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();
+//			List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
+//			
+//			
+//			request.setAttribute("bigCreators", bigCreators);
+//			request.setAttribute("bigSellers", bigSellers);
+//			request.setAttribute("bigBuyers", bigBuyers);
+//			request.setAttribute("goodBuyers", goodBuyers);
+//			request.setAttribute("hotNFTs", hotNFTs);
+//	    	 
+//			String userid = request.getParameter("userid");
+//			user activeUser = userDAO.getUser(userid);
+//			List<nft> nftNum = nftDAO.listOwnedNfts(userid);
+//			
+//			request.setAttribute("users", activeUser);
+//			request.setAttribute("userNFT", nftNum);
+//			
+//			System.out.print("Comparing max number of NFT's per user");
+			
+			
 	    	System.out.println("Terminal: Loading statistics for the selected user");
 	    	
 	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
 	    	List<user> user = userDAO.listAllUsers();
 	    	
-	    	// Loops through each user and gets the associated stats
-	    	for (user currentUser: user) {
-	    		selectedUserStats.add(StatsDAO.getUserStats(currentUser.getUserid()));
-	    	}
+	    	// Loops through each user and gets the associated statistics
+//	    	for (user users: user) {
+//	    		System.out.println("Terminal: [DEBUGGING] PRINTS BEFORE execute");
+//	    		selectedUserStats.add(StatsDAO.getUserStats(users.getUserid()));
+//	    		System.out.println("Terminal: [DEBUGGING] PRINTS AFTER execute");
+//	    	}
 	    	request.setAttribute("selectedUserStats", selectedUserStats);
-			
+	    	
+	    	System.out.println("Terminal: [DEBUGGING] TO SEE IF THIS MESSAGE PRINTS");
+	    	
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
+	    
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	session.setAttribute("userid", "");
@@ -381,7 +409,7 @@ public class ControlServlet extends HttpServlet {
 	    
 	    //==============================================================================================================================
 	    // part 4. function calling every function to display on rootview homescreen
-	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	    /*private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	 
 	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
@@ -408,7 +436,7 @@ public class ControlServlet extends HttpServlet {
 	    	request.setAttribute("userNFT", nftNum);
 	    	
 	    	System.out.print("Comparing max number of NFT's per user");
-	    }
+	    }*/
 	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();

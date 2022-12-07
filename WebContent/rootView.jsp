@@ -88,17 +88,17 @@
       		<tr>
       			<th>User (email)</th>
       			<th>Total Bought NFTs</th>
-      			<th>Total Sold NFTs</th>
+<!--       			<th>Total Sold NFTs</th>
       			<th>Total Transfers</th>
-      			<th>Total Owned NFTs</th>
+      			<th>Total Owned NFTs</th> -->
       		</tr>
       		<c:forEach var="stats" items="${selectedUserStats}">
 	      		<tr>
 	      			<td><c:out value="${stats.user}"></c:out></td>
 	      			<td><c:out value="${stats.totalBuys}"></c:out></td>
-	      			<td><c:out value="${stats.totalSells}"></c:out></td>
+<%-- 	      			<td><c:out value="${stats.totalSells}"></c:out></td>
 	      			<td><c:out value="${stats.totalTransfers}"></c:out></td>
-	      			<td><c:out value="${stats.ownedNfts}"></c:out></td>
+	      			<td><c:out value="${stats.ownedNfts}"></c:out></td> --%>
 	      		</tr>
       		</c:forEach>
       		</table>
