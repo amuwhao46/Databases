@@ -52,6 +52,79 @@ public class userDAO
         }
     }
     
+ // list paperhanded users -- i dont know the SQL for these yet
+    public List<user> listDiamondHandedUsers() throws SQLException{
+        List<user> paperHandedUsers = new ArrayList<user>();        
+        String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
+        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT"
+        	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
+       
+        try {
+        	connect_func();   
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+        	while (resultSet.next()) {
+                String userid = resultSet.getString("userid");
+                paperHandedUsers.add(getUser(userid));                 
+               
+            }        
+            resultSet.close();
+        } catch (SQLException e) {
+        	System.out.println(e.toString()+ ", that is the error");
+        }
+       
+        return paperHandedUsers;
+    }
+    
+    
+ // list paperhanded users -- i dont know the SQL for these yet
+    public List<user> listPaperHandedUsers() throws SQLException{
+        List<user> paperHandedUsers = new ArrayList<user>();        
+        String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
+        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT"
+        	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
+       
+        try {
+        	connect_func();   
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+        	while (resultSet.next()) {
+                String userid = resultSet.getString("userid");
+                paperHandedUsers.add(getUser(userid));                 
+               
+            }        
+            resultSet.close();
+        } catch (SQLException e) {
+        	System.out.println(e.toString()+ ", that is the error");
+        }
+       
+        return paperHandedUsers;
+    }
+    
+    
+    // list inactive users
+    public List<user> listInactiveUsers() throws SQLException{
+        List<user> inactiveUsers = new ArrayList<user>();        
+        String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
+        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT"
+        	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
+       
+        try {
+        	connect_func();   
+            statement = (Statement) connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+        	while (resultSet.next()) {
+                String userid = resultSet.getString("userid");
+                inactiveUsers.add(getUser(userid));                 
+               
+            }        
+            resultSet.close();
+        } catch (SQLException e) {
+        	System.out.println(e.toString()+ ", that is the error");
+        }
+       
+        return inactiveUsers;
+    }
 
     public List<user> listAllUsers() throws SQLException {
         List<user> listUser = new ArrayList<user>();        

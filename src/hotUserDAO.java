@@ -58,6 +58,11 @@ public class hotUserDAO {
         }
     }
 
+    
+    
+    
+    
+    
     //=====================================================================================
     // get big creators
     public List<hotUser> getBigCreators() throws SQLException {
