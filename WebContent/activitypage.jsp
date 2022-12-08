@@ -98,6 +98,7 @@
                    <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
                    <td><c:out value="${nfts.creator}" /></td>
                    <td><c:out value="${nfts.mint_time}" /></td>
+               	</tr>
            </c:forEach>
        </table>
  
@@ -119,6 +120,7 @@
                    <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
                    <td><c:out value="${nfts.creator}" /></td>
                    <td><c:out value="${nfts.mint_time}" /></td>
+  				</tr>
            </c:forEach>
        </table>
 
@@ -140,6 +142,7 @@
                    <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
                    <td><c:out value="${nfts.creator}" /></td>
                    <td><c:out value="${nfts.mint_time}" /></td>
+               	</tr>
            </c:forEach>
        </table>
 	</body>

@@ -191,19 +191,28 @@
       					</c:forEach>
       				</select>
       			</div>
-      		<table class="table-container" border="1" cellpadding="6">
-      			<caption>WORK IN PROGRESS</caption>
-      			<tr>
-      				<th>User(s)</th>
-      				<th>NFT's Created</th>
-      			</tr>
-      			<c:forEach var="user" items="${bigCreators}">
-	      			<tr>
-	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
-	      			</tr>
-      			</c:forEach>
-      		</table>
+      			<button>Common NFTs</button>
+				<table class=table-container border="1" cellpadding="6">
+				<caption>Bought NFTs</caption>
+					<tr>
+				      	<th>NFTid</th>
+				      	<th>Name</th>
+				      	<th>Description</th>
+				      	<th>Image</th>
+				      	<th>Creator</th>
+				    	<th>Time Minted</th>
+				    </tr>
+				    <c:forEach var="nfts" items="${commonNFTs}">
+				    	<tr style="text-align:center">
+				        	<td><c:out value="${nfts.nftid}" /></td>
+				            <td><c:out value="${nfts.unique_name}" /></td>
+				            <td><c:out value="${nfts.description}" /></td>
+				            <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
+				            <td><c:out value="${nfts.creator}" /></td>
+				            <td><c:out value="${nfts.mint_time}" /></td>
+				       	</tr>
+					</c:forEach>
+				</table>
       		<h1>Diamond Hands</h1>
       		<table class="table-container" border="1" cellpadding="6">
       			<caption>Users that bought and never sold NFTs</caption>

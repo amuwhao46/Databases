@@ -50,12 +50,12 @@ public class StatsDAO
             System.out.println(connect);
         }
     }
-    
-    protected void disconnect() throws SQLException {
-        if (connect != null && !connect.isClosed()) {
-        	connect.close();
-        }
-    }
+//    
+//    protected void disconnect() throws SQLException {
+//        if (connect != null && !connect.isClosed()) {
+//        	connect.close();
+//        }
+//    }
   
     public Stats getUserStats(String userid) {
     	Stats userStats = new Stats();
@@ -78,6 +78,7 @@ public class StatsDAO
     	
     	try {    
     		System.out.println("[DEBUGGING] Immediately inside try block");
+//    		System.out.println("isClosed = " + connect.isClosed());
     		preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys); // <---- dbTotalBuys why you no work???
     		System.out.println("[DEBUGGING] preparedStatement = (PreparedStatement) connect.prepareStatement(dbTotalBuys);");
     		preparedStatement.setString(1, userid);

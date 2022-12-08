@@ -321,11 +321,11 @@ public class ControlServlet extends HttpServlet {
 	    	List<user> user = userDAO.listAllUsers();
 	    	
 	    	// Loops through each user and gets the associated statistics
-//	    	for (user users: user) {
-//	    		System.out.println("Terminal: [DEBUGGING] PRINTS BEFORE execute");
-//	    		selectedUserStats.add(StatsDAO.getUserStats(users.getUserid()));
-//	    		System.out.println("Terminal: [DEBUGGING] PRINTS AFTER execute");
-//	    	}
+	    	for (user users: user) {
+	    		System.out.println("Terminal: [DEBUGGING] PRINTS BEFORE execute");
+	    		selectedUserStats.add(StatsDAO.getUserStats(users.getUserid()));
+	    		System.out.println("Terminal: [DEBUGGING] PRINTS AFTER execute");
+	    	}
 	    	request.setAttribute("selectedUserStats", selectedUserStats);
 	    	
 	    	System.out.println("Terminal: [DEBUGGING] TO SEE IF THIS MESSAGE PRINTS");
