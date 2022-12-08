@@ -32,7 +32,7 @@
 		</form>
 		
 		<!-- Initialize hotUser and stats -->
-		<form action = "hotUser">
+		<form action = "hotUserItems">
 			<input type = "submit" value = "Initialize Achievements"/>
 		</form>
 		<form action = "statistics">

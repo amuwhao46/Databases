@@ -56,7 +56,7 @@ public class userDAO
     public List<user> listDiamondHandedUsers() throws SQLException{
         List<user> paperHandedUsers = new ArrayList<user>();        
         String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
-        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT"
+        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT "
         	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
        
         try {
@@ -81,7 +81,7 @@ public class userDAO
     public List<user> listPaperHandedUsers() throws SQLException{
         List<user> paperHandedUsers = new ArrayList<user>();        
         String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
-        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT"
+        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT "
         	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
        
         try {
