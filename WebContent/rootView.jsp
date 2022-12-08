@@ -171,6 +171,26 @@
       		</table>  
       		<!-- Still gotta figure out ngl -->    	
       		<h1>Common NFT's</h1>
+      			<div>
+      				<label>Pick first account</label>
+      				<select name="user">
+      					<c:forEach var="user" items="user" varStatus="loop">
+      						<option value="${user.userid}">
+      							<c:out value="${user.userid}" />
+      						</option>
+      					</c:forEach>
+      				</select>
+      			</div>
+      			<div>
+      				<label>Pick second account</label>
+      				<select name="user">
+      					<c:forEach var="user" items="user" varStatus="loop">
+      						<option value="${user.userid}">
+      							<c:out value="${user.userid}" />
+      						</option>
+      					</c:forEach>
+      				</select>
+      			</div>
       		<table class="table-container" border="1" cellpadding="6">
       			<caption>WORK IN PROGRESS</caption>
       			<tr>
