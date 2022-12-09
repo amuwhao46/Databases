@@ -220,7 +220,7 @@
       				<th>User(s)</th>
       				<th>NFT's Something</th>
       			</tr>
-      			<c:forEach var="user" items="${bigCreators}">
+      			<c:forEach var="user" items="${diamondHand}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
 	      				<td><c:out value="${user.resultNum}"></c:out></td>
@@ -234,7 +234,7 @@
       				<th>User(s)</th>
       				<th>NFT's Something</th>
       			</tr>
-      			<c:forEach var="user" items="${bigCreators}">
+      			<c:forEach var="user" items="${paperHand}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
 	      				<td><c:out value="${user.resultNum}"></c:out></td>

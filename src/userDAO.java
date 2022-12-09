@@ -54,26 +54,41 @@ public class userDAO
     
  // list paperhanded users -- i dont know the SQL for these yet
     public List<user> listDiamondHandedUsers() throws SQLException{
-        List<user> paperHandedUsers = new ArrayList<user>();        
-        String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
-        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT "
-        	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
+        List<user> diamondHandedUsers = new ArrayList<user>();        
+        
+        // Container to keep track of diamond hand activity
+        try {
+			statement = (Statement) connect.createStatement();
+			statement.execute("CREATE VIEW tableNameHere(reciever, num)"
+					+ "AS ("
+					+ "SELECT Distinct(T1.reciever), COUNT(*) as Num"
+					+ "FROM Transaction T1, Transaction T2"
+					+ "WHERE T1.transType = 's'"
+					+ "AND T1.nftid = T2.nftid"
+					+ "AND T1.reciever = T2.reciever"
+					+ "GROUP BY T1.reciever);");
+		} catch(SQLException e) {
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
+        }
        
+        String sql = "SELECT Distinct sender from tableNameHere"
+        		+ "WHERE sender NOT IN (SELECT sender FROM tableNameHere);";    
+
         try {
         	connect_func();   
             statement = (Statement) connect.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
         	while (resultSet.next()) {
                 String userid = resultSet.getString("userid");
-                paperHandedUsers.add(getUser(userid));                 
+                diamondHandedUsers.add(getUser(userid));                 
                
             }        
             resultSet.close();
         } catch (SQLException e) {
-        	System.out.println(e.toString()+ ", that is the error");
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:88");
         }
        
-        return paperHandedUsers;
+        return diamondHandedUsers;
     }
     
     

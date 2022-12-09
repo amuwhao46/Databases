@@ -402,7 +402,7 @@ public class ControlServlet extends HttpServlet {
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
 	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();
 	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
-//	    	 List<user> diamondHands = userDAO
+	    	 List<user> diamondPaperHands = userDAO.listDiamondHandedUsers();
 
 
 	    	 request.setAttribute("bigCreators", bigCreators);
@@ -410,6 +410,8 @@ public class ControlServlet extends HttpServlet {
 	    	 request.setAttribute("bigBuyers", bigBuyers);
 	    	 request.setAttribute("goodBuyers", goodBuyers);
 	    	 request.setAttribute("hotNFTs", hotNFTs);
+	    	 request.setAttribute("diamondHand", diamondPaperHands);
+	    	 request.setAttribute("paperHand", diamondPaperHands);
 	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
@@ -439,6 +441,12 @@ public class ControlServlet extends HttpServlet {
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 
+	    private void hotNfts(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
+	    IOException, SQLException {
+	    	System.out.println("Preparing to show common NFTs");
+	    	List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
+	    	request.setAttribute("hotNFTs", hotNFTs);
+	    }
 	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
