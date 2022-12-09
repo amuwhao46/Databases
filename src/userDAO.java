@@ -52,7 +52,7 @@ public class userDAO
         }
     }
     
- // list paperhanded users -- i dont know the SQL for these yet
+
     public List<user> listDiamondHandedUsers() throws SQLException{
         List<user> diamondHandedUsers = new ArrayList<user>();        
         
