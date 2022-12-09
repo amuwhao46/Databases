@@ -407,6 +407,7 @@ public class ControlServlet extends HttpServlet {
 	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
 	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();
 	    	 List<user> paperHands = userDAO.listPaperHandedUsers();
+	    	 List<user> lazyLoser= userDAO.listInactiveUsers(); // lazy loser is inactive user call
 
 	    	 request.setAttribute("bigCreators", bigCreators);
 	    	 request.setAttribute("bigSellers", bigSellers);
@@ -415,6 +416,7 @@ public class ControlServlet extends HttpServlet {
 	    	 request.setAttribute("hotNFTs", hotNFTs);
 	    	 request.setAttribute("diamondHand", diamondHands);
 	    	 request.setAttribute("paperHand", paperHands);
+	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
 	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
