@@ -170,7 +170,7 @@
       			</c:forEach>
       		</table>  
       		<!-- Still gotta figure out ngl -->    	
-      		<h1>Common NFT's</h1>
+      		<%-- <h1>Common NFT's</h1>
       			<div>
       				<label>Pick first account</label>
       				<select name="userA">
@@ -190,7 +190,7 @@
       						</option>
       					</c:forEach>
       				</select>
-      			</div>
+      			</div> --%>
       			<button>Common NFTs</button>
 				<table class=table-container border="1" cellpadding="6">
 				<caption>Bought NFTs</caption>

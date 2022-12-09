@@ -122,9 +122,9 @@ public class hotUserDAO {
             statement = (Statement) connect.createStatement();
             statement.execute("CREATE VIEW PurchaseAmt(sender, count)\n"
                     + "AS (\n"
-                    + "SELECT creator, COUNT(*) as Num\n"
+                    + "SELECT sender, COUNT(*) as Num\n"
                     + "FROM Transaction\n"
-                    + "WHERE transType = \"s\"\n"
+                    + "WHERE transType = 's'\n"
                     + "GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
