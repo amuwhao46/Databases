@@ -173,7 +173,7 @@
       		<h1>Common NFT's</h1>
       			<div>
       				<label>Pick first account</label>
-      				<select name="user">
+      				<select name="userA">
       					<c:forEach var="user" items="user" varStatus="loop">
       						<option value="${user.userid}">
       							<c:out value="${user.userid}" />
@@ -183,7 +183,7 @@
       			</div>
       			<div>
       				<label>Pick second account</label>
-      				<select name="user">
+      				<select name="userB">
       					<c:forEach var="user" items="user" varStatus="loop">
       						<option value="${user.userid}">
       							<c:out value="${user.userid}" />

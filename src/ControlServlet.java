@@ -425,6 +425,21 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.print("Comparing max number of NFT's per user");
 	    }
 	    
+	    private void commonNfts(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
+	    IOException, SQLException {
+	    	System.out.println("Preparing to show common NFTs");
+	    	String userA = request.getParameter("userA");
+	    	String userB = request.getParameter("userB");
+	    	
+	    	List<nft> commonNFTs = nftDAO.listCommonNfts(userA, userB);
+	    	List<user> users = userDAO.listAllUsers();
+	    	
+	    	request.setAttribute("commonNFTs", commonNFTs);
+	    	request.setAttribute("users", users);
+	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
+	    }
+
+	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();
 	    	Timestamp timeStamp = new Timestamp(currentTime.getTime());
