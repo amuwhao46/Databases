@@ -123,7 +123,7 @@
       			<c:forEach var="user" items="${bigCreators}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>
@@ -137,7 +137,7 @@
       			<c:forEach var="user" items="${bigSellers}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>
@@ -151,7 +151,7 @@
       			<c:forEach var="user" items="${bigBuyers}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>      		
@@ -165,7 +165,7 @@
       			<c:forEach var="user" items="${hotNFTs}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>  
@@ -223,7 +223,7 @@
       			<c:forEach var="user" items="${diamondHand}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>
@@ -237,7 +237,7 @@
       			<c:forEach var="user" items="${paperHand}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
-	      				<td><c:out value="${user.resultNum}"></c:out></td>
+	      				<td><c:out value="${user.resultItem}"></c:out></td>
 	      			</tr>
       			</c:forEach>
       		</table>
@@ -247,7 +247,7 @@
       			<tr>
       				<th>User(s)</th>
       			</tr>
-      			<c:forEach var="user" items="${bigCreators}">
+      			<c:forEach var="user" items="${goodBuyers}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
 	      			</tr>
@@ -259,7 +259,7 @@
       			<tr>
       				<th>User(s)</th>
       			</tr>
-      			<c:forEach var="user" items="${bigCreators}">
+      			<c:forEach var="user" items="${lazyLosers}">
 	      			<tr>
 	      				<td><c:out value="${user.hotUserResult}"></c:out></td>
 	      			</tr>

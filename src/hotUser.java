@@ -25,13 +25,13 @@ import java.util.List;
 public class hotUser {
 	
 	String hotUserResult;
-	int resultNum;
+	int resultItem;
 	
 	
-	public hotUser(String hotUserResult, int resultNum){
+	public hotUser(String hotUserResult, int resultItem){
 				
 		this.hotUserResult= hotUserResult;
-		this.resultNum=resultNum;
+		this.resultItem=resultItem;
 		
 	}
 	
@@ -53,16 +53,16 @@ public void setHotUser(String hotUserResult) {
 	}
 	
 	
-public void setResultNum(int resultNum) {
+public void setResultItem(int resultem) {
 		
-		this.resultNum=resultNum;
+		this.resultItem=resultItem;
 		
 		
 	}
 	
-public int getResultNum() {
+public int getResultem() {
 	
-	return resultNum;
+	return resultItem;
 	
 	
 	}
