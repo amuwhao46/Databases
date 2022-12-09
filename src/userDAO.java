@@ -55,11 +55,38 @@ public class userDAO
 
     public List<user> listDiamondHandedUsers() throws SQLException{
         List<user> diamondHandedUsers = new ArrayList<user>();        
+        String sql = "SELECT Distinct reciever from SenderTable"
+        		+ "WHERE reciever NOT IN (SELECT sender FROM RecieverTable);";    
+        
+        
+        try {
+        	
+        	statement= (Statement) connect.createStatement();
+        	statement.execute("drop view if Exists RecieverTable;");
+        	
+        }catch(SQLException e) {
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:68");
+        }
+        
         
         // Container to keep track of diamond hand activity
         try {
 			statement = (Statement) connect.createStatement();
-			statement.execute("CREATE VIEW tableNameHere(reciever, num)"
+			statement.execute("CREATE VIEW SenderTable(sender, count)"
+					+ "AS ("
+					+ "SELECT Distinct(T1.sender), COUNT(*) as Num"
+					+ "FROM Transaction T1, Transaction T2"
+					+ "WHERE T1.transType = 's'"
+					+ "AND T1.nftid = T2.nftid"
+					+ "AND T1.sender = T2.reciever"
+					+ "GROUP BY T1.reciever);");
+		} catch(SQLException e) {
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
+        }
+       
+        try {
+			statement = (Statement) connect.createStatement();
+			statement.execute("CREATE VIEW SenderTable(reciever, count)"
 					+ "AS ("
 					+ "SELECT Distinct(T1.reciever), COUNT(*) as Num"
 					+ "FROM Transaction T1, Transaction T2"
@@ -70,9 +97,6 @@ public class userDAO
 		} catch(SQLException e) {
         	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
         }
-       
-        String sql = "SELECT Distinct sender from tableNameHere"
-        		+ "WHERE sender NOT IN (SELECT sender FROM tableNameHere);";    
 
         try {
         	connect_func();   
@@ -92,7 +116,6 @@ public class userDAO
     }
     
     
- // list paperhanded users -- i dont know the SQL for these yet
     public List<user> listPaperHandedUsers() throws SQLException{
         List<user> paperHandedUsers = new ArrayList<user>();        
         String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
