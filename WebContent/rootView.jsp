@@ -96,17 +96,17 @@
       		<tr>
       			<th>User (email)</th>
       			<th>Total Bought NFTs</th>
-<!--       			<th>Total Sold NFTs</th>
+       			<th>Total Sold NFTs</th>
       			<th>Total Transfers</th>
-      			<th>Total Owned NFTs</th> -->
+      			<th>Total Owned NFTs</th>
       		</tr>
       		<c:forEach var="stats" items="${selectedUserStats}">
 	      		<tr>
 	      			<td><c:out value="${stats.user}"></c:out></td>
 	      			<td><c:out value="${stats.totalBuys}"></c:out></td>
-<%-- 	      			<td><c:out value="${stats.totalSells}"></c:out></td>
+ 	      			<td><c:out value="${stats.totalSells}"></c:out></td>
 	      			<td><c:out value="${stats.totalTransfers}"></c:out></td>
-	      			<td><c:out value="${stats.ownedNfts}"></c:out></td> --%>
+	      			<td><c:out value="${stats.ownedNfts}"></c:out></td>
 	      		</tr>
       		</c:forEach>
       		</table>
@@ -170,49 +170,53 @@
       			</c:forEach>
       		</table>  
       		<!-- Still gotta figure out ngl -->    	
-      		<%-- <h1>Common NFT's</h1>
-      			<div>
-      				<label>Pick first account</label>
-      				<select name="userA">
-      					<c:forEach var="user" items="user" varStatus="loop">
-      						<option value="${user.userid}">
-      							<c:out value="${user.userid}" />
-      						</option>
-      					</c:forEach>
-      				</select>
-      			</div>
-      			<div>
-      				<label>Pick second account</label>
-      				<select name="userB">
-      					<c:forEach var="user" items="user" varStatus="loop">
-      						<option value="${user.userid}">
-      							<c:out value="${user.userid}" />
-      						</option>
-      					</c:forEach>
-      				</select>
-      			</div> --%>
-      			<button>Common NFTs</button>
-				<table class=table-container border="1" cellpadding="6">
-				<caption>Bought NFTs</caption>
-					<tr>
-				      	<th>NFTid</th>
-				      	<th>Name</th>
-				      	<th>Description</th>
-				      	<th>Image</th>
-				      	<th>Creator</th>
-				    	<th>Time Minted</th>
-				    </tr>
-				    <c:forEach var="nfts" items="${commonNFTs}">
-				    	<tr style="text-align:center">
-				        	<td><c:out value="${nfts.nftid}" /></td>
-				            <td><c:out value="${nfts.unique_name}" /></td>
-				            <td><c:out value="${nfts.description}" /></td>
-				            <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
-				            <td><c:out value="${nfts.creator}" /></td>
-				            <td><c:out value="${nfts.mint_time}" /></td>
-				       	</tr>
-					</c:forEach>
-				</table>
+<%--       		       		<h1>Common NFT's</h1>
+      			<form name="commonForm" action="commonNfts">
+	      			<div>
+	      				<label>Pick first account</label>
+	      				<select name="userA">
+	      					<c:forEach var="user" items="user" varStatus="loop">
+	      						<option value="${user.userid}">
+	      							<c:out value="${user.userid}" />
+	      						</option>
+	      					</c:forEach>
+	      				</select>
+	      			</div>
+	      			<div>
+	      				<label>Pick second account</label>
+	      				<select name="userB">
+	      					<c:forEach var="user" items="user" varStatus="loop">
+	      						<option value="${user.userid}">
+	      							<c:out value="${user.userid}" />
+	      						</option>
+	      					</c:forEach>
+	      				</select>
+	      			</div>
+	      			<button>Common NFTs</button>
+					<table class=table-container border="1" cellpadding="6">
+					<caption>Bought NFTs</caption>
+						<tr>
+					      	<th>NFTid</th>
+					      	<th>Name</th>
+					      	<th>Description</th>
+					      	<th>Image</th>
+					      	<th>Creator</th>
+					    	<th>Time Minted</th>
+					    </tr>
+					    <c:forEach var="nfts" items="${commonNFTs}">
+					    	<tr style="text-align:center">
+					        	<td><c:out value="${nfts.nftid}" /></td>
+					            <td><c:out value="${nfts.unique_name}" /></td>
+					            <td><c:out value="${nfts.description}" /></td>
+					            <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
+					            <td><c:out value="${nfts.creator}" /></td>
+					            <td><c:out value="${nfts.mint_time}" /></td>
+					       	</tr>
+						</c:forEach>
+					</table>
+      			</form> --%>
+      		 
+      		 
       		<h1>Diamond Hands</h1>
       		<table class="table-container" border="1" cellpadding="6">
       			<caption>Users that bought and never sold NFTs</caption>

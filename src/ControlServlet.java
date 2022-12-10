@@ -76,12 +76,12 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/root":
         		rootPage(request,response, "");
+        		
+        		
+        		// Part 4
         		break;
         	case "/statistics":
         		statistics(request,response);
-        		
-        		
-        		// 
         	case "/hotUserItems":
         		hotUserItems(request,response);
         		break;
@@ -150,7 +150,7 @@ public class ControlServlet extends HttpServlet {
         	}   
 	    }
 	    catch(Exception ex) {
-        	System.out.println(ex.getMessage());
+        	System.out.println(ex.getMessage()  + ", in ControlServlet threw at line: 153");
 	    	}
 	    }
 	    
@@ -315,27 +315,6 @@ public class ControlServlet extends HttpServlet {
 			
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
-	    //10 
-	    private void statistics(HttpServletRequest request, HttpServletResponse response)
-	            throws SQLException, IOException, ServletException {
-	    	System.out.println("Terminal: Loading statistics for the selected user");
-	    	
-	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
-	    	List<user> user = userDAO.listAllUsers();
-	    	
-	    	// Loops through each user and gets the associated statistics
-	    	for (user users: user) {
-	    		System.out.println("Terminal: [DEBUGGING] PRINTS BEFORE execute");
-	    		selectedUserStats.add(StatsDAO.getUserStats(users.getUserid()));
-	    		System.out.println("Terminal: [DEBUGGING] PRINTS AFTER execute");
-	    	}
-	    	request.setAttribute("selectedUserStats", selectedUserStats);
-	    	
-	    	System.out.println("Terminal: [DEBUGGING] TO SEE IF THIS MESSAGE PRINTS");
-	    	
-	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
-	    }
-	    
 	    
 	    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    	session.setAttribute("userid", "");
@@ -407,7 +386,7 @@ public class ControlServlet extends HttpServlet {
 	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
 	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
 	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
-	    	 List<user> lazyLoser= userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
+	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
 
 	    	 request.setAttribute("bigCreators", bigCreators);
 	    	 request.setAttribute("bigSellers", bigSellers);
@@ -436,7 +415,22 @@ public class ControlServlet extends HttpServlet {
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 
-	  
+	    //10 
+	    private void statistics(HttpServletRequest request, HttpServletResponse response)
+	            throws SQLException, IOException, ServletException {
+	    	System.out.println("[Console] Loading statistics for registered users");
+	    	
+	    	List<Stats> selectedUserStats = new ArrayList<Stats>();
+	    	List<user> userStat = userDAO.listAllUsers();
+	    	
+	    	// Loops through each user and gets the associated statistics
+	    	for (user allUsers: userStat) {
+	    		selectedUserStats.add(StatsDAO.getUserStats(allUsers.getUserid()));
+	    	}
+	    	
+	    	request.setAttribute("selectedUserStats", selectedUserStats);
+	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
+	    }
 	    
 	    private void buy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	Date currentTime = new Date();

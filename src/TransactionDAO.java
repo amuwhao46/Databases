@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 //import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 /**
  * Servlet implementation class Connect
@@ -79,7 +80,7 @@ public class TransactionDAO
 			resultSet.close();
 			
     	} catch(SQLException e) {
-    		e.toString();
+    		System.out.println(e.toString() + ", Error threw in TransactionDAO at line:83");
     	}
     	
     	return listAllTransactions;
@@ -87,7 +88,7 @@ public class TransactionDAO
     
     public void insert(Transaction trans) throws SQLException {
     	connect_func();         
-		String sql = "insert into Transaction(nftid, reciever, sender, transType, price, timeStamp) values (?, ?, ?, ?, ?, ?)";
+		String sql = "insert into Transaction(nftid, sender, reciever, transType, price, timeStamp) values (?, ?, ?, ?, ?, ?)";
 		preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
 		preparedStatement.setInt(1, trans.getNftid());
 		preparedStatement.setString(2, trans.getReciever());
@@ -110,36 +111,39 @@ public class TransactionDAO
     
     public void init() throws SQLException, FileNotFoundException, IOException{
     	connect_func();
+    	System.out.println("[CONSOLE LOG] Initializing Transaction Table");
         statement =  (Statement) connect.createStatement();
+        Date currentTime = new Date();
+        java.sql.Timestamp obj = new java.sql.Timestamp(currentTime.getTime());
+        String timeStamp = obj.toString();
         
         String[] INITIAL = {"use NFTdb; ",
         		"drop table if exists Transaction; ",
 		        ("CREATE TABLE if not exists Transaction( " +
-                    "transid int NOT NULL AUTO_INCREMENT, " +
-                    "nftid int NOT NULL, " +
+                    "transid INTEGER NOT NULL AUTO_INCREMENT, " +
+                    "nftid INTEGER NOT NULL, " +
 		            "sender VARCHAR(100), " +
 		            "reciever VARCHAR(100), " +
 		            "transType VARCHAR(1), " +
 		            "price DOUBLE, " +
 		            "timeStamp DATETIME, " +
+		            "PRIMARY KEY (transid), " +
 		            "FOREIGN KEY (sender) REFERENCES User(userid)," +
 		            "FOREIGN KEY (reciever) REFERENCES User(userid)," +
-		            "PRIMARY KEY (transid) "+"); ")
+		            "FOREIGN KEY (nftid) references NFT(nftid));" 
+		            )
 				};
         
         
-        String[] TUPLES = {("insert into Listing(owner, nftid, start, end, price)"+
-    			"values ('bendover@gmail.com', '1', '" + startTime.toString() + "', '" + endTime.toString() + "', '10'), "+
-    			"('bendover@gmail.com', '2', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '3', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '4', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '5', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '6', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('alf@gmail.com', '7', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('oke@gmail.com', '8', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '9', '" + startTime.toString() + "', '" + endTime.toString() + "', '10')," + 
-    			"('bendover@gmail.com', '10', '" + startTime.toString() + "', '" + endTime.toString() + "', '10');")
-		    	};
+        String[] TUPLES = {("insert into Transaction(nftid, sender, reciever, transType, price, timeStamp)"+
+    			"values ('1','bendover@gmail.com','oke@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('1','oke@gmail.com','bendover@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('4','bendover@gmail.com','jessicacole@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('5','bendover@gmail.com','erinmoore@gmail.com','s', '10', '" + timeStamp + "')," +
+    					"('6','bendover@gmail.com','harryballs@gmail.com','s', '10', '" + timeStamp + "')," +
+    					"('7','bendover@gmail.com','test@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('8','bendover@gmail.com','alf@gmail.com','t', '0', '" + timeStamp + "');"
+    				   )};
         
         //for loop to put these in database
         for (int i = 0; i < INITIAL.length; i++)

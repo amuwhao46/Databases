@@ -30,16 +30,15 @@ public class hotUser {
 	
 	public hotUser(String hotUserResult, int resultItem){
 				
-		this.hotUserResult= hotUserResult;
-		this.resultItem=resultItem;
+		this.hotUserResult = hotUserResult;
+		this.resultItem = resultItem;
 		
 	}
 	
 	
 public void setHotUser(String hotUserResult) {
 		
-		this.hotUserResult=hotUserResult;
-		
+		this.hotUserResult = hotUserResult;
 		
 	}
 	
@@ -55,7 +54,7 @@ public void setHotUser(String hotUserResult) {
 	
 public void setResultItem(int resultem) {
 		
-		this.resultItem=resultItem;
+		this.resultItem = resultItem;
 		
 		
 	}
@@ -64,8 +63,6 @@ public int getResultem() {
 	
 	return resultItem;
 	
-	
 	}
-	
 	
 }

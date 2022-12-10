@@ -95,7 +95,7 @@ public class userDAO
 					+ "AND T1.reciever = T2.reciever"
 					+ "GROUP BY T1.reciever);");
 		} catch(SQLException e) {
-        	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:98");
         }
 
         try {
@@ -109,7 +109,7 @@ public class userDAO
             }        
             resultSet.close();
         } catch (SQLException e) {
-        	System.out.println(e.toString() + ", Error caught in userDAO ln:88");
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:112");
         }
        
         return diamondHandedUsers;
@@ -119,7 +119,7 @@ public class userDAO
     public List<user> listPaperHandedUsers() throws SQLException{
         List<user> paperHandedUsers = new ArrayList<user>();        
         String sql = "SELECT Distinct sendUser.sender from SenderTableUser sendUser, BuyerTable buyUser \n "
-        	+ "WHERE buyUser.count = buyUser.count AND sendUser.sender=buyUser.reciever );";      
+        	+ "WHERE buyUser.count = buyUser.count AND sendUser.sender = buyUser.reciever );";      
        
         try {
         	connect_func();   
@@ -132,7 +132,7 @@ public class userDAO
             }        
             resultSet.close();
         } catch (SQLException e) {
-        	System.out.println(e.toString()+ ", that is the error");
+        	System.out.println(e.toString()+ ", Error caught in userDAO ln:135");
         }
        
         return paperHandedUsers;
@@ -157,7 +157,7 @@ public class userDAO
             }        
             resultSet.close();
         } catch (SQLException e) {
-        	System.out.println(e.toString()+ ", that is the error");
+        	System.out.println(e.toString()+ ", Error caught in userDAO ln:160");
         }
        
         return inactiveUsers;

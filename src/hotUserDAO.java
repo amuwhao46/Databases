@@ -77,12 +77,12 @@ public class hotUserDAO {
         }
 
     		try {
-            statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW UserMinted(creator, count)\n"
-                    + "AS (\n"
-                    + "SELECT creator, COUNT(*) as Num\n"
-                    + "FROM NFT\n"
-                    + "GROUP BY creator);");
+	            statement = (Statement) connect.createStatement();
+	            statement.execute("CREATE VIEW UserMinted(creator, count)\n"
+	                    + "AS (\n"
+	                    + "SELECT creator, COUNT(*) as Num\n"
+	                    + "FROM NFT\n"
+	                    + "GROUP BY creator);");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
