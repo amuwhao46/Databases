@@ -122,7 +122,7 @@ public class hotUserDAO {
             statement = (Statement) connect.createStatement();
             statement.execute("CREATE VIEW PurchaseAmt(sender, count)\n"
                     + "AS (\n"
-                    + "SELECT sender, COUNT(*) as Num\n"
+                    + "SELECT reciever, COUNT(*) as Num\n"
                     + "FROM Transaction\n"
                     + "WHERE transType = 's'\n"
                     + "GROUP BY reciever);");
@@ -153,21 +153,22 @@ public class hotUserDAO {
     //=====================================================================================
     // get big sellers
     public List<hotUser> getBigSellers() throws SQLException {
-    	String sql = "SELECT * FROM NFTSeller WHERE nftid = ?";
+    	String sql = "SELECT * FROM NftSeller WHERE count=(SELECT MAX(count)FROM NftSeller)";
     	List<hotUser> getBigSellers = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists NFTSeller;");
+            statement.execute("drop view if exists NftSeller;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW NFTSeller(sender, count)\n"
+            statement.execute("CREATE VIEW NftSeller(sender, count)\n"
                     + "AS (\n"
                     + "SELECT sender, COUNT(*) as Num\n"
-                    + "FROM NFT\n"
+                    + "FROM Transaction\n"
+                    + "WHERE transType = 's'\n"
                     + "GROUP BY sender);");
         } catch(SQLException e) {
             System.out.println(e.toString());
@@ -196,21 +197,22 @@ public class hotUserDAO {
     
  // get good buyers
     public List<hotUser> getGoodBuyers() throws SQLException {
-    	String sql = "SELECT * FROM purchasedAmt WHERE count >=3";
+    	String sql = "SELECT * FROM PurchasedAmt WHERE count >=3";
     	List<hotUser> getGoodBuyers  = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists purchasedAmt;");
+            statement.execute("drop view if exists PurchasedAmt;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW purchasedAmt(reciever, count)\n"
+            statement.execute("CREATE VIEW PurchasedAmt(reciever, count)\n"
                     + "AS (\n"
                     + "SELECT reciever, COUNT(*) as Num\n"
-                    + "FROM NFT\n"
+                    + "FROM Transaction\n"
+                    + "WHERE transType = 's'\n"
                     + "GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
@@ -239,18 +241,18 @@ public class hotUserDAO {
     
     // get hotNFTs
        public List<hotUser> getHotNFTs() throws SQLException {
-       	String sql = "SELECT * FROM OwnedNFTs WHERE count = (SELECT MAX(count)FROM OwnedNFTs)";
+       	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count)FROM OwnedNfts)";
        	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
        	try {
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists OwnedNFTs;");
+            statement.execute("drop view if exists OwnedNfts;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW OwnedNFTs(nftid, count)\n"
+            statement.execute("CREATE VIEW OwnedNfts(nftid, count)\n"
                     + "AS (\n"
                     + "SELECT creator, COUNT(*) as Num\n"
                     + "FROM (SELECT DISTINCT reciever,nftid FROM Transaction)as T\n"

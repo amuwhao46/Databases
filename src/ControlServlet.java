@@ -315,7 +315,7 @@ public class ControlServlet extends HttpServlet {
 			
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
-	    
+	    //10 
 	    private void statistics(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, IOException, ServletException {
 	    	System.out.println("Terminal: Loading statistics for the selected user");
@@ -400,14 +400,14 @@ public class ControlServlet extends HttpServlet {
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 	    	 
-	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();
-	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();
-	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();
-	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();
-	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();
-	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();
-	    	 List<user> paperHands = userDAO.listPaperHandedUsers();
-	    	 List<user> lazyLoser= userDAO.listInactiveUsers(); // lazy loser is inactive user call
+	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();// 1
+	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();//2
+	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();//3
+	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();//8
+	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
+	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
+	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
+	    	 List<user> lazyLoser= userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
 
 	    	 request.setAttribute("bigCreators", bigCreators);
 	    	 request.setAttribute("bigSellers", bigSellers);
@@ -421,7 +421,7 @@ public class ControlServlet extends HttpServlet {
 	    }
 	    
 	   
-	    
+	    //5
 	    private void commonNfts(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
 	    IOException, SQLException {
 	    	System.out.println("Preparing to show common NFTs");
