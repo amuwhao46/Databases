@@ -120,9 +120,9 @@ public class hotUserDAO {
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW PurchaseAmt(sender, count)\n"
+            statement.execute("CREATE VIEW PurchaseAmt(reciever, count)\n"
                     + "AS (\n"
-                    + "SELECT sender, COUNT(*) as Num\n"
+                    + "SELECT reciever, COUNT(*) as Num\n"
                     + "FROM Transaction\n"
                     + "WHERE transType = 's'\n"
                     + "GROUP BY reciever);");
@@ -135,7 +135,7 @@ public class hotUserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                String hotUserResult = resultSet.getString("sender");
+                String hotUserResult = resultSet.getString("reciever");
                 int resultItem = resultSet.getInt("count");
 
                 getBigBuyers.add(new hotUser(hotUserResult, resultItem));
@@ -153,7 +153,7 @@ public class hotUserDAO {
     //=====================================================================================
     // get big sellers
     public List<hotUser> getBigSellers() throws SQLException {
-    	String sql = "SELECT * FROM NFTSeller WHERE nftid = ?";
+    	String sql = "SELECT * from NFTSeller WHERE sender = (SELECT MAX(sender) FROM NFTSeller);";
     	List<hotUser> getBigSellers = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
@@ -167,7 +167,8 @@ public class hotUserDAO {
             statement.execute("CREATE VIEW NFTSeller(sender, count)\n"
                     + "AS (\n"
                     + "SELECT sender, COUNT(*) as Num\n"
-                    + "FROM NFT\n"
+                    + "FROM Transaction\n"
+                    + "WHERE transType = 's'\n"
                     + "GROUP BY sender);");
         } catch(SQLException e) {
             System.out.println(e.toString());
@@ -196,7 +197,7 @@ public class hotUserDAO {
     
  // get good buyers
     public List<hotUser> getGoodBuyers() throws SQLException {
-    	String sql = "SELECT * FROM purchasedAmt WHERE count >=3";
+    	String sql = "SELECT * FROM purchasedAmt WHERE count >=3;";
     	List<hotUser> getGoodBuyers  = new ArrayList<hotUser>();
     	try {
             statement = (Statement) connect.createStatement();
@@ -210,7 +211,8 @@ public class hotUserDAO {
             statement.execute("CREATE VIEW purchasedAmt(reciever, count)\n"
                     + "AS (\n"
                     + "SELECT reciever, COUNT(*) as Num\n"
-                    + "FROM NFT\n"
+                    + "FROM Transaction\n"
+                    + "WHERE transType = 's'\n"
                     + "GROUP BY reciever);");
         } catch(SQLException e) {
             System.out.println(e.toString());
@@ -252,8 +254,8 @@ public class hotUserDAO {
             statement = (Statement) connect.createStatement();
             statement.execute("CREATE VIEW OwnedNFTs(nftid, count)\n"
                     + "AS (\n"
-                    + "SELECT creator, COUNT(*) as Num\n"
-                    + "FROM (SELECT DISTINCT reciever,nftid FROM Transaction)as T\n"
+                    + "SELECT nftid, COUNT(*) as Num\n"
+                    + "FROM (SELECT DISTINCT reciever, nftid FROM Transaction) as T\n"
                     + "GROUP BY nftid);");
         } catch(SQLException e) {
             System.out.println(e.toString());
