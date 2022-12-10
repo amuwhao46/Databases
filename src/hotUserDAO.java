@@ -241,7 +241,7 @@ public class hotUserDAO {
     
     // get hotNFTs
        public List<hotUser> getHotNFTs() throws SQLException {
-       	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count)FROM OwnedNfts)";
+       	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count) FROM OwnedNfts)";
        	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
        	try {
             statement = (Statement) connect.createStatement();
