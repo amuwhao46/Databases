@@ -78,15 +78,15 @@ public class userDAO
 					+ "FROM Transaction T1, Transaction T2"
 					+ "WHERE T1.transType = 's'"
 					+ "AND T1.nftid = T2.nftid"
-					+ "AND T1.sender = T2.reciever"
-					+ "GROUP BY T1.reciever);");
+					+ "AND T1.sender = T2.sender"
+					+ "GROUP BY T1.sender);");
 		} catch(SQLException e) {
         	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
         }
        
         try {
 			statement = (Statement) connect.createStatement();
-			statement.execute("CREATE VIEW SenderTable(reciever, count)"
+			statement.execute("CREATE VIEW BuyerTable(reciever, count)"
 					+ "AS ("
 					+ "SELECT Distinct(T1.reciever), COUNT(*) as Num"
 					+ "FROM Transaction T1, Transaction T2"
@@ -103,7 +103,7 @@ public class userDAO
             statement = (Statement) connect.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
         	while (resultSet.next()) {
-                String userid = resultSet.getString("userid");
+                String userid = resultSet.getString("reciever");
                 diamondHandedUsers.add(getUser(userid));                 
                
             }        
@@ -118,16 +118,15 @@ public class userDAO
     
     public List<user> listPaperHandedUsers() throws SQLException{
         List<user> paperHandedUsers = new ArrayList<user>();        
-        String sql = "SELECT userid FROM User Obj WHERE Obj.userid NOT IN "
-        	+	"(SELECT sender from Transaction) AND Obj.userid NOT IN (SELECT "
-        	+ "reciever FROM Transaction) AND Obj.userid NOT IN (SELECT creator FROM NFT);";      
+        String sql = "SELECT Distinct sendUser.sender from SenderTableUser sendUser, BuyerTable buyUser \n "
+        	+ "WHERE buyUser.count = buyUser.count AND sendUser.sender=buyUser.reciever );";      
        
         try {
         	connect_func();   
             statement = (Statement) connect.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
         	while (resultSet.next()) {
-                String userid = resultSet.getString("userid");
+                String userid = resultSet.getString("reciever");
                 paperHandedUsers.add(getUser(userid));                 
                
             }        
