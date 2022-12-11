@@ -136,12 +136,18 @@ public class TransactionDAO
         
         
         String[] TUPLES = {("insert into Transaction(nftid, sender, reciever, transType, price, timeStamp)"+
-    			"values ('1','bendover@gmail.com','oke@gmail.com','t', '0', '" + timeStamp + "')," +
-    					"('1','oke@gmail.com','bendover@gmail.com','t', '0', '" + timeStamp + "')," +
+    			"values ('9','bendover@gmail.com','oke@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('1','oke@gmail.com','bendover@gmail.com','s', '1', '" + timeStamp + "')," +
     					"('4','bendover@gmail.com','jessicacole@gmail.com','t', '0', '" + timeStamp + "')," +
     					"('5','bendover@gmail.com','erinmoore@gmail.com','s', '10', '" + timeStamp + "')," +
     					"('6','bendover@gmail.com','harryballs@gmail.com','s', '10', '" + timeStamp + "')," +
-    					"('7','bendover@gmail.com','test@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('7','oke@gmail.com','alf@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('1','oke@gmail.com','bendover@gmail.com','s', '1', '" + timeStamp + "')," +
+    					"('1','bendover@gmail.com','oke@gmail.com','s', '1', '" + timeStamp + "')," +
+    					"('1','oke@gmail.com','bendover@gmail.com','s', '10', '" + timeStamp + "')," +
+    					"('50','bendover@gmail.com','harryballs@gmail.com','s', '10', '" + timeStamp + "')," +
+    					"('20','bendover@gmail.com','test@gmail.com','t', '0', '" + timeStamp + "')," +
+    					
     					"('8','bendover@gmail.com','alf@gmail.com','t', '0', '" + timeStamp + "');"
     				   )};
         
