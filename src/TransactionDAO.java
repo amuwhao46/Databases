@@ -130,7 +130,7 @@ public class TransactionDAO
 		            "PRIMARY KEY (transid), " +
 		            "FOREIGN KEY (sender) REFERENCES User(userid)," +
 		            "FOREIGN KEY (reciever) REFERENCES User(userid)," +
-		            "FOREIGN KEY (nftid) references NFT(nftid));" 
+		            "FOREIGN KEY (nftid) REFERENCES NFT(nftid));" 
 		            )
 				};
         
@@ -145,10 +145,10 @@ public class TransactionDAO
     					"('1','oke@gmail.com','bendover@gmail.com','s', '1', '" + timeStamp + "')," +
     					"('1','bendover@gmail.com','oke@gmail.com','s', '1', '" + timeStamp + "')," +
     					"('1','oke@gmail.com','bendover@gmail.com','s', '10', '" + timeStamp + "')," +
-    					"('50','bendover@gmail.com','harryballs@gmail.com','s', '10', '" + timeStamp + "')," +
-    					"('20','bendover@gmail.com','test@gmail.com','t', '0', '" + timeStamp + "')," +
+    					"('3','bendover@gmail.com','harryballs@gmail.com','s', '10', '" + timeStamp + "')," +
+    					"('3','bendover@gmail.com','test@gmail.com','t', '0', '" + timeStamp + "')," +
     					
-    					"('8','bendover@gmail.com','alf@gmail.com','t', '0', '" + timeStamp + "');"
+    					"('1','bendover@gmail.com','alf@gmail.com','t', '0', '" + timeStamp + "');"
     				   )};
         
         //for loop to put these in database
