@@ -383,15 +383,23 @@ public class ControlServlet extends HttpServlet {
 	    //==============================================================================================================================
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	 
+	    	 System.out.println("[DEBUG] Control Servlet Ln 386");
 	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();// 1
+	    	 System.out.println("[DEBUG] Control Servlet Ln 388");
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();//2
+	    	 System.out.println("[DEBUG] Control Servlet Ln 390");
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();//3
+	    	 System.out.println("[DEBUG] Control Servlet Ln 392");
 	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();//8
+	    	 System.out.println("[DEBUG] Control Servlet Ln 394");
 	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
+	    	 System.out.println("[DEBUG] Control Servlet Ln 396");
 	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
+	    	 System.out.println("[DEBUG] Control Servlet Ln 398");
 	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
+	    	 System.out.println("[DEBUG] Control Servlet Ln 400");
 	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
+	    	 System.out.println("[DEBUG] Control Servlet Ln 402");
 
 	    	 request.setAttribute("bigCreators", bigCreators);
 	    	 request.setAttribute("bigSellers", bigSellers);

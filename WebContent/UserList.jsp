@@ -50,7 +50,7 @@
 				<th>Email</th>
                 <th>First name</th>
                 <th>Last name</th>
-                <th>init_bal(ETH)</th>
+                <th>Balance (ETH)</th>
             </tr>
             <tr>
             	<td><c:out value="${users.userid}" /></td>

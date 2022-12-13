@@ -54,7 +54,6 @@
 		               <th>Image</th>
 		               <th>Creator</th>
 		               <th>Time Minted</th>
-		               <th>Minted by</th>
 		            </tr>
 		                <tr style="text-align:center">
 		                    <td><c:out value="${userNFT.nftid}" /></td>
