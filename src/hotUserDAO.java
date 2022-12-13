@@ -33,7 +33,7 @@ public class hotUserDAO {
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-	private nftDAO conversion=null;
+	private nftDAO conversion = null;
 	public hotUserDAO(){
 		
 		
@@ -250,41 +250,46 @@ public class hotUserDAO {
        public List<hotUser> getHotNFTs() throws SQLException {
        	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count) FROM OwnedNfts);";
        	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
-       	conversion= new nftDAO(); // initilize instance for nftDAO -- fixed initial error. throws new this.statement is null error
+
+       	nftDAO conversion = new nftDAO(); // initilize instance for nftDAO -- fixed initial error. throws new this.statement is null error
+
        	try {
        		connect_func();
             statement = (Statement) connect.createStatement();
             statement.execute("drop view if exists OwnedNfts;");
+            
         } catch(SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e.toString() + " hotUserDAO ln:264");
         }
 
-    		try {
-            statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW OwnedNfts(nftid, count)\n"
-                    + "AS (SELECT nftid, COUNT(*) as Num\n"
-                    + "FROM (SELECT DISTINCT reciever, nftid FROM Transaction) as T\n"
-                    + "GROUP BY nftid);");
+		try {
+	        statement = (Statement) connect.createStatement();
+	        statement.execute("CREATE VIEW OwnedNfts(nftid, count)\n"
+	                + "AS (SELECT nftid, COUNT(*) as Num\n"
+	                + "FROM (SELECT DISTINCT reciever, nftid FROM Transaction) as T\n"
+	                + "GROUP BY nftid);");
+	        
         } catch(SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e.toString() + ", hotUserDAO ln:277");
         }
-
     		try {
-            statement = (Statement) connect.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+	            statement = (Statement) connect.createStatement();
+	            ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
                 int result = resultSet.getInt("nftid");
                 int resultItem = resultSet.getInt("count");
-
-                String hotUserResult= conversion.getNft(result).getUnique_name(); //--> error here fixed by instance for nft dao. 
+                System.out.println("[DEBUG] hotUserDAO Ln 291");
                 
+                String hotUserResult= conversion.getNft(result).getUnique_name(); //--> error here fixed by instance for nft dao. 
+                System.out.println("[DEBUG] hotUserDAO Ln 294");
                 getHotNFTs.add(new hotUser(hotUserResult, resultItem));
             }
 
+            System.out.println("[DEBUG] hotUserDAO Ln 298");
             resultSet.close();
         } catch(SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e.toString() + ", hotUserDAO ln:301");
         }
        	
        	return getHotNFTs;

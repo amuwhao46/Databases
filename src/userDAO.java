@@ -55,47 +55,53 @@ public class userDAO
 
     public List<user> listDiamondHandedUsers() throws SQLException{
         List<user> diamondHandedUsers = new ArrayList<user>();        
-        String sql = "SELECT Distinct reciever from SenderTable"
-        		+ "WHERE reciever NOT IN (SELECT sender FROM RecieverTable);";    
+        String sql = "SELECT Distinct reciever from SenderTable "
+        		+ "WHERE reciever NOT IN (SELECT sender FROM BuyerTable);";    
         
         
         try {
         	
         	statement= (Statement) connect.createStatement();
-        	statement.execute("drop view if Exists RecieverTable;");
+        	statement.execute("drop view if Exists BuyerTable;");
         	
         }catch(SQLException e) {
         	System.out.println(e.toString() + ", Error caught in userDAO ln:68");
         }
         
-        
         // Container to keep track of diamond hand activity
         try {
 			statement = (Statement) connect.createStatement();
-			statement.execute("CREATE VIEW SenderTable(sender, count)"
+			statement.execute("CREATE VIEW SenderTable(sender, count) "
 					+ "AS ("
-					+ "SELECT Distinct(T1.sender), COUNT(*) as Num"
-					+ "FROM Transaction T1, Transaction T2"
-					+ "WHERE T1.transType = 's'"
-					+ "AND T1.nftid = T2.nftid"
-					+ "AND T1.sender = T2.sender"
+					+ "SELECT Distinct(T1.sender), COUNT(*) as Num "
+					+ "FROM Transaction T1, Transaction T2 "
+					+ "WHERE T1.transType = 's' "
+					+ "AND T1.nftid = T2.nftid "
+					+ "AND T1.sender = T2.sender "
 					+ "GROUP BY T1.sender);");
 		} catch(SQLException e) {
         	System.out.println(e.toString() + ", Error caught in userDAO ln:71");
         }
+        
+		try {
+			statement = (Statement) connect.createStatement();
+			statement.execute("drop view if exists SenderTable;");
+		} catch(SQLException e) {
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:90");
+        }
        
         try {
 			statement = (Statement) connect.createStatement();
-			statement.execute("CREATE VIEW BuyerTable(reciever, count)"
+			statement.execute("CREATE VIEW BuyerTable(reciever, count) "
 					+ "AS ("
-					+ "SELECT Distinct(T1.reciever), COUNT(*) as Num"
-					+ "FROM Transaction T1, Transaction T2"
-					+ "WHERE T1.transType = 's'"
-					+ "AND T1.nftid = T2.nftid"
-					+ "AND T1.reciever = T2.reciever"
+					+ "SELECT Distinct(T1.reciever), COUNT(*) as Num "
+					+ "FROM Transaction T1, Transaction T2 "
+					+ "WHERE T1.transType = 's' "
+					+ "AND T1.nftid = T2.nftid "
+					+ "AND T1.reciever = T2.reciever "
 					+ "GROUP BY T1.reciever);");
 		} catch(SQLException e) {
-        	System.out.println(e.toString() + ", Error caught in userDAO ln:98");
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:104");
         }
 
         try {
@@ -109,7 +115,7 @@ public class userDAO
             }        
             resultSet.close();
         } catch (SQLException e) {
-        	System.out.println(e.toString() + ", Error caught in userDAO ln:112");
+        	System.out.println(e.toString() + ", Error caught in userDAO ln:118");
         }
        
         return diamondHandedUsers;
