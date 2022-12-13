@@ -23,6 +23,27 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
+		.form-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 2rem;
+			margin-bottom: 10px;
+		}
+		.form-wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			margin: 10px;
+		}
+		label {
+			font-weight: bold;
+			font-size: 1.5rem;
+		}
+		.select-flex-wrapper {
+			display: flex;
+			gap: 100px;
+		}
 		</style>
 	</head>
 	<body>
@@ -170,51 +191,56 @@
       			</c:forEach>
       		</table>  
       		<!-- Still gotta figure out ngl -->    	
-<%--       		       		<h1>Common NFT's</h1>
-      			<form name="commonForm" action="commonNfts">
-	      			<div>
-	      				<label>Pick first account</label>
-	      				<select name="userA">
-	      					<c:forEach var="user" items="user" varStatus="loop">
-	      						<option value="${user.userid}">
-	      							<c:out value="${user.userid}" />
-	      						</option>
-	      					</c:forEach>
-	      				</select>
-	      			</div>
-	      			<div>
-	      				<label>Pick second account</label>
-	      				<select name="userB">
-	      					<c:forEach var="user" items="user" varStatus="loop">
-	      						<option value="${user.userid}">
-	      							<c:out value="${user.userid}" />
-	      						</option>
-	      					</c:forEach>
-	      				</select>
-	      			</div>
-	      			<button>Common NFTs</button>
-					<table class=table-container border="1" cellpadding="6">
-					<caption>Bought NFTs</caption>
-						<tr>
-					      	<th>NFTid</th>
-					      	<th>Name</th>
-					      	<th>Description</th>
-					      	<th>Image</th>
-					      	<th>Creator</th>
-					    	<th>Time Minted</th>
-					    </tr>
-					    <c:forEach var="nfts" items="${commonNFTs}">
-					    	<tr style="text-align:center">
-					        	<td><c:out value="${nfts.nftid}" /></td>
-					            <td><c:out value="${nfts.unique_name}" /></td>
-					            <td><c:out value="${nfts.description}" /></td>
-					            <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
-					            <td><c:out value="${nfts.creator}" /></td>
-					            <td><c:out value="${nfts.mint_time}" /></td>
-					       	</tr>
-						</c:forEach>
-					</table>
-      			</form> --%>
+			<div align="center">
+				<h1>Common NFTs</h1>
+				<form class="form-container" action="commonNFTs">
+					<div class="select-flex-wrapper">
+						<div class="form-wrapper">
+							<label>First User</label>
+							<select name="userA">
+						  		<c:forEach items="${allUsers}" var="user" varStatus="loop">
+									<option value="${user.userid}">
+								        <c:out value="${user.userid}" />
+								  	</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-wrapper">
+							<label>Second User</label>
+							<select name="userB">
+						  		<c:forEach items="${allUsers}" var="user" varStatus="loop">
+									<option value="${user.userid}">
+								        <c:out value="${user.userid}" />
+								  	</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+					<button type="submit">Find Common NFTs</button>
+				</form>
+				<table border="1" cellpadding="6">
+			        <tr>
+			        	<th>NFTid</th>
+			            <th>Name</th>
+			            <th>Description</th>
+			            <th>Image</th>
+			            <th>Owner</th>
+			            <th>Creator</th>
+			            <th>Date Created</th>
+			        </tr>
+			        <c:forEach var="nft" items="${commonNFTs}">
+				        <tr style="text-align:center">
+				        	<td><c:out value="${nft.nftid}" /></td>
+				            <td><c:out value="${nft.unique_name}" /></td>
+				            <td><c:out value="${nft.description}" /></td>
+				            <td><img src="<c:out value="${nft.nft_image}"/>" alt="nft image"/></td>
+				            <td><c:out value="${nft.owner}" /></td>
+				            <td><c:out value="${nft.creator}" /></td>  
+				            <td><c:out value="${nft.mint_time}" /></td>
+				        </tr>
+			        </c:forEach>
+				</table>
+			</div>
       		 
       		 
       		<h1>Diamond Hands</h1>

@@ -262,7 +262,7 @@ public class ControlServlet extends HttpServlet {
 			 	 session = request.getSession();
 			 	 session.setAttribute("currentUser", user.getFirstName());
 			 	 session.setAttribute("userid", user.getUserid());				 
-			 	 System.out.println("Login Successful! Redirecting");
+			 	 System.out.println("Login Successful! Redirecting to activity page");
 				 request.setAttribute("userNFT", nftDAO.listOwnedNfts(userid));
 				 request.getRequestDispatcher("activitypage.jsp").forward(request, response); // Activity page here!!!!!!!!!
 			 			 			 			 
