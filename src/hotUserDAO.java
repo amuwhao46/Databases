@@ -110,20 +110,20 @@ public class hotUserDAO {
     //=====================================================================================
     // get BigBuyers
     List<hotUser> getBigBuyers() throws SQLException {
-    	String sql = "SELECT * from PurchasedAmt;\n"
+    	String sql = "SELECT * from PurchasedAmt\n"
                 + "WHERE count = (SELECT MAX(count) FROM PurchasedAmt);";
     	List<hotUser> getBigBuyers = new ArrayList<hotUser>();
     	try {
     		connect_func();
             statement = (Statement) connect.createStatement();
-            statement.execute("drop view if exists PurchaseAmt;");
+            statement.execute("drop view if exists PurchasedAmt;");
         } catch(SQLException e) {
             System.out.println(e.toString());
         }
 
     		try {
             statement = (Statement) connect.createStatement();
-            statement.execute("CREATE VIEW PurchaseAmt(reciever, count)\n"
+            statement.execute("CREATE VIEW PurchasedAmt(reciever, count)\n"
                     + "AS (\n"
                     + "SELECT reciever, COUNT(*) as Num\n"
                     + "FROM Transaction\n"
