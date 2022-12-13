@@ -248,8 +248,9 @@ public class hotUserDAO {
     
     // get hotNFTs
        public List<hotUser> getHotNFTs() throws SQLException {
-       	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count) FROM OwnedNfts)";
+       	String sql = "SELECT * FROM OwnedNfts WHERE count = (SELECT MAX(count) FROM OwnedNfts);";
        	List<hotUser> getHotNFTs  = new ArrayList<hotUser>();
+       	conversion= new nftDAO(); // initilize instance for nftDAO -- fixed initial error. throws new this.statement is null error
        	try {
        		connect_func();
             statement = (Statement) connect.createStatement();
@@ -261,8 +262,7 @@ public class hotUserDAO {
     		try {
             statement = (Statement) connect.createStatement();
             statement.execute("CREATE VIEW OwnedNfts(nftid, count)\n"
-                    + "AS (\n"
-                    + "SELECT nftid, COUNT(*) as Num\n"
+                    + "AS (SELECT nftid, COUNT(*) as Num\n"
                     + "FROM (SELECT DISTINCT reciever, nftid FROM Transaction) as T\n"
                     + "GROUP BY nftid);");
         } catch(SQLException e) {
@@ -277,7 +277,7 @@ public class hotUserDAO {
                 int result = resultSet.getInt("nftid");
                 int resultItem = resultSet.getInt("count");
 
-                String hotUserResult= conversion.getNft(result).getUnique_name();
+                String hotUserResult= conversion.getNft(result).getUnique_name(); //--> error here fixed by instance for nft dao. 
                 
                 getHotNFTs.add(new hotUser(hotUserResult, resultItem));
             }

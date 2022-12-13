@@ -87,6 +87,7 @@ public class ControlServlet extends HttpServlet {
         	case "/hotUserItems":
         		hotUserItems(request,response);
         		break;
+        		// end of part 4
         	case "/logout":
         		logout(request,response);
         		break;
