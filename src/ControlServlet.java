@@ -76,12 +76,14 @@ public class ControlServlet extends HttpServlet {
         		break;
         	case "/root":
         		rootPage(request,response, "");
-        		
-        		
+        		break;
         		// Part 4
+        	case "/commonNFTs":
+        		commonNFTs(request,response);
         		break;
         	case "/statistics":
         		statistics(request,response);
+        		break;
         	case "/hotUserItems":
         		hotUserItems(request,response);
         		break;
@@ -313,6 +315,9 @@ public class ControlServlet extends HttpServlet {
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
 			
+			List<user> users = userDAO.listAllUsers();
+    		request.setAttribute("users", users);
+			
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    } 
 	    
@@ -401,18 +406,21 @@ public class ControlServlet extends HttpServlet {
 	    
 	   
 	    //5
-	    private void commonNfts(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
+	    private void commonNFTs(HttpServletRequest request, HttpServletResponse response) throws ServletException, 
 	    IOException, SQLException {
 	    	System.out.println("Preparing to show common NFTs");
 	    	String userA = request.getParameter("userA");
 	    	String userB = request.getParameter("userB");
 	    	
+	    	
 	    	List<nft> commonNFTs = nftDAO.listCommonNfts(userA, userB);
 	    	List<user> users = userDAO.listAllUsers();
+	    	
 	    	
 	    	request.setAttribute("commonNFTs", commonNFTs);
 	    	request.setAttribute("users", users);
 	    	request.getRequestDispatcher("rootView.jsp").forward(request, response);
+
 	    }
 
 	    //10 

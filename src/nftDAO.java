@@ -56,28 +56,33 @@ public class nftDAO
     // list common NFT function -- unsure of implementation
     public List<nft> listCommonNfts(String userA, String userB) throws SQLException {
         List<nft> listCommonNft = new ArrayList<nft>();        
-        String sql = "SELECT DISTINCT (nftid)FROM Transaction WHERE (sender = ? OR sender = ?) and (reciever = ? OR reciever = ?);";      
-        
+        String sql = "SELECT DISTINCT (nftid) FROM Transaction WHERE (sender = ? OR sender = ?) and (reciever = ? OR reciever = ?);";      
         
         try {
-        	
         	connect_func();      
-        	ResultSet resultSet = statement.executeQuery(sql);
+        	preparedStatement = (PreparedStatement) connect.prepareStatement(sql);
         	preparedStatement.setString(1, userA);
         	preparedStatement.setString(2, userB);
         	preparedStatement.setString(3, userA);
         	preparedStatement.setString(4, userB);
+
+        	ResultSet resultSet = preparedStatement.executeQuery();
         	
+
         	while (resultSet.next()) {
+        		
         		int nftid = resultSet.getInt("nftid");
         		nft nftsInCommon = getNft(nftid);
 
         		listCommonNft.add(nftsInCommon);
+
         	}  
-        	  resultSet.close(); 
-        	
+        	resultSet.close(); 
+
+
+        	  
         } catch(Exception e) {
-        	throw new SQLException(e);
+        	System.out.println(e.toString() + " Threw in NFTDAO on line 85");
         }
 
          
@@ -333,7 +338,7 @@ public class nftDAO
             String nft_image = resultSet.getString("nft_image");
             String owner = resultSet.getString("owner");
             String creator = resultSet.getString("creator");
-            java.sql.Timestamp mint_time = resultSet.getTimestamp(nftid);
+            java.sql.Timestamp mint_time = resultSet.getTimestamp("mint_time");
             nft = new nft(nftid, unique_name, description, nft_image, owner, creator, mint_time);
         }
          

@@ -44,10 +44,6 @@
 </style>
 </head>
 	<body>
-<%-- 	<%
-		String name = (String)session.getAttribute("firstName");
-		out.print("Logged in as " + name);
-	%> --%>
 		<h1>Logged in as: <c:out value="${sessionScope.userid}"/> </h1>
 
 		 <a class="Button" href="login.jsp"target ="_self" > logout</a><br><br> 
@@ -59,26 +55,6 @@
 		 </div>
 		 <!-- <p> You can show all the transactions or other attributes here like balance, name of the user</p> -->
 		 <h1>NFT Transaction Information</h1>
-<%--  	    <table class=table-container border="1" cellpadding="6">
-	    <caption>Includes minted, transferred, and purchased NFTs</caption>
-           <tr>
-               <th>NFTid</th>
-               <th>Name</th>
-               <th>Description</th>
-               <th>Image</th>
-               <th>Creator</th>
-               <th>Time Minted</th>
-           </tr>
-           <c:forEach var="nfts" items="${userNFT}">
-               <tr style="text-align:center">
-                   <td><c:out value="${nfts.nftid}" /></td>
-                   <td><c:out value="${nfts.unique_name}" /></td>
-                   <td><c:out value="${nfts.description}" /></td>
-                   <td><img src="<c:out value="${nfts.nft_image}"/>" alt="url link to image to nft"/></td>
-                   <td><c:out value="${nfts.creator}" /></td>
-                   <td><c:out value="${nfts.mint_time}" /></td>
-           </c:forEach>
-       </table>  --%>
        
        	<table class=table-container border="1" cellpadding="6">
 	    <caption>Bought NFTs</caption>

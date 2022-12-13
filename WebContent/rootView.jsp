@@ -23,35 +23,42 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
-		.form-container {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			padding: 2rem;
-			margin-bottom: 10px;
-		}
-		.form-wrapper {
-			display: flex;
-			flex-direction: column;
-			align-items: start;
-			margin: 10px;
-		}
-		label {
-			font-weight: bold;
-			font-size: 1.5rem;
-		}
-		.select-flex-wrapper {
-			display: flex;
-			gap: 100px;
-		}
+			.form-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 2rem;
+				margin-bottom: 10px;
+			}
+			.form-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: start;
+				margin: 10px;
+			}
+			label {
+				font-weight: bold;
+				font-size: 1.5rem;
+			}
+			.select-flex-wrapper {
+				display: flex;
+				gap: 100px;
+			}
+			.logout-button {
+				padding: .5rem;
+				background-color: red;
+				border-radius: 0.25rem;
+				margin: 1rem;
+				color: white;
+			}
 		</style>
 	</head>
 	<body>
+		<a class="logout-button" href="login.jsp"target ="_self" > logout</a><br><br> 
 		<!-- Initialize database -->
 		<form action = "initialize">
 			<input type = "submit" value = "Initialize the Database"/>
-		</form>
-		
+		</form>		
 		<!-- Initialize hotUser and stats -->
 		<form action = "hotUserItems">
 			<input type = "submit" value = "Initialize Achievements"/>
@@ -59,7 +66,6 @@
 		<form action = "statistics">
 			<input type = "submit" value = "Initialize Statistics"/>
 		</form>
-		<a href="login.jsp"target ="_self" > logout</a><br><br> 
 		
 		<h1>List all users</h1>
 	    <table class="table-container" border="1" cellpadding="6">
@@ -198,7 +204,7 @@
 						<div class="form-wrapper">
 							<label>First User</label>
 							<select name="userA">
-						  		<c:forEach items="${allUsers}" var="user" varStatus="loop">
+						  		<c:forEach items="${users}" var="user" varStatus="loop">
 									<option value="${user.userid}">
 								        <c:out value="${user.userid}" />
 								  	</option>
@@ -208,7 +214,7 @@
 						<div class="form-wrapper">
 							<label>Second User</label>
 							<select name="userB">
-						  		<c:forEach items="${allUsers}" var="user" varStatus="loop">
+						  		<c:forEach items="${users}" var="user" varStatus="loop">
 									<option value="${user.userid}">
 								        <c:out value="${user.userid}" />
 								  	</option>
