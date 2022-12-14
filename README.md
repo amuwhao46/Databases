@@ -3,9 +3,9 @@
 * Oke Amuwha gv4281
 
 
-Alfred- Mostly focuesed on implementing the hotUserItems (Big Creator, Hot NFT, Common NFT, etc) in the backend. Performed numerous error handling and code checking in mysqlworkbench to ensure it runs smoothly. Tried to diagnose and find out why the errors were happening. Made the DAO for the hotUser's, and implemented the diamond/paperhand and inactive users into the respective NFT/User DAO.
+Alfred- Mostly focuesed on implementing the hotUserItems (Big Creator, Hot NFT, Common NFT, etc) in the backend. Performed numerous error handling and code checking in mysqlworkbench to ensure it runs smoothly. Tried to diagnose and find out why the errors were happening. Made the DAO for the hotUser's, and implemented the diamond/paperhand and inactive users into the respective NFT/User DAO. Fixed the hotUser Class, rewriting the getters and setters to make it work
 
-Oke- Implemented the tables in the front end to display the information. Worked on the Statistics DAO, and routing for statistics in the back and front end. Rewriting error handling systems and scanning through each line to debug and ensure everything works correctly in the backend and frontend. Statistics and common NFT were able to work.
+Oke- Implemented the tables in the front end to display the information. Worked on the Statistics DAO, and routing for statistics in the back and front end. Rewriting error handling systems and scanning through each line to debug and ensure everything works correctly in the backend and frontend. Statistics and common NFT were able to work. Fixed the front end to display the information of the hotUser implementations
 
 We spent ~30 hours working collaboratively on this part of the project. 
 

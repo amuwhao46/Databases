@@ -406,7 +406,7 @@ public class ControlServlet extends HttpServlet {
 	    	 request.setAttribute("paperHand", paperHands);
 	    	 System.out.println("Control Servlet at Line:407");
 	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
-	    	 System.out.println("Control Servlet at Line:409");
+	    	 System.out.println("Control Servlet at Line:40");
 	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
