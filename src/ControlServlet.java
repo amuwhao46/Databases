@@ -315,7 +315,8 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
-
+			
+			
 			List<user> users = userDAO.listAllUsers();
     		request.setAttribute("users", users);
 			
