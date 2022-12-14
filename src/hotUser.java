@@ -36,7 +36,7 @@ public class hotUser {
 	}
 	
 	
-public void setHotUser(String hotUserResult) {
+public void setHotUserResult(String hotUserResult) {
 		
 		this.hotUserResult = hotUserResult;
 		
@@ -44,7 +44,7 @@ public void setHotUser(String hotUserResult) {
 	
 	
 	
-	public String getHotUser() {
+	public String getHotUserResult() {
 		
 		return hotUserResult;
 		
@@ -59,7 +59,7 @@ public void setResultItem(int resultem) {
 		
 	}
 	
-public int getResultem() {
+public int getResultItem() {
 	
 	return resultItem;
 	

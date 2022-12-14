@@ -343,7 +343,6 @@ public class nftDAO
         }
          
         resultSet.close();
-        statement.close();
          
         return nft;
     }

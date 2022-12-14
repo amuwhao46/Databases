@@ -187,7 +187,7 @@
       			<caption>NFT with the most amount of owners</caption>
       			<tr>
       				<th>User(s)</th>
-      				<th>Owned NFTs</th>
+      				<th>Times Owned</th>
       			</tr>
       			<c:forEach var="user" items="${hotNFTs}">
 	      			<tr>

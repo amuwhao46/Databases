@@ -385,32 +385,28 @@ public class ControlServlet extends HttpServlet {
 	    //==============================================================================================================================
 	    // part 4. function calling every function to display on rootview homescreen
 	    private void hotUserItems(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-	    	 System.out.println("[DEBUG] Control Servlet Ln 386");
 	    	 List<hotUser> bigCreators = hotUserDAO.getBigCreators();// 1
-	    	 System.out.println("[DEBUG] Control Servlet Ln 388");
 	    	 List<hotUser> bigSellers = hotUserDAO.getBigSellers();//2
-	    	 System.out.println("[DEBUG] Control Servlet Ln 390");
 	    	 List<hotUser> bigBuyers = hotUserDAO.getBigBuyers();//3
-	    	 System.out.println("[DEBUG] Control Servlet Ln 392");
 	    	 List<hotUser> goodBuyers = hotUserDAO.getGoodBuyers();//8
-	    	 System.out.println("[DEBUG] Control Servlet Ln 394");
-	    	 //List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
-	    	 System.out.println("[DEBUG] Control Servlet Ln 396");
-//	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
-	    	 System.out.println("[DEBUG] Control Servlet Ln 398");
-//	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
-	    	 System.out.println("[DEBUG] Control Servlet Ln 400");
-//	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
-	    	 System.out.println("[DEBUG] Control Servlet Ln 402");
+	    	 List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
+	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
+	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
+	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
 
 	    	 request.setAttribute("bigCreators", bigCreators);
 	    	 request.setAttribute("bigSellers", bigSellers);
 	    	 request.setAttribute("bigBuyers", bigBuyers);
 	    	 request.setAttribute("goodBuyers", goodBuyers);
-	    	 //request.setAttribute("hotNFTs", hotNFTs);
-//	    	 request.setAttribute("diamondHand", diamondHands);
-//	    	 request.setAttribute("paperHand", paperHands);
-//	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
+	    	 System.out.println("Control Servlet at Line:401");
+	    	 request.setAttribute("hotNFTs", hotNFTs);
+	    	 System.out.println("Control Servlet at Line:403");
+	    	 request.setAttribute("diamondHand", diamondHands);
+	    	 System.out.println("Control Servlet at Line:405");
+	    	 request.setAttribute("paperHand", paperHands);
+	    	 System.out.println("Control Servlet at Line:407");
+	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
+	    	 System.out.println("Control Servlet at Line:409");
 	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
