@@ -315,7 +315,7 @@ public class ControlServlet extends HttpServlet {
 	    	System.out.println("root view");
 			request.setAttribute("listUser", userDAO.listAllUsers());
 			request.setAttribute("listNft", nftDAO.listAllNfts());
-			
+
 			List<user> users = userDAO.listAllUsers();
     		request.setAttribute("users", users);
 			
@@ -395,11 +395,11 @@ public class ControlServlet extends HttpServlet {
 	    	 System.out.println("[DEBUG] Control Servlet Ln 394");
 	    	 //List<hotUser> hotNFTs = hotUserDAO.getHotNFTs();//4
 	    	 System.out.println("[DEBUG] Control Servlet Ln 396");
-	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
+//	    	 List<user> diamondHands = userDAO.listDiamondHandedUsers();//6
 	    	 System.out.println("[DEBUG] Control Servlet Ln 398");
-	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
+//	    	 List<user> paperHands = userDAO.listPaperHandedUsers();//7
 	    	 System.out.println("[DEBUG] Control Servlet Ln 400");
-	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
+//	    	 List<user> lazyLoser = userDAO.listInactiveUsers(); //9 lazy loser is inactive user call
 	    	 System.out.println("[DEBUG] Control Servlet Ln 402");
 
 	    	 request.setAttribute("bigCreators", bigCreators);
@@ -407,9 +407,9 @@ public class ControlServlet extends HttpServlet {
 	    	 request.setAttribute("bigBuyers", bigBuyers);
 	    	 request.setAttribute("goodBuyers", goodBuyers);
 	    	 //request.setAttribute("hotNFTs", hotNFTs);
-	    	 request.setAttribute("diamondHand", diamondHands);
-	    	 request.setAttribute("paperHand", paperHands);
-	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
+//	    	 request.setAttribute("diamondHand", diamondHands);
+//	    	 request.setAttribute("paperHand", paperHands);
+//	    	 request.setAttribute("lazyLosers", lazyLoser);// i think this is funny
 	    	 request.getRequestDispatcher("rootView.jsp").forward(request, response);
 	    }
 	    
