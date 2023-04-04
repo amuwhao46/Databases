@@ -12,3 +12,8 @@ We spent ~30 hours working collaboratively on this part of the project.
 In order to run our project, we recommend you install eclipse. You will want to ensure the properties of the project have a recent version of Java, Dynamic Web Module, 
 and JavaScript. It is also important that in your java Build Path, you have JRE System Library (your version), Server runtime(recent apache tomcat), web app libraries, and EAR Libraries all checked off. Then you will want to run the code by first running "register.jsp" on your tomcat server and registering a user then logging in. If you are looking for administrative actions and an overview of the currently listed NFT's, you must log into the root user. 
 
+## Video demos of the NFT Database
+* [Part 1](https://rumble.com/v1q1zdv-part-1-oke-and-alfred-database-project.html)
+* [Part 2](https://www.youtube.com/watch?v=bnEutotw0b8)
+* [Part 3](https://youtu.be/VqnW1IrT36A)
+* [Part 4](https://youtu.be/NqFH_AakQL8)
